@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "knex":"knex",
+    "knex": "knex",
     "devstart": "nodemon ./bin/www"
   },
   "dependencies": {
@@ -14,6 +14,11 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "ejs": "~2.5.6",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^16.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.4.0",
     "express": "~4.15.2",
     "knex": "^0.13.0",
     "morgan": "~1.8.1",
