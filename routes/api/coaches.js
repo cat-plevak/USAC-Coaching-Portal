@@ -1,8 +1,7 @@
 const express = require('express')
-const router = express.Router()
-const knex = require('../..knex')
+const knex = require('../../knex')
 const boom = require('boom')
-// const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 const {
   camelizeKeys,
   decamelizeKeys
@@ -10,8 +9,7 @@ const {
 
 const SECRET = process.env.SECRET
 
-// DO WE WANT AN AUTHORIZE FUNCTION IN THIS ROUTE?
-// DONT THINK SO, THIS IS ONLY TO GET INFORMATION FROM DB NOT TO AUTHORIZE.
+const router = express.Router()
 
 // STANDARD CURL ROUTES
 
