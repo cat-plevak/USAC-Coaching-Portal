@@ -21,10 +21,12 @@ exports.seed = function(knex, Promise) {
           password: '$2a$10$9lijeFkZFhuitO9oON535ursM0vRCKQie7J6VXtcu.AZLzSY8qRfG',
           is_admin: true
         },
-        id: 4,
-        colName: 'admin2@gmail.com',
-        password: '$2a$10$JxVZaKx5h.I0oPIaUjhFcOk86h723w35eskDj8k0/Id1MumBNdlgW',
-        is_admin: true
+        {
+          id: 4,
+          colName: 'admin2@gmail.com',
+          password: '$2a$10$JxVZaKx5h.I0oPIaUjhFcOk86h723w35eskDj8k0/Id1MumBNdlgW',
+          is_admin: true
+        }
       ])
     }).then(() => {
       return knex.raw("SELECT setval('users_id_seq', (SELECT MAX(id) FROM users))")
