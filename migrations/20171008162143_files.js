@@ -1,6 +1,5 @@
-
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('files', function(table) {
+  return knex.schema.createTable('files', (table) => {
     table.increments()
     table.integer('user_id')
       .notNullable()
@@ -12,8 +11,8 @@ exports.up = function(knex, Promise) {
     table.text('ss_link')
     table.timestamps(true, true)
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTableIfExists('files')
-};
+}
