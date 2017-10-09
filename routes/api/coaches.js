@@ -10,7 +10,8 @@ const {
 
 const SECRET = process.env.SECRET
 
-// DO WE WANT AN AUTHORIZE FUNCTION IN THIS ROUTE? DONT THINK SO, THIS IS ONLY TO GET INFORMATION FROM DB NOT TO AUTHORIZE.
+// DO WE WANT AN AUTHORIZE FUNCTION IN THIS ROUTE?
+// DONT THINK SO, THIS IS ONLY TO GET INFORMATION FROM DB NOT TO AUTHORIZE.
 
 // STANDARD CURL ROUTES
 
@@ -25,6 +26,10 @@ router.get('/', (_req, res, next) => {
     })
 })
 
+router.get('/:id', (req, res, next) => {
+  const id = Number(req.params.id)
+  // code goes here
+})
 router.get('/:id', (req, res, next) => {
   const id = Number(req.params.id)
   // code goes here
