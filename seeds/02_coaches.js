@@ -10,7 +10,7 @@ exports.seed = function(knex, Promise) {
           team_name: 'rockstars',
           cpr_exp_date: '10/09/2018',
           fa_exp_date: '10/09/2018',
-          bg_exp_date: '10/05/2018',
+          bg_exp_date: '10/09/2018',
           ss_exp_date: '10/09/2018',
           usac_membership: true,
           is_certified: true,
