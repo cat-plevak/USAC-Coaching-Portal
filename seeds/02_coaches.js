@@ -13,7 +13,8 @@ exports.seed = function(knex, Promise) {
           bg_exp_date: '2018/05/10',
           ss_exp_date: '2018/09/10',
           usac_membership: true,
-          is_certified: true
+          is_certified: true,
+          user_id: 1
         },
         {
           id: 2,
@@ -25,7 +26,8 @@ exports.seed = function(knex, Promise) {
           bg_exp_date: '2018/09/10',
           ss_exp_date: '2018/09/10',
           usac_membership: false,
-          is_certified: false
+          is_certified: false,
+          user_id: 2
         },
         {
           id: 3,
@@ -37,7 +39,8 @@ exports.seed = function(knex, Promise) {
           bg_exp_date: '2018/09/10',
           ss_exp_date: '2018/12/10',
           usac_membership: true,
-          is_certified: false
+          is_certified: false,
+          user_id: 3
         },
         {
           id: 4,
@@ -49,7 +52,8 @@ exports.seed = function(knex, Promise) {
           bg_exp_date: '2018/09/10',
           ss_exp_date: '2018/09/10',
           usac_membership: true,
-          is_certified: true
+          is_certified: true,
+          user_id: 4
         }
       ])
     }).then(() => {
