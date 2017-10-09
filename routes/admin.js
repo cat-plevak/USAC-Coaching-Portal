@@ -24,5 +24,6 @@ router.get('/:id', (req, res, next) => {
   res.render('body/admin/coach', { title: 'View Coach', _layoutFile: 'layout.ejs' })
 })
 
+// add new admin route
 
 module.exports = router
