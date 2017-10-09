@@ -7,38 +7,22 @@ const router = express.Router();
 
 // first page is a view of all pending coaches
 router.get('/', (req, res, next) => {
-  res.render('coaches/pending', { title: 'Coaches Pending Certification', _layoutFile: 'layout.ejs' })
+  res.render('body/admin/pending', { title: 'Coaches Pending Certification', _layoutFile: 'layout.ejs' })
 })
 
 router.get('/pending', (req, res, next) => {
-  res.render('coaches/pending', { title: 'Coaches Pending Certification', _layoutFile: 'layout.ejs' })
+  res.render('body/admin/pending', { title: 'Coaches Pending Certification', _layoutFile: 'layout.ejs' })
 })
 
 // click on certified coaches and see a list of all
 router.get('/certified', (req, res, next) => {
-  res.render('coaches/certified', { title: 'Certified Coaches', _layoutFile: 'layout.ejs' })
+  res.render('body/admin/certified', { title: 'Certified Coaches', _layoutFile: 'layout.ejs' })
 })
 
-
-
-
+// view a single coach, add edit buttons
 router.get('/:id', (req, res, next) => {
-  const id = req.params.id
-  // code goes here
+  res.render('body/admin/coach', { title: 'View Coach', _layoutFile: 'layout.ejs' })
 })
 
-router.post('/', (req, res, next) => {
-  const { item } = req.body
-  // code goes here
-})
 
-router.patch('/:id', (req, res, next) => {
-  const id = req.params.id
-  const { item } = req.body
-  // code goes here
-})
-
-router.delete('/:id', (req, res, next) => {
-  const id = req.params.id
-  // code goes here
-})
+module.exports = router
