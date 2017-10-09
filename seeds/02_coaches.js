@@ -32,7 +32,7 @@ exports.seed = function(knex, Promise) {
           last_name: 'Bob',
           first_name: 'Daniels',
           team_name: 'sick bird',
-          cpr_exp_date: '2018/009/10',
+          cpr_exp_date: '2018/09/10',
           fa_exp_date: '2018/12/10',
           bg_exp_date: '2018/09/10',
           ss_exp_date: '2018/12/10',
