@@ -3,7 +3,7 @@ $(document).ready(() => {
 
   // if (document.location.href.match(/certified$/)) {
 
-  $.getJSON('/api/coaches/certified').then(data => {
+  $.getJSON("/api/coaches/certified").then(data => {
     console.log("List of coaches", data)
     let tbody = $('#certifiedList tbody')
 
