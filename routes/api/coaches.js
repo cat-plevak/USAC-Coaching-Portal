@@ -75,8 +75,55 @@ router.get('/:id', (req, res, next) => {
 
 // SIGN UP AS A NEW USER HERE? BCRYPT,COOKIES? //
 router.post('/', (req, res, next) => {
-  const {} = req.body
-  // code goes here
+  const {
+    lastName,
+    firstName,
+    teamName,
+    cprExpDate,
+    faExpDate,
+    ssExpDate,
+    usacMembership,
+    isCertified,
+  } = camelizeKeys(req.body)
+
+  if (!lastName || !lastName.trim()) {
+    return next(boom.create(404, 'What is the name?'))
+  }
+  if (!firstName || !firstName.trim()) {
+    return next(boom.create(404, 'What is the color?'))
+  }
+  if (!teamName || !teamName.trim()) {
+    return next(boom.create(404, 'Is it a fruit?'))
+  }
+  if (!cprExpDate || !cprExpDate.trim()) {
+    return next(boom.create(404, 'Is it a fruit?'))
+  }
+  if (!faExpDate || !faExpDate.trim()) {
+    return next(boom.create(404, 'Is it a fruit?'))
+  }
+  if (!ssExpDate || !ssExpDate.trim()) {
+    return next(boom.create(404, 'Is it a fruit?'))
+  }
+
+  let insertCaoch = {
+    lastName,
+    firstName,
+    teamName,
+    cprExpDate,
+    faExpDate,
+    ssExpDate,
+    usacMembership,
+    isCertified,
+  }
+
+  knex('coaches')
+    .insert(decamelizeKeys(insertCaoch))
+    .then(() => {
+      res.send(insertCaoch)
+    })
+    .catch((err) => {
+      next(err)
+    })
 })
 
 router.patch('/:id', (req, res, next) => {
