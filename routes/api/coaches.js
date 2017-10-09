@@ -1,6 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const knex = require('../..knex')
+const {
+  camelizeKeys,
+  decamelizeKeys
+} = require('humps')
 
 
 // DO WE WANT AN AUTHORIZE FUNCTION IN THIS ROUTE? DONT THINK SO, THIS IS ONY TO GET INFORMATION FROM DB NOT TO AUTHORIZE.
