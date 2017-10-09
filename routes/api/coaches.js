@@ -53,7 +53,7 @@ router.get('/:id', (req, res, next) => {
     return next(boom.create(400, 'id must be a number'))
   }
 
-  knex('coahces')
+  knex('coaches')
     .where('id', id)
     .first()
     .then((row) => {

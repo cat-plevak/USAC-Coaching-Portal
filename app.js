@@ -37,11 +37,11 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', index)
-// app.use('/admin', admin)
-// app.use('/coach', coach)
-// app.use('/register', register)
-// app.use('/users', users)
-// app.use('/api/coaches', api)
+app.use('/admin', admin)
+app.use('/coach', coach)
+app.use('/register', register)
+app.use('/users', users)
+app.use('/api/coaches', api)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
