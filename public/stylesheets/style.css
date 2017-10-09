@@ -9,11 +9,14 @@ a {
 
 #mainnav {
   height: 120px;
+  padding-top: 50px;
+}
+
+#subnav-container {
+  background-color: #333;
 }
 
 #subnav {
-  margin-top: 120px;
-  margin-bottom: 0px;
   background-color: #333;
 }
 
