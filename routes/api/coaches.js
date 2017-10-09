@@ -84,26 +84,27 @@ router.post('/', (req, res, next) => {
     ssExpDate,
     usacMembership,
     isCertified,
+    userId
   } = camelizeKeys(req.body)
 
   if (!lastName || !lastName.trim()) {
-    return next(boom.create(404, 'What is the name?'))
+    return next(boom.create(404, 'Please provide last name'))
   }
   if (!firstName || !firstName.trim()) {
-    return next(boom.create(404, 'What is the color?'))
+    return next(boom.create(404, 'Please provide first name'))
   }
   if (!teamName || !teamName.trim()) {
-    return next(boom.create(404, 'Is it a fruit?'))
+    return next(boom.create(404, 'Please provide a team name'))
   }
-  if (!cprExpDate || !cprExpDate.trim()) {
-    return next(boom.create(404, 'Is it a fruit?'))
-  }
-  if (!faExpDate || !faExpDate.trim()) {
-    return next(boom.create(404, 'Is it a fruit?'))
-  }
-  if (!ssExpDate || !ssExpDate.trim()) {
-    return next(boom.create(404, 'Is it a fruit?'))
-  }
+  // if (!cprExpDate || !cprExpDate.trim()) {
+  //   return next(boom.create(404, 'cprExpDate error'))
+  // }
+  // if (!faExpDate || !faExpDate.trim()) {
+  //   return next(boom.create(404, 'faExpDate error'))
+  // }
+  // if (!ssExpDate || !ssExpDate.trim()) {
+  //   return next(boom.create(404, 'ssExpDate error'))
+  // }
 
   let insertCaoch = {
     lastName,
@@ -114,7 +115,9 @@ router.post('/', (req, res, next) => {
     ssExpDate,
     usacMembership,
     isCertified,
+    userId
   }
+  console.log('insertCaoch is:', decamelizeKeys(insertCaoch))
 
   knex('coaches')
     .insert(decamelizeKeys(insertCaoch))
