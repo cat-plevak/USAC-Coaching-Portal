@@ -117,6 +117,7 @@ router.post('/', (req, res, next) => {
     isCertified,
     userId
   }
+
   console.log('insertCaoch is:', decamelizeKeys(insertCaoch))
 
   knex('coaches')
@@ -130,14 +131,106 @@ router.post('/', (req, res, next) => {
 })
 
 router.patch('/:id', (req, res, next) => {
-  const id = Number(req.params.id)
-  const {} = req.body
-  // code goes here
+  const id = Number.parseInt(req.params.id)
+
+  if (Number.isNaN(id)) {
+    return next()
+  }
+
+  knex('coaches')
+    .where('id', id)
+    .first()
+    .then((coach) => {
+      if (!coach) {
+        return next(boom.create(404, 'Coach Not Found'))
+      }
+
+      const {
+        lastName,
+        firstName,
+        teamName,
+        cprExpDate,
+        faExpDate,
+        ssExpDate,
+        usacMembership,
+        isCertified,
+        userId
+      } = camelizeKeys(req.body)
+
+      const updateCaoch = {}
+
+      if (lastName) {
+        updateBook.lastName = lastName
+      }
+
+      if (firstName) {
+        updateBook.firstName = firstName
+      }
+
+      if (teamName) {
+        updateBook.teamName = teamName
+      }
+
+      if (cprExpDate) {
+        updateBook.cprExpDate = cprExpDate
+      }
+
+      if (faExpDate) {
+        updateBook.faExpDate = faExpDate
+      }
+      if (ssExpDate) {
+        updateBook.ssExpDate = ssExpDate
+      }
+      if (usacMembership) {
+        updateBook.usacMembership = usacMembership
+      }
+      if (isCertified) {
+        updateBook.isCertified = isCertified
+      }
+
+      return knex('coaches')
+        .update(decamelizeKeys(updateCaoch), '*')
+        .where('id', id)
+    })
+    .then((rows) => {
+      const coach = camelizeKeys(rows[0])
+
+      res.send(coach)
+    })
+    .catch((err) => {
+      next(err)
+    })
 })
 
 router.delete('/:id', (req, res, next) => {
   const id = Number(req.params.id)
-  // code goes here
+
+  if (Number.isNaN(id)) {
+    return next(boom.create(400), 'id must be a number')
+  }
+
+  let coach
+
+  knex('coaches')
+    .where('id', id)
+    .first()
+    .then((row) => {
+      if (!row) {
+        return next(boom.create(404), 'Coach not found')
+      }
+
+      coach = row
+
+      return knex('coaches')
+        .del()
+        .where('id', id)
+    })
+    .then(() => {
+      res.send(coach)
+    })
+    .catch((err) => {
+      next(err)
+    })
 })
 
 
