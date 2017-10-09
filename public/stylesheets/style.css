@@ -7,7 +7,17 @@ a {
   color: #00B7FF;
 }
 
+#mainnav {
+  height: 120px;
+}
+
 #subnav {
+  margin-top: 120px;
+  margin-bottom: 0px;
+  background-color: #333;
+}
+
+#login-form {
   width: auto;
   float: right;
 }
