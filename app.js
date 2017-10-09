@@ -13,16 +13,15 @@ var app = express();
 
 // view engine setup
 const engine = require('ejs-mate');
-<<<<<<< HEAD
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.engine('ejs', engine);
-=======
+
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs');
 app.engine('ejs', engine);
 
->>>>>>> a0620fb890d6d32f1cf50d8add2b369b260229a7
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
