@@ -8,12 +8,6 @@ a {
 }
 
 
-/*change navbar height*/
-.navbar-brand {
-    line-height: 150px;
-    height: 150px;
-    padding-top: 0;
-}
 
 
 /*STYLING FOR STICKY FOOTER:*/
@@ -40,4 +34,16 @@ body > .container {
 .footer > .container {
   padding-right: 15px;
   padding-left: 15px;
+}
+
+
+/*home.ejs styling*/
+.business-header {
+    height: 50vh;
+    min-height: 300px;
+    background: url('http://placehold.it/1920x600') center center no-repeat scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
