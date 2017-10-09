@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+
   $('#login-button').click((e) => {
     e.preventDefault()
 
@@ -9,18 +10,30 @@ $(document).ready(function(){
     console.log(email, password);
 
     if (!email) {
-        return next(boom.create('Email must not be blank', 404))
+      console.log('Email must not be blank');
+        // return res.status(404).send('Email must not be blank')
       }
 
-    if (email.indexOf('@') < 0) {
-      return next(boom.create('Email must be valid', 404))
+    if (!password) {
+      console.log('Password must not be blank');
+      // return res.status(404).send('Password must be at least 8 characters')
     }
 
-    if (!password || password.length < 8) {
-      return next(boom.create('Password must be at least 8 characters', 404))
-    }
+    const options = {
+          contentType: 'application/json',
+          data: JSON.stringify({ email, password }),
+          dataType: 'json',
+          type: 'POST',
+          url: '/token'
+        }
 
-
+    $.ajax(options)
+      .done(() => {
+        window.location.href = '/favorites.html';
+      })
+      .fail((err) => {
+        console.log('error');
+      })
   })
 
-});
+})
