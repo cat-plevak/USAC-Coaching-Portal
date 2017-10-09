@@ -10,7 +10,7 @@ exports.seed = function(knex, Promise) {
           team_name: 'rockstars',
           cpr_exp_date: '2018/09/10',
           fa_exp_date: '2018/09/10',
-          bg_exp_date: '2018/15/10',
+          bg_exp_date: '2018/05/10',
           ss_exp_date: '2018/09/10',
           usac_membership: true,
           is_certified: true
@@ -20,10 +20,10 @@ exports.seed = function(knex, Promise) {
           last_name: 'Sam',
           first_name: 'Smith',
           team_name: 'crushers',
-          cpr_exp_date: '2018/009/10',
-          fa_exp_date: '2018/009/10',
-          bg_exp_date: '2018/009/10',
-          ss_exp_date: '2018/009/10',
+          cpr_exp_date: '2018/09/10',
+          fa_exp_date: '2018/09/10',
+          bg_exp_date: '2018/09/10',
+          ss_exp_date: '2018/09/10',
           usac_membership: false,
           is_certified: false
         },
@@ -34,7 +34,7 @@ exports.seed = function(knex, Promise) {
           team_name: 'sick bird',
           cpr_exp_date: '2018/009/10',
           fa_exp_date: '2018/12/10',
-          bg_exp_date: '2018/009/10',
+          bg_exp_date: '2018/09/10',
           ss_exp_date: '2018/12/10',
           usac_membership: true,
           is_certified: false
