@@ -5,15 +5,51 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('coaches').insert([{
           id: 1,
-          colName: 'rowValue1'
+          last_name: 'doe',
+          first_name: 'John',
+          team_name: 'rockstars',
+          cpr_exp_date: '2018/9/10',
+          fa_exp_date: '2018/9/10',
+          bg_exp_date: '2018/9/10',
+          ss_exp_date: '2018/9/10',
+          usac_membership: true,
+          is_certified: true
         },
         {
           id: 2,
-          colName: 'rowValue2'
+          last_name: 'Sam',
+          first_name: 'Smith',
+          team_name: 'crushers',
+          cpr_exp_date: '2018/9/10',
+          fa_exp_date: '2018/9/10',
+          bg_exp_date: '2018/9/10',
+          ss_exp_date: '2018/9/10',
+          usac_membership: false,
+          is_certified: true
         },
         {
           id: 3,
-          colName: 'rowValue3'
+          last_name: 'Bob',
+          first_name: 'Daniels',
+          team_name: 'rockstars',
+          cpr_exp_date: '2018/9/10',
+          fa_exp_date: '2018/9/10',
+          bg_exp_date: '2018/9/10',
+          ss_exp_date: '2018/9/10',
+          usac_membership: true,
+          is_certified: true
+        },
+        {
+          id: 4,
+          last_name: 'doe',
+          first_name: 'John',
+          team_name: 'rockstars',
+          cpr_exp_date: '2018/9/10',
+          fa_exp_date: '2018/9/10',
+          bg_exp_date: '2018/9/10',
+          ss_exp_date: '2018/9/10',
+          usac_membership: true,
+          is_certified: true
         }
       ])
     }).then(() => {
