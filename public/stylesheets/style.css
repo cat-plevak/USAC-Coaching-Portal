@@ -8,6 +8,10 @@ a {
   color: #00B7FF;
 }
 
+.container-fluid{
+  padding: 0px;
+}
+
 #mainnav {
   height: 120px;
   padding-top: 50px;
@@ -44,4 +48,11 @@ a {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+}
+
+.footer-overwrite {
+  height: 50px;
+  background-color: #dedede;
+  margin-top: 75px;
+  padding-top: 15px;
 }

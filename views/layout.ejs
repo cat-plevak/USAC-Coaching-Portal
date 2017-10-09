@@ -5,6 +5,8 @@
 
   <!-- Bootstrap CSS -->
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"> -->
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/stylesheets/style.css">
@@ -32,9 +34,19 @@
           <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Password">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
         </form>
+          <a class="navbar-brand" href="#">USA Climbing Portal</a>
+        </div>
+        <div id="login-form" class="collapse navbar-collapse">
+          <form class="form-inline mt-2 mt-md-0">
+            <input id="login-email" class="form-control mr-sm-2" type="text" placeholder="Email" aria-label="Email">
+            <input id="login-pass" class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Password">
+            <button id="login-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+          </form>
+        </div>
       </div>
     </div>
   </nav>
+
 
   <!-- <div id="subnav-container" class="container-fluid">
       <nav id="subnav" class="navbar-inverse">
@@ -55,17 +67,21 @@
 
     <h1><%= title %></h1>
 
+    <div class="container-fluid">
+
+
     <%- body -%>
 
   </div>
   <!-- /.container -->
 
 
-  <footer class="footer">
-    <div class="container">
-      <span class="text-muted">Place sticky footer content here.</span>
-    </div>
-  </footer>
+    <footer class="footer-overwrite">
+      <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+      </div>
+    </footer>
+
 
 
   <!-- Optional JavaScript -->
@@ -75,6 +91,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
   <script src="/javascripts/admin.js" charset="utf-8"></script>
   <script src="/javascripts/coaches.js" charset="utf-8"></script>
+  <script src="/javascripts/main.js" charset="utf-8"></script>
 </body>
 
 </html>
