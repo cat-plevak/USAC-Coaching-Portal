@@ -26,13 +26,53 @@ router.get('/', (_req, res, next) => {
     })
 })
 
-router.get('/:id', (req, res, next) => {
-  const id = Number(req.params.id)
-  // code goes here
+router.get('/certified', (req, res, next) => {
+  knex('coaches')
+    .orderBy('last_name', 'ASC')
+    .where('is_certified', true)
+    .then((coaches) => {
+      res.send(camelizeKeys(coaches))
+    })
+    .catch((err) => {
+      next(err)
+    })
+})
+router.get('/pending', (req, res, next) => {
+  knex('coaches')
+    .orderBy('last_name', 'ASC')
+    .where('is_certified', false)
+    .then((coaches) => {
+      res.send(camelizeKeys(coaches))
+    })
+    .catch((err) => {
+      next(err)
+    })
 })
 router.get('/:id', (req, res, next) => {
   const id = Number(req.params.id)
-  // code goes here
+
+  if (Number.isNaN(id)) {
+    return next(boom.create(400, 'id must be a number'))
+  }
+
+  knex('coahces')
+    .where('id', id)
+    .first()
+    .then((row) => {
+      if (!row) {
+        return next(boom.create(404, 'Fruit not found'))
+      }
+
+      return knex('coaches')
+        .where('id', id)
+        .first()
+        .then((coach) => {
+          res.send(camelizeKeys(coach))
+        })
+    })
+    .catch((err) => {
+      next(err)
+    })
 })
 
 // SIGN UP AS A NEW USER HERE? BCRYPT,COOKIES? //
