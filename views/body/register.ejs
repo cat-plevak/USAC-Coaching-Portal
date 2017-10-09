@@ -13,24 +13,64 @@
     </nav>
 </div>
 
+
+
 <form class="container" id="needs-validation" novalidate>
+  <h3>General Information</h3>
   <div class="row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-5 mb-3">
       <label for="validationCustom01">First name</label>
-      <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required>
+      <input type="text" class="form-control" id="validationCustom01" placeholder="First name" required>
     </div>
-    <div class="col-md-6 mb-3">
+    <div class="col-md-5 mb-3">
       <label for="validationCustom02">Last name</label>
-      <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto" required>
+      <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" required>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-5 mb-3">
       <label for="validationCustom03">Team name</label>
       <input type="text" class="form-control" id="validationCustom03" placeholder="" required>
-      <div class="invalid-feedback">
-        Please provide a valid city.
-      </div>
+    </div>
+    <div class="col-md-5 mb-3">
+      <label for="validationCustom03">USAC Membership Number</label>
+      <input type="text" class="form-control" id="validationCustom03" placeholder="" required>
     </div>
   </div>
+  <h3>Login Information</h3>
+  <div class="row">
+    <div class="col-md-5 mb-3">
+      <label for="validationCustom02">Email</label>
+      <input type="text" class="form-control" id="validationCustom02" placeholder="email" required>
+    </div>
+    <div class="col-md-5 mb-3">
+      <label for="validationCustom02">Password</label>
+      <input type="password" class="form-control" id="validationCustom02" placeholder="password" required>
+    </div>
+  </div>
+  <h3>Required Document Uploads</h3>
+  <div class="row">
+    <div class="col-md-5 mb-3">
+      <label for="validationCustom02">CPR Certification</label>
+      <button class="btn btn-default" type="button">Upload</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 mb-3">
+      <label for="validationCustom02">First Aid Certification</label>
+      <button class="btn btn-default" type="button">Upload</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 mb-3">
+      <label for="validationCustom02">Safe Sport Certification</label>
+      <button class="btn btn-default" type="button">Upload</button>
+    </div>
+  </div>
+
+
+
+
+
+  <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
