@@ -1,14 +1,22 @@
+/*MAIN STYLING*/
 body {
   /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
 a {
   color: #00B7FF;
 }
 
 
-/*styling for footer*/
+/*change navbar height*/
+.navbar-brand {
+    line-height: 150px;
+    height: 150px;
+    padding-top: 0;
+}
+
+
+/*STYLING FOR STICKY FOOTER:*/
 html {
   position: relative;
   min-height: 100%;
@@ -26,11 +34,9 @@ body {
   line-height: 60px; /* Vertically center the text there */
   background-color: #f5f5f5;
 }
-
 body > .container {
   padding: 60px 15px 0;
 }
-
 .footer > .container {
   padding-right: 15px;
   padding-left: 15px;
