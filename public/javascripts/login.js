@@ -42,19 +42,16 @@ $(document).ready(function(){
           // check to see if user is admin
           if (res.isAdmin == false) {
             console.log('good info, login as coach');
-            // window.location.href = '/coach/home'
+            window.location.href = '/coach/home'
           }
           else if (res.isAdmin == true) {
             console.log('good info, login as admin');
-            // window.location.href = '/admin/home'
+            window.location.href = '/admin/home'
           }
         }
       })
       .fail((err, res) => {
-        // window.location.href = 'badinfo'
-        console.log('response: ', res);
-        console.log('options: ', options);
-        console.log('error', err);
+        window.location.href = '/error'
       })
   })
 
