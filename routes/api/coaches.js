@@ -59,7 +59,7 @@ router.get('/:id', (req, res, next) => {
     .first()
     .then((row) => {
       if (!row) {
-        return next(boom.create(404, 'Fruit not found'))
+        return next(boom.create(404, 'Coach not found'))
       }
 
       return knex('coaches')
@@ -75,6 +75,7 @@ router.get('/:id', (req, res, next) => {
 })
 
 // SIGN UP AS A NEW USER HERE? BCRYPT,COOKIES? //
+
 router.post('/', (req, res, next) => {
 
   const {
@@ -82,26 +83,72 @@ router.post('/', (req, res, next) => {
     password
   } = req.body
 
-  bcrypt.hash(password, 10).then((hash) => {
+  if (!username || !username.trim()) {
+    return next(boom.create(400, 'Email must not be blank'))
+  }
 
-    return knex('users')
-      .insert({
-        username,
-        hashed_password: hash
-      }, '*')
-      .then((user) => {
-        user.id
-        // console.log('user is:', user);
+  if (!password || password.length < 8) {
+    return next(boom.create(400, 'Password must be at least 8 characters long'))
+  }
 
-        // console.log('newUser with camel is:', humps.camelizeKeys(newUser));
-        // res.setHeader('Content-Type', 'application/json')
-        res.send(humps.camelizeKeys(user))
-      })
-      .catch((err) => next(err))
+  knex('users')
+    .where('username', username)
+    .first()
+    .then((row) => {
+      if (!row) {
+        return next(boom.create(404, 'Coach not found'))
+      }
+      return bcrypt.hash(password, 10)
+    }).then((hash) => {
+      return knex('users')
+        .insert({
+          username,
+          hashed_password: hash
+        }, '*')
+    }).then((newUser) => {
+      const userId = newUser.id
 
-  })
+      const {
+        lastName,
+        firstName,
+        teamName,
+        cprExpDate,
+        faExpDate,
+        ssExpDate,
+        usacMembership,
+        isCertified,
+      } = req.body
 
+      if (!lastName || !lastName.trim()) {
+        return next(boom.create(404, 'Please provide last name'))
+      }
+      if (!firstName || !firstName.trim()) {
+        return next(boom.create(404, 'Please provide first name'))
+      }
+      if (!teamName || !teamName.trim()) {
+        return next(boom.create(404, 'Please provide a team name'))
+      }
+
+      let insertCaoch = {
+        lastName,
+        firstName,
+        teamName,
+        cprExpDate,
+        faExpDate,
+        ssExpDate,
+        usacMembership,
+        isCertified,
+        userId
+      }
+
+      return knex('coaches')
+        .insert(decamelizeKeys(insertCaoch))
+
+    }).catch((err) => {
+      next(err)
+    })
 })
+
 
 router.patch('/:id', (req, res, next) => {
   const id = Number.parseInt(req.params.id)
