@@ -45,6 +45,7 @@ router.get('/pending', (req, res, next) => {
       next(err)
     })
 })
+
 router.get('/:id', (req, res, next) => {
   const id = Number(req.params.id)
 
@@ -71,8 +72,6 @@ router.get('/:id', (req, res, next) => {
       next(err)
     })
 })
-
-// SIGN UP AS A NEW USER HERE? BCRYPT,COOKIES? //
 
 router.post('/', (req, res, next) => {
 
@@ -151,14 +150,17 @@ router.post('/', (req, res, next) => {
 
       console.log('\n INSERT COACH IS : ', decamelizeKeys(insertCoach))
 
-      return knex('coaches').insert(decamelizeKeys(insertCoach))
+      return knex('coaches')
+        .insert(decamelizeKeys(insertCoach), '*')
 
-    }).then(() => {
-      res.send(camelizeKeys(insertCoach))
+    }).then((row) => {
+      console.log('THIS IS THE ROW AFTER insertCoach: ', row)
+      res.send(camelizeKeys(row[0]))
     })
     .catch((err) => {
       next(err)
     })
+
 })
 
 
@@ -265,51 +267,5 @@ router.delete('/:id', (req, res, next) => {
     })
 })
 
-// original post script
-
-// const {
-//   lastName,
-//   firstName,
-//   teamName,
-//   cprExpDate,
-//   faExpDate,
-//   ssExpDate,
-//   usacMembership,
-//   isCertified,
-//   userId
-// } = camelizeKeys(req.body)
-//
-// if (!lastName || !lastName.trim()) {
-//   return next(boom.create(404, 'Please provide last name'))
-// }
-// if (!firstName || !firstName.trim()) {
-//   return next(boom.create(404, 'Please provide first name'))
-// }
-// if (!teamName || !teamName.trim()) {
-//   return next(boom.create(404, 'Please provide a team name'))
-// }
-//
-// let insertCaoch = {
-//   lastName,
-//   firstName,
-//   teamName,
-//   cprExpDate,
-//   faExpDate,
-//   ssExpDate,
-//   usacMembership,
-//   isCertified,
-//   userId
-// }
-//
-// console.log('insertCaoch is:', decamelizeKeys(insertCaoch))
-//
-// knex('coaches')
-//   .insert(decamelizeKeys(insertCaoch))
-//   .then(() => {
-//     res.send(insertCaoch)
-//   })
-//   .catch((err) => {
-//     next(err)
-//   })
 
 module.exports = router
