@@ -29,7 +29,9 @@ router.get('/:id', (req, res, next) => {
 })
 
 // add new admin route
-
+router.get('/add_admin', (req, res, next) => {
+  res.render('body/admin/add_admin', { title: 'Add Admin', _layoutFile: 'layout.ejs' })
+})
 
 // error handling
 router.use(function (err, req, res, next) {

@@ -15,6 +15,7 @@ $(document).ready(() => {
           <td>${coach.cprExpDate}</td>
           <td>${coach.faExpDate}</td>
           <td>${coach.ssExpDate}</td>
+          <td>${coach.bgExpDate}</td>
           <td>${coach.usacMembership}</td>
           <td>${coach.isCertified}</td>
         </tr>`))
@@ -36,6 +37,7 @@ $(document).ready(() => {
           <td>${coach.cprExpDate}</td>
           <td>${coach.faExpDate}</td>
           <td>${coach.ssExpDate}</td>
+          <td>${coach.bgExpDate}</td>
           <td>${coach.usacMembership}</td>
           <td>${coach.isCertified}</td>
         </tr>`))
@@ -43,7 +45,10 @@ $(document).ready(() => {
     })
   }
 
+  if (document.location.href.match(/pending$/)) {
 
+    $.getJSON("/")
+  }
 
 
 })

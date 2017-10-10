@@ -73,6 +73,7 @@ router.get('/:id', (req, res, next) => {
     })
 })
 
+// post a new user
 router.post('/', (req, res, next) => {
 
   const {
