@@ -26,6 +26,6 @@ router.get('/admins', (_req, res, next) => {
 
 // post a new admin to users table
 router.post('/admins', (_req, res, next) => {
-
-
 })
+
+module.exports = router
