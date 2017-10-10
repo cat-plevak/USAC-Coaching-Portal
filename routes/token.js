@@ -7,11 +7,12 @@ const jwt = require('jsonwebtoken');
 const knex = require('../knex');
 const { camelizeKeys } = require('humps');
 const router = express.Router();
+const SECRET = process.env.SECRET
 
 router.get('/', function(req, res, next) {
   let token = req.cookies.token
   // is there a token?
-  jwt.verify(token, 'cookiez?', function(err, decoded) {
+  jwt.verify(token, SECRET, function(err, decoded) {
     if (decoded) {
     res.send(true)
     }
@@ -24,12 +25,13 @@ router.get('/', function(req, res, next) {
 
 
 
-
-router.post('/token', (req, res, next) => {
+router.post('/', (req, res, next) => {
   let user;
+  console.log('req body from token', req.body);
+  console.log('username', req.body.username);
 
   knex('users')
-    .where('email', req.body.email)
+    .where('username', req.body.username)
     .first()
     .then((row) => {
       if (!row) {
@@ -43,7 +45,7 @@ router.post('/token', (req, res, next) => {
     .then(() => {
       const claim = { userId: user.id };
 
-      const token = jwt.sign(claim, process.env.JWT_KEY, {
+      const token = jwt.sign(claim, SECRET, {
         expiresIn: '7 days'
       });
 

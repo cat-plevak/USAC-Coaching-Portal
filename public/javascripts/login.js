@@ -7,7 +7,7 @@ $(document).ready(function(){
     let email = $('#login-email').val().trim()
     let password = $('#login-pass').val()
 
-    console.log(email, password);
+    console.log(`email: ${email}, password: ${password}`);
 
     if (!email) {
       console.log('Email must not be blank');
@@ -29,7 +29,8 @@ $(document).ready(function(){
 
     $.ajax(options)
       .done(() => {
-        window.location.href = '/favorites.html';
+        // window.location.href = '/favorites.html';
+        console.log('good');
       })
       .fail((err) => {
         console.log('error');
