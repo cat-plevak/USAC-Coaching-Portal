@@ -27,5 +27,11 @@ router.get('/admins', (_req, res, next) => {
 // post a new admin to users table
 router.post('/admins', (_req, res, next) => {
 
+  const {
+    username,
+    password
+  } = req.body
+
+  console.log("\n the USERS request body is : ", req.body)
 
 })
