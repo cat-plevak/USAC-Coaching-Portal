@@ -42,7 +42,6 @@ router.get('/certified', (req, res, next) => {
 
 // add new admin route
 router.get('/admins', (req, res, next) => {
-  console.log('head to admin page')
   res.render('body/admin/admins', { title: 'Add Admin', _layoutFile: 'layout-logout.ejs' })
 })
 
