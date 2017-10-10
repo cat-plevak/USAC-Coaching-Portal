@@ -70,5 +70,19 @@ $(document).ready(() => {
     })
   }
 
+  // populate current admin table in admin view
+  if (document.location.href.match(/admins$/)) {
+
+    $.getJSON("/api/admin/admins").then(data => {
+      console.log("List of admins", data)
+      let tbody = $('#currentAdmin tbody')
+
+      data.forEach((admin) => {
+        tbody.append(`<tr>
+          <td>${admin.username}</td>
+        </tr>`)
+      })
+    })
+  }
 
 })
