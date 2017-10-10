@@ -1,33 +1,34 @@
 'use strict';
 
-const boom = require('boom');
-const bcrypt = require('bcrypt');
-const express = require('express');
-const jwt = require('jsonwebtoken');
-const knex = require('../knex');
+const boom = require('boom')
+const bcrypt = require('bcrypt')
+const express = require('express')
+const jwt = require('jsonwebtoken')
+const knex = require('../knex')
 const {
   camelizeKeys
-} = require('humps');
+} = require('humps')
+
 const router = express.Router();
 const SECRET = process.env.SECRET
 const cookieParser = require('cookie-parser')
 
 router.use(cookieParser())
 
+// logout function, check for cookie and clear
+router.get('/', function(req, res, next) {
+  let token = req.cookies.token
 
-// router.get('/', function(req, res, next) {
-//   let token = req.cookies.token
-//   // is there a token?
-//   jwt.verify(token, SECRET, function(err, decoded) {
-//     if (decoded) {
-//       console.log('decoded: ', decoded);
-//     res.send(true)
-//     }
-//     else {
-//     res.send(false)
-//     }
-//   })
-// })
+  jwt.verify(token, SECRET, function(err, decoded) {
+    if (decoded) {
+    res.clearCookie('token')
+    res.send(true)
+    }
+    else {
+    res.send({})
+    }
+  })
+})
 
 
 router.post('/', (req, res, next) => {
@@ -39,7 +40,6 @@ router.post('/', (req, res, next) => {
     .first()
     .then((row) => {
       // if email doesn't exist, reroute to error page
-      console.log('row:', row);
       if (!row) {
         res.send({})
       }

@@ -31,8 +31,6 @@ $(document).ready(function(){
 
     $.ajax(options)
       .done((res) => {
-        console.log('Ajax response: ', res);
-        console.log('is admin?: ', res.isAdmin);
         // if email and password are bad, send to bad info page
         if (!res.username) {
           window.location.href = '/error'
@@ -41,11 +39,9 @@ $(document).ready(function(){
         if (res.username != undefined) {
           // check to see if user is admin
           if (res.isAdmin == false) {
-            console.log('good info, login as coach');
             window.location.href = '/coach/home'
           }
           else if (res.isAdmin == true) {
-            console.log('good info, login as admin');
             window.location.href = '/admin/home'
           }
         }

@@ -195,32 +195,32 @@ router.patch('/:id', (req, res, next) => {
       const updateCaoch = {}
 
       if (lastName) {
-        updateBook.lastName = lastName
+        updateCaoch.lastName = lastName
       }
 
       if (firstName) {
-        updateBook.firstName = firstName
+        updateCaoch.firstName = firstName
       }
 
       if (teamName) {
-        updateBook.teamName = teamName
+        updateCaoch.teamName = teamName
       }
 
       if (cprExpDate) {
-        updateBook.cprExpDate = cprExpDate
+        updateCaoch.cprExpDate = cprExpDate
       }
 
       if (faExpDate) {
-        updateBook.faExpDate = faExpDate
+        updateCaoch.faExpDate = faExpDate
       }
       if (ssExpDate) {
-        updateBook.ssExpDate = ssExpDate
+        updateCaoch.ssExpDate = ssExpDate
       }
       if (usacMembership) {
-        updateBook.usacMembership = usacMembership
+        updateCaoch.usacMembership = usacMembership
       }
       if (isCertified) {
-        updateBook.isCertified = isCertified
+        updateCaoch.isCertified = isCertified
       }
 
       return knex('coaches')

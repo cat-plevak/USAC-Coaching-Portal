@@ -7,7 +7,7 @@ var router = express.Router();
 
 // get coach by id, add edit buttons
 router.get('/:id', (req, res, next) => {
-  res.render('body/coach/home', { title: 'Coach Dashboard', _layoutFile: 'layout.ejs' })
+  res.render('body/coach/home', { title: 'Coach Dashboard', _layoutFile: 'layout-logout.ejs' })
 })
 
 
