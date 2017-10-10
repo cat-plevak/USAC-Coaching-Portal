@@ -1,22 +1,6 @@
-$(document).ready(() => {
-  console.log('document ready!')
+$(document).ready(function(){
 
-  // $('#newUserForm').submit((e) => {
-  //   e.preventDefault()
-  //
-  //   let data = $('#newUserForm').serialize()
-  //
-  //   // console.log("this is the newUser data: ", data)
-  //   // $.post("/api/coaches", data, null, 'json').then((data) => {
-  //   //   console.log("POSTED data", data);
-  //   //   document.location = '/coach';
-  //   // }).fail((err) => {
-  //   //   console.error("THERE WAS AN ERROR WITH THE AJAX POST")
-  //   // })
-  // })
-
-
-  $('#reg-new-coach').click((e) => {
+  $('#newUserForm').click((e) => {
     e.preventDefault()
 
     let email = $('#reg-email').val().trim()
@@ -30,13 +14,13 @@ $(document).ready(() => {
 
     if (!email) {
       console.log('Email must not be blank');
-        // window.location.href = '/badinfo'
+        window.location.href = '/badinfo'
         return res.status(404).send('Email must not be blank')
       }
 
     if (!password) {
       console.log('Password must not be blank');
-      // window.location.href = '/badinfo'
+      window.location.href = '/badinfo'
       return res.status(404).send('Password must be at least 8 characters')
     }
 
@@ -54,22 +38,22 @@ $(document).ready(() => {
       .done((res) => {
         // if email and password are bad, send to bad info page
         if (!res.username) {
-          // window.location.href = '/error'
+          window.location.href = '/error'
         }
         // if email and password are good, login
         if (res.username != undefined) {
           // check to see if user is admin
           if (res.isAdmin == false) {
-            // window.location.href = '/coach/home'
+            window.location.href = '/coach/home'
           }
           else if (res.isAdmin == true) {
-            // window.location.href = '/admin/home'
+            window.location.href = '/admin/home'
           }
         }
       })
       .fail((err, res) => {
-        // window.location.href = '/error'
+        window.location.href = '/error'
       })
   })
 
-})
+});
