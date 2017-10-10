@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-
+// listener on login button
   $('#login-button').click((e) => {
     e.preventDefault()
 
@@ -11,12 +11,14 @@ $(document).ready(function(){
 
     if (!email) {
       console.log('Email must not be blank');
-        // return res.status(404).send('Email must not be blank')
+        window.location.href = '/badinfo'
+        return res.status(404).send('Email must not be blank')
       }
 
     if (!password) {
       console.log('Password must not be blank');
-      // return res.status(404).send('Password must be at least 8 characters')
+      window.location.href = '/badinfo'
+      return res.status(404).send('Password must be at least 8 characters')
     }
 
     const options = {
@@ -29,17 +31,27 @@ $(document).ready(function(){
 
     $.ajax(options)
       .done((res) => {
-        console.log(res);
+        console.log('Ajax response: ', res);
+        console.log('is admin?: ', res.isAdmin);
+        // if email and password are bad, send to bad info page
         if (!res.username) {
-          window.location.href = '../error'
+          window.location.href = 'badinfo'
         }
+        // if email and password are good, login
         if (res.username != undefined) {
-          window.location.href = '/coach/home'
-          console.log('good');
+          // check to see if user is admin
+          if (res.isAdmin == false) {
+            console.log('good info, login as coach');
+            window.location.href = '/coach/home'
+          }
+          else if (res.isAdmin == true) {
+            console.log('good info, login as admin');
+            window.location.href = '/admin/home'
+          }
         }
       })
       .fail((err) => {
-        window.location.href = '../error'
+        window.location.href = '/badinfo'
         console.log('error');
       })
   })

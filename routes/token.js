@@ -33,45 +33,86 @@ router.use(cookieParser())
 router.post('/', (req, res, next) => {
   let user;
 
-  console.log('req body from token', req.body);
-  console.log('email', req.body.email);
-
+  // check to see if email/user exists in database
   knex('users')
     .where('username', req.body.email)
     .first()
     .then((row) => {
+      // if email doesn't exist, reroute to error page
       if (!row) {
-        res.render('body/home', {
-          title: '',
-          _layoutFile: 'error.ejs'
+        console.log('bad info should send to bad info page');
+        // ERROR, CANT FIND BAD INFO PAGE.. BAD ROUTE...
+        return res.send('email does not exist, please sign up')
+        return res.render('body/badinfo', {
+          title: '', _layoutFile: 'body/badinfo.ejs'
+        })
+      }
+      // if email is good, check password
+      else if (row != undefined) {
+        user = camelizeKeys(row);
+
+
+
+
+        console.log('good email, check password');
+        bcrypt.compare(req.body.password, user.hashedPassword, function(err, rep) {
+          // if password doesn't match, send to bad info page
+          // ERROR CANT FIND BADINFO PAGE, ROUTE INCORRECT
+          if (!rep) {
+            console.log('bad passord: ', rep);
+            res.render('badinfo', {
+              title: '',
+              _layoutFile: 'badinfo.ejs'
+            })
+          // if password matches email, create cookie token
+          } else {
+            console.log('password good: ', rep);
+
+            const token = jwt.sign({
+              userId: user.id,
+              isAdmin: user.is_admin
+            }, SECRET)
+
+            res.cookie('token', token, {
+              httpOnly: true,
+              expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
+              secure: router.get('env') === 'production'
+            })
+
+            // remove password from response
+            delete user.hashedPassword;
+            res.send(user);
+          }
         })
       }
 
-      user = camelizeKeys(row);
+      // user = camelizeKeys(row);
+      //
+      // bcrypt.compare(req.body.password, user.hashedPassword, function(err, rep) {
+      //   if (!rep) {
+      //     res.render('/error', {
+      //       title: '',
+      //       _layoutFile: 'error.ejs'
+      //     })
+      //   } else {
+      //     const token = jwt.sign({
+      //       userId: user.id,
+      //       isAdmin: user.is_admin
+      //     }, SECRET)
+      //
+      //     res.cookie('token', token, {
+      //       httpOnly: true,
+      //       expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
+      //       secure: router.get('env') === 'production'
+      //     })
+      //
+      //     delete user.hashedPassword;
+      //
+      //     res.send(user);
+      //   }
+      // })
 
-      bcrypt.compare(req.body.password, user.hashedPassword, function(err, rep) {
-        if (!rep) {
-          res.render('/error', {
-            title: '',
-            _layoutFile: 'error.ejs'
-          })
-        } else {
-          const token = jwt.sign({
-            userId: user.id,
-            isAdmin: user.is_admin
-          }, SECRET)
 
-          res.cookie('token', token, {
-            httpOnly: true,
-            expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
-            secure: router.get('env') === 'production'
-          })
-
-          delete user.hashedPassword;
-
-          res.send(user);
-        }
-      })
     })
 })
 
