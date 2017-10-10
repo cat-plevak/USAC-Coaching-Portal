@@ -12,7 +12,7 @@ exports.seed = function(knex, Promise) {
           fa_exp_date: '10/09/2018',
           bg_exp_date: '10/09/2018',
           ss_exp_date: '10/09/2018',
-          usac_membership: true,
+          usac_membership: 28337485,
           is_certified: true,
           user_id: 1
         },
@@ -25,7 +25,7 @@ exports.seed = function(knex, Promise) {
           fa_exp_date: '10/09/2018',
           bg_exp_date: '10/05/2018',
           ss_exp_date: '10/09/2018',
-          usac_membership: false,
+          usac_membership: 29243695,
           is_certified: false,
           user_id: 2
         },
@@ -38,7 +38,7 @@ exports.seed = function(knex, Promise) {
           fa_exp_date: '10/09/2018',
           bg_exp_date: '10/05/2018',
           ss_exp_date: '10/09/2018',
-          usac_membership: true,
+          usac_membership: 29638107,
           is_certified: false,
           user_id: 3
         },
@@ -51,7 +51,7 @@ exports.seed = function(knex, Promise) {
           fa_exp_date: '10/09/2018',
           bg_exp_date: '10/05/2018',
           ss_exp_date: '10/09/2018',
-          usac_membership: true,
+          usac_membership: 29638108,
           is_certified: true,
           user_id: 4
         }
