@@ -45,9 +45,11 @@ $(document).ready(() => {
     })
   }
 
-  if (document.location.href.match(/pending$/)) {
+  if (document.location.href.match(/add_admin$/)) {
 
-    $.getJSON("/")
+    $.getJSON("/api/admin/").then(data => {
+      console.log("List of admin", data)
+    })
   }
 
 
