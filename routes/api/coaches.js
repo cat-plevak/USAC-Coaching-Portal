@@ -73,8 +73,6 @@ router.get('/:id', (req, res, next) => {
     })
 })
 
-// SIGN UP AS A NEW USER HERE? BCRYPT,COOKIES? //
-
 router.post('/', (req, res, next) => {
 
   const {
@@ -82,9 +80,9 @@ router.post('/', (req, res, next) => {
     password
   } = req.body
 
-  console.log("\n the USERS request body is : ", req.body)
+  // console.log("\n the USERS request body is : ", req.body)
 
-  console.log("\nusername and password for users table: ", username, password)
+  // console.log("\nusername and password for users table: ", username, password)
 
   if (!username || !username.trim()) {
     return next(boom.create(400, 'Email must not be blank'))
@@ -105,7 +103,7 @@ router.post('/', (req, res, next) => {
       return bcrypt.hash(password, 10)
     }).then((hash) => {
 
-      console.log('\nTHE HASHED PASSWORD IS: ', hash)
+      // console.log('\nTHE HASHED PASSWORD IS: ', hash)
 
       return knex('users')
         .insert({
@@ -113,10 +111,10 @@ router.post('/', (req, res, next) => {
           hashed_password: hash
         }, '*')
     }).then((newUser) => {
-      console.log("\nTHE NEW USER IS: ", newUser)
+      // console.log("\nTHE NEW USER IS: ", newUser)
       const userId = newUser[0].id
-      console.log("\nThe user ID is: ", userId)
-      console.log("\n the COACHES request body is : ", req.body)
+      // console.log("\nThe user ID is: ", userId)
+      // console.log("\n the COACHES request body is : ", req.body)
       const {
         lastName,
         firstName,
@@ -150,14 +148,14 @@ router.post('/', (req, res, next) => {
         userId
       }
 
-      console.log('\n INSERT COACH IS : ', decamelizeKeys(insertCoach))
+      // console.log('\n INSERT COACH IS : ', decamelizeKeys(insertCoach))
 
       return knex('coaches')
         .insert(decamelizeKeys(insertCoach), '*')
 
     }).then((row) => {
-      console.log('THIS IS THE ROW AFTER insertCoach: ', row)
-      res.send(camelizeKeys(rows[0]))
+      // console.log('THIS IS THE ROW AFTER insertCoach: ', row)
+      res.send(camelizeKeys(row[0]))
     })
     .catch((err) => {
       next(err)
@@ -269,51 +267,5 @@ router.delete('/:id', (req, res, next) => {
     })
 })
 
-// original post script
-
-// const {
-//   lastName,
-//   firstName,
-//   teamName,
-//   cprExpDate,
-//   faExpDate,
-//   ssExpDate,
-//   usacMembership,
-//   isCertified,
-//   userId
-// } = camelizeKeys(req.body)
-//
-// if (!lastName || !lastName.trim()) {
-//   return next(boom.create(404, 'Please provide last name'))
-// }
-// if (!firstName || !firstName.trim()) {
-//   return next(boom.create(404, 'Please provide first name'))
-// }
-// if (!teamName || !teamName.trim()) {
-//   return next(boom.create(404, 'Please provide a team name'))
-// }
-//
-// let insertCaoch = {
-//   lastName,
-//   firstName,
-//   teamName,
-//   cprExpDate,
-//   faExpDate,
-//   ssExpDate,
-//   usacMembership,
-//   isCertified,
-//   userId
-// }
-//
-// console.log('insertCaoch is:', decamelizeKeys(insertCaoch))
-//
-// knex('coaches')
-//   .insert(decamelizeKeys(insertCaoch))
-//   .then(() => {
-//     res.send(insertCaoch)
-//   })
-//   .catch((err) => {
-//     next(err)
-//   })
 
 module.exports = router
