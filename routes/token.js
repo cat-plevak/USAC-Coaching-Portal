@@ -40,12 +40,22 @@ router.post('/', (req, res, next) => {
     .first()
     .then((row) => {
       if (!row) {
-        throw boom.create(400, 'Bad email or password');
+        res.render('body/home', { title: '',  _layoutFile: 'error.ejs' })
+        throw boom.create(400, 'Bad email or password')
       }
+
       console.log('row', row);
       user = camelizeKeys(row);
 
-      return bcrypt.compare(req.body.password, user.hashedPassword);
+      // return bcrypt.compare(req.body.password, user.hashedPassword);
+
+      bcrypt.compare(req.body.password, user.hashedPassword, function(err, rep) {
+        if (!rep) {
+          console.log('poop')
+          return res.render('body/home', { title: '',  _layoutFile: 'error.ejs' })
+        }
+      })
+
     })
     .then(() => {
       // const claim = { userId: user.id };
@@ -58,20 +68,18 @@ router.post('/', (req, res, next) => {
       console.log('token', token);
 
       res.cookie('token', token, {
-        // httpOnly: true,
-        // expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
-        // secure: router.get('env') === 'production'
+        httpOnly: true,
+        expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
+        secure: router.get('env') === 'production'
       })
-
-      console.log('heelloo??!!?');
 
       delete user.hashedPassword;
 
       res.send(user);
     })
-    .catch(bcrypt.MISMATCH_ERROR, () =>{
-      throw boom.create(400, 'Bad email or password');
-    })
+    // .catch(bcrypt.MISMATCH_ERROR, () =>{
+    //   throw boom.create(400, 'Bad email or password');
+    // })
     .catch((err) => {
       next(err);
     });
