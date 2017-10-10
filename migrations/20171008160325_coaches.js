@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
     table.string('last_name').notNullable().defaultTo('')
     table.string('first_name').notNullable().defaultTo('')
     table.string('team_name').notNullable().defaultTo('')
-    table.srting('cpr_exp_date')
+    table.string('cpr_exp_date')
     table.string('fa_exp_date')
     table.string('bg_exp_date')
     table.string('ss_exp_date')
