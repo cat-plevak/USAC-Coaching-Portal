@@ -10,8 +10,8 @@ const {
 
 const router = express.Router()
 
-// STANDARD CURL ROUTES
 
+// get current admins
 router.get('/admins', (_req, res, next) => {
   knex('users')
     .orderBy('id', 'ASC')
@@ -22,4 +22,10 @@ router.get('/admins', (_req, res, next) => {
     .catch((err) => {
       next(err)
     })
+})
+
+// post a new admin to users table
+router.post('/admins', (_req, res, next) => {
+
+
 })
