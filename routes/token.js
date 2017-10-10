@@ -12,6 +12,8 @@ const SECRET = process.env.SECRET
 router.get('/', function(req, res, next) {
   let token = req.cookies.token
   // is there a token?
+  console.log('token from get: ', token);
+  
   jwt.verify(token, SECRET, function(err, decoded) {
     if (decoded) {
     res.send(true)
@@ -19,15 +21,12 @@ router.get('/', function(req, res, next) {
     else {
     res.send(false)
     }
-    return res.status(200)
   })
 })
 
-
-
 router.post('/', (req, res, next) => {
   let user;
-  console.log('secret: ', SECRET);
+
   console.log('req body from token', req.body);
   console.log('email', req.body.email);
 
@@ -51,8 +50,10 @@ router.post('/', (req, res, next) => {
         isAdmin: user.is_admin
       }, SECRET)
 
+      console.log('token', token);
+
       res.cookie('token', token, {
-        httpOnly: true,
+        // httpOnly: true,
         // expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
         // secure: router.get('env') === 'production'
       })

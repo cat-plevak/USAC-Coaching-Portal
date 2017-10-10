@@ -5,6 +5,7 @@ const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 
+require('dotenv').config()
 const index = require('./routes/index')
 const admin = require('./routes/admin')
 const coach = require('./routes/coach')
