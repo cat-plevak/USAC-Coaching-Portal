@@ -12,18 +12,19 @@ const cookieParser = require('cookie-parser')
 
 router.use(cookieParser())
 
-router.get('/', function(req, res, next) {
-  let token = req.cookies.token
-  // is there a token?
-  jwt.verify(token, SECRET, function(err, decoded) {
-    if (decoded) {
-    res.send(true)
-    }
-    else {
-    res.send(false)
-    }
-  })
-})
+// router.get('/', function(req, res, next) {
+//   let token = req.cookies.token
+//   // is there a token?
+//   jwt.verify(token, SECRET, function(err, decoded) {
+//     if (decoded) {
+//       console.log('decoded: ', decoded);
+//     res.send(true)
+//     }
+//     else {
+//     res.send(false)
+//     }
+//   })
+// })
 
 router.post('/', (req, res, next) => {
   let user;
