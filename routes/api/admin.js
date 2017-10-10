@@ -12,14 +12,31 @@ const router = express.Router()
 
 // STANDARD CURL ROUTES
 
-router.get('/', (_req, res, next) => {
+// router.get('/', (_req, res, next) => {
+//   knex('users')
+//     .orderBy('id', 'ASC')
+//     .where('is_admin', true)
+//     .then((admins) => {
+//       console.log('admins from api: ', admins)
+//       res.send(camelizeKeys(admins))
+//     })
+//     .catch((err) => {
+//       next(err)
+//     })
+// })
+
+router.get('/add_admin', (_req, res, next) => {
+  console.log('add admin route working from api');
   knex('users')
     .orderBy('id', 'ASC')
     .where('is_admin', true)
     .then((admins) => {
+      console.log('admins from api: ', admins)
       res.send(camelizeKeys(admins))
     })
     .catch((err) => {
       next(err)
     })
 })
+
+module.exports = router

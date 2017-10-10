@@ -48,7 +48,7 @@ router.get('/:id', (req, res, next) => {
 // add new admin route
 router.get('/add_admin', (req, res, next) => {
   console.log('head to admin page')
-  res.render('body/admin/add_admin', { title: 'Add Admin', _layoutFile: 'layout-logout.ejs' })
+  res.render('body/admin/admins', { title: 'Add Admin', _layoutFile: 'layout-logout.ejs' })
 })
 
 // error handling
