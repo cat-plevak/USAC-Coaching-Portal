@@ -51,9 +51,6 @@ router.post('/', (req, res, next) => {
       else if (row != undefined) {
         user = camelizeKeys(row);
 
-
-
-
         console.log('good email, check password');
         bcrypt.compare(req.body.password, user.hashedPassword, function(err, rep) {
           // if password doesn't match, send to bad info page
@@ -78,40 +75,12 @@ router.post('/', (req, res, next) => {
               expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
               secure: router.get('env') === 'production'
             })
-
             // remove password from response
             delete user.hashedPassword;
             res.send(user);
           }
         })
       }
-
-      // user = camelizeKeys(row);
-      //
-      // bcrypt.compare(req.body.password, user.hashedPassword, function(err, rep) {
-      //   if (!rep) {
-      //     res.render('/error', {
-      //       title: '',
-      //       _layoutFile: 'error.ejs'
-      //     })
-      //   } else {
-      //     const token = jwt.sign({
-      //       userId: user.id,
-      //       isAdmin: user.is_admin
-      //     }, SECRET)
-      //
-      //     res.cookie('token', token, {
-      //       httpOnly: true,
-      //       expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
-      //       secure: router.get('env') === 'production'
-      //     })
-      //
-      //     delete user.hashedPassword;
-      //
-      //     res.send(user);
-      //   }
-      // })
-
 
     })
 })
