@@ -75,6 +75,7 @@ router.get('/:id', (req, res, next) => {
 
 // SIGN UP AS A NEW USER HERE? BCRYPT,COOKIES? //
 router.post('/', (req, res, next) => {
+
   const {
     lastName,
     firstName,

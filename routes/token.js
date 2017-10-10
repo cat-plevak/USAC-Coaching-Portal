@@ -5,14 +5,16 @@ const bcrypt = require('bcrypt');
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const knex = require('../knex');
-const { camelizeKeys } = require('humps');
+const {
+  camelizeKeys
+} = require('humps');
 const router = express.Router();
 const SECRET = process.env.SECRET
 const cookieParser = require('cookie-parser')
 
 router.use(cookieParser())
 
-console.log(cookieParser);
+// console.log(cookieParser);
 
 router.get('/', function(req, res, next) {
   let token = req.cookies.token
@@ -21,10 +23,9 @@ router.get('/', function(req, res, next) {
 
   jwt.verify(token, SECRET, function(err, decoded) {
     if (decoded) {
-    res.send(true)
-    }
-    else {
-    res.send(false)
+      res.send(true)
+    } else {
+      res.send(false)
     }
   })
 })
@@ -69,7 +70,7 @@ router.post('/', (req, res, next) => {
 
       res.send(user);
     })
-    .catch(bcrypt.MISMATCH_ERROR, () =>{
+    .catch(bcrypt.MISMATCH_ERROR, () => {
       throw boom.create(400, 'Bad email or password');
     })
     .catch((err) => {
