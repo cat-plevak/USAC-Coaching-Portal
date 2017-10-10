@@ -42,7 +42,7 @@ $(document).ready(() => {
 
     const options = {
           contentType: 'application/json',
-          data: JSON.stringify({ email, password }),
+          data: JSON.stringify({ email, password, firstName, lastName, teamName, usacMemberNum }),
           dataType: 'json',
           type: 'POST',
           url: '/api/coaches'

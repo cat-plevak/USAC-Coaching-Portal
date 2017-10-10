@@ -80,7 +80,6 @@ router.post('/', (req, res, next) => {
   const {
     email,
     password,
-    firstName,
     first_name
   } = req.body
 
