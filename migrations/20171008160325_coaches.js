@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
     table.string('fa_exp_date')
     table.string('bg_exp_date')
     table.string('ss_exp_date')
-    table.boolean('usac_membership').defaultTo(false)
+    table.integer('usac_membership')
     table.boolean('is_certified').defaultTo(false)
     table.timestamps(true, true)
   })

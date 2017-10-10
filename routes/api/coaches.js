@@ -45,6 +45,7 @@ router.get('/pending', (req, res, next) => {
       next(err)
     })
 })
+
 router.get('/:id', (req, res, next) => {
   const id = Number(req.params.id)
 
@@ -153,11 +154,6 @@ router.post('/', (req, res, next) => {
 
       return knex('coaches').insert(decamelizeKeys(insertCoach))
 
-    }).then(() => {
-      res.send(camelizeKeys(insertCoach))
-    })
-    .catch((err) => {
-      next(err)
     })
 })
 
