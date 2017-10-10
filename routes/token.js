@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
   let token = req.cookies.token
   // is there a token?
   console.log('token from get: ', token);
-  
+
   jwt.verify(token, SECRET, function(err, decoded) {
     if (decoded) {
     res.send(true)
@@ -58,6 +58,8 @@ router.post('/', (req, res, next) => {
         // secure: router.get('env') === 'production'
       })
 
+      console.log('heelloo??!!?');
+      
       delete user.hashedPassword;
 
       res.send(user);
