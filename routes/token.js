@@ -39,31 +39,21 @@ router.post('/', (req, res, next) => {
     .first()
     .then((row) => {
       // if email doesn't exist, reroute to error page
+      console.log('row:', row);
       if (!row) {
-        console.log('bad info should send to bad info page');
-        // ERROR, CANT FIND BAD INFO PAGE.. BAD ROUTE...
-        return res.send('email does not exist, please sign up')
-        return res.render('body/badinfo', {
-          title: '', _layoutFile: 'body/badinfo.ejs'
-        })
+        res.send({})
       }
       // if email is good, check password
       else if (row != undefined) {
         user = camelizeKeys(row);
 
-        console.log('good email, check password');
         bcrypt.compare(req.body.password, user.hashedPassword, function(err, rep) {
           // if password doesn't match, send to bad info page
-          // ERROR CANT FIND BADINFO PAGE, ROUTE INCORRECT
           if (!rep) {
-            console.log('bad passord: ', rep);
-            res.render('badinfo', {
-              title: '',
-              _layoutFile: 'badinfo.ejs'
-            })
+            res.send({})
+
           // if password matches email, create cookie token
           } else {
-            console.log('password good: ', rep);
 
             const token = jwt.sign({
               userId: user.id,
@@ -81,7 +71,6 @@ router.post('/', (req, res, next) => {
           }
         })
       }
-
     })
 })
 

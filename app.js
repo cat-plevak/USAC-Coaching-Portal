@@ -13,6 +13,7 @@ const register = require('./routes/register')
 const users = require('./routes/users')
 const api = require('./routes/api/coaches')
 const token = require('./routes/token')
+const error = require('./routes/error')
 
 const app = express()
 
@@ -45,6 +46,7 @@ app.use('/register', register)
 app.use('/users', users)
 app.use('/api/coaches', api)
 app.use('/token', token)
+app.use('/error', error)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

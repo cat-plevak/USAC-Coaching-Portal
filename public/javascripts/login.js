@@ -35,24 +35,26 @@ $(document).ready(function(){
         console.log('is admin?: ', res.isAdmin);
         // if email and password are bad, send to bad info page
         if (!res.username) {
-          window.location.href = 'badinfo'
+          window.location.href = '/error'
         }
         // if email and password are good, login
         if (res.username != undefined) {
           // check to see if user is admin
           if (res.isAdmin == false) {
             console.log('good info, login as coach');
-            window.location.href = '/coach/home'
+            // window.location.href = '/coach/home'
           }
           else if (res.isAdmin == true) {
             console.log('good info, login as admin');
-            window.location.href = '/admin/home'
+            // window.location.href = '/admin/home'
           }
         }
       })
-      .fail((err) => {
-        window.location.href = '/badinfo'
-        console.log('error');
+      .fail((err, res) => {
+        // window.location.href = 'badinfo'
+        console.log('response: ', res);
+        console.log('options: ', options);
+        console.log('error', err);
       })
   })
 
