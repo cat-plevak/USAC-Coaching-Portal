@@ -12,9 +12,11 @@ const router = express.Router()
 
 // STANDARD CURL ROUTES
 
-router.get('/', (_req, res, next) => {
+// admin homepage view pending coaches
+router.get('/home', (_req, res, next) => {
   knex('coaches')
     .orderBy('last_name', 'ASC')
+    .where('is_certified', false)
     .then((coaches) => {
       res.send(camelizeKeys(coaches))
     })
@@ -23,6 +25,7 @@ router.get('/', (_req, res, next) => {
     })
 })
 
+// admin view of certified coaches
 router.get('/certified', (req, res, next) => {
   knex('coaches')
     .orderBy('last_name', 'ASC')
@@ -34,6 +37,8 @@ router.get('/certified', (req, res, next) => {
       next(err)
     })
 })
+
+// admin view of pending coaches
 router.get('/pending', (req, res, next) => {
   knex('coaches')
     .orderBy('last_name', 'ASC')
