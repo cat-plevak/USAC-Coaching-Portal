@@ -40,16 +40,18 @@ router.get('/certified', (req, res, next) => {
   res.render('body/admin/certified', { title: 'Certified Coaches', _layoutFile: 'layout-logout.ejs' })
 })
 
+// add new admin route
+router.get('/admins', (req, res, next) => {
+  console.log('head to admin page')
+  res.render('body/admin/admins', { title: 'Add Admin', _layoutFile: 'layout-logout.ejs' })
+})
+
 // send admin to home dashboard
 router.get('/:id', (req, res, next) => {
   res.render('body/admin/home', { title: 'Admin Dash', _layoutFile: 'layout-logout.ejs' })
 })
 
-// add new admin route
-router.get('/add_admin', (req, res, next) => {
-  console.log('head to admin page')
-  res.render('body/admin/admins', { title: 'Add Admin', _layoutFile: 'layout-logout.ejs' })
-})
+
 
 // error handling
 router.use(function(err, req, res, next) {
