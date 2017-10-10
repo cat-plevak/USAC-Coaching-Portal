@@ -5,25 +5,21 @@
 const express = require('express');
 const router = express.Router();
 const SECRET = process.env.SECRET
+const jwt = require('jsonwebtoken')
 
 // add middleware to check if admin is admin
 const isAuth = (req, res, next) => {
   jwt.verify(req.cookies.token, SECRET, (err, payload) => {
     if (err) {
       console.log('err, token incorrect: ', err);
-      return next(boom.create(401, 'Unauthorized'))
+      return res.render('body/badinfo', {
+        title: 'Error',
+        _layoutFile: 'layout.ejs'
+      })
     }
-    console.log('PAYLOAD: ', payload)
-    console.log('PAYOAD ID', payload.userId);
-    // currentUser = payload
     req.currentUser = payload
-
-    // console.log('req.currentUser: ', req.currentUser);
-    // console.log('currentUser at isAuth: ', currentUser)
-    // console.log('req.claim==', req.claim);
     next()
   })
-
 }
 
 
@@ -42,12 +38,12 @@ router.get('/certified', isAuth, (req, res, next) => {
 })
 
 // add new admin route
-router.get('/admins', (req, res, next) => {
+router.get('/admins', isAuth, (req, res, next) => {
   res.render('body/admin/admins', { title: 'Add Admin', _layoutFile: 'layout-logout.ejs' })
 })
 
 // send admin to home dashboard
-router.get('/:id', (req, res, next) => {
+router.get('/:id', isAuth, (req, res, next) => {
   res.render('body/admin/home', { title: 'Admin Dash', _layoutFile: 'layout-logout.ejs' })
 })
 
