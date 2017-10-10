@@ -6,6 +6,7 @@ const {
   camelizeKeys,
   decamelizeKeys
 } = require('humps')
+const bcrypt = require('bcrypt')
 
 const SECRET = process.env.SECRET
 
@@ -77,58 +78,28 @@ router.get('/:id', (req, res, next) => {
 router.post('/', (req, res, next) => {
 
   const {
-    lastName,
-    firstName,
-    teamName,
-    cprExpDate,
-    faExpDate,
-    ssExpDate,
-    usacMembership,
-    isCertified,
-    userId
-  } = camelizeKeys(req.body)
+    username,
+    password
+  } = req.body
 
-  if (!lastName || !lastName.trim()) {
-    return next(boom.create(404, 'Please provide last name'))
-  }
-  if (!firstName || !firstName.trim()) {
-    return next(boom.create(404, 'Please provide first name'))
-  }
-  if (!teamName || !teamName.trim()) {
-    return next(boom.create(404, 'Please provide a team name'))
-  }
-  // if (!cprExpDate || !cprExpDate.trim()) {
-  //   return next(boom.create(404, 'cprExpDate error'))
-  // }
-  // if (!faExpDate || !faExpDate.trim()) {
-  //   return next(boom.create(404, 'faExpDate error'))
-  // }
-  // if (!ssExpDate || !ssExpDate.trim()) {
-  //   return next(boom.create(404, 'ssExpDate error'))
-  // }
+  bcrypt.hash(password, 10).then((hash) => {
 
-  let insertCaoch = {
-    lastName,
-    firstName,
-    teamName,
-    cprExpDate,
-    faExpDate,
-    ssExpDate,
-    usacMembership,
-    isCertified,
-    userId
-  }
+    return knex('users')
+      .insert({
+        username,
+        hashed_password: hash
+      }, '*')
+      .then((user) => {
+        // console.log('user is:', user);
 
-  console.log('insertCaoch is:', decamelizeKeys(insertCaoch))
+        // console.log('newUser with camel is:', humps.camelizeKeys(newUser));
+        // res.setHeader('Content-Type', 'application/json')
+        res.send(humps.camelizeKeys(user))
+      })
+      .catch((err) => next(err))
 
-  knex('coaches')
-    .insert(decamelizeKeys(insertCaoch))
-    .then(() => {
-      res.send(insertCaoch)
-    })
-    .catch((err) => {
-      next(err)
-    })
+  })
+
 })
 
 router.patch('/:id', (req, res, next) => {
@@ -234,5 +205,51 @@ router.delete('/:id', (req, res, next) => {
     })
 })
 
+// original post script
+
+// const {
+//   lastName,
+//   firstName,
+//   teamName,
+//   cprExpDate,
+//   faExpDate,
+//   ssExpDate,
+//   usacMembership,
+//   isCertified,
+//   userId
+// } = camelizeKeys(req.body)
+//
+// if (!lastName || !lastName.trim()) {
+//   return next(boom.create(404, 'Please provide last name'))
+// }
+// if (!firstName || !firstName.trim()) {
+//   return next(boom.create(404, 'Please provide first name'))
+// }
+// if (!teamName || !teamName.trim()) {
+//   return next(boom.create(404, 'Please provide a team name'))
+// }
+//
+// let insertCaoch = {
+//   lastName,
+//   firstName,
+//   teamName,
+//   cprExpDate,
+//   faExpDate,
+//   ssExpDate,
+//   usacMembership,
+//   isCertified,
+//   userId
+// }
+//
+// console.log('insertCaoch is:', decamelizeKeys(insertCaoch))
+//
+// knex('coaches')
+//   .insert(decamelizeKeys(insertCaoch))
+//   .then(() => {
+//     res.send(insertCaoch)
+//   })
+//   .catch((err) => {
+//     next(err)
+//   })
 
 module.exports = router
