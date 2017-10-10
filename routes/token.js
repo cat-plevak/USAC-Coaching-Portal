@@ -8,6 +8,11 @@ const knex = require('../knex');
 const { camelizeKeys } = require('humps');
 const router = express.Router();
 const SECRET = process.env.SECRET
+const cookieParser = require('cookie-parser')
+
+router.use(cookieParser())
+
+console.log(cookieParser);
 
 router.get('/', function(req, res, next) {
   let token = req.cookies.token
@@ -59,7 +64,7 @@ router.post('/', (req, res, next) => {
       })
 
       console.log('heelloo??!!?');
-      
+
       delete user.hashedPassword;
 
       res.send(user);
