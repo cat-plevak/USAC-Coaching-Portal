@@ -1,14 +1,12 @@
 const express = require('express')
 const knex = require('../../knex')
 const boom = require('boom')
-const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+
 const {
   camelizeKeys,
   decamelizeKeys
 } = require('humps')
-const bcrypt = require('bcrypt')
-
-const SECRET = process.env.SECRET
 
 const router = express.Router()
 
@@ -83,31 +81,41 @@ router.post('/', (req, res, next) => {
     password
   } = req.body
 
+  console.log("\n the USERS request body is : ", req.body)
+
+  console.log("\nusername and password for users table: ", username, password)
+
   if (!username || !username.trim()) {
     return next(boom.create(400, 'Email must not be blank'))
   }
 
-  if (!password || password.length < 8) {
-    return next(boom.create(400, 'Password must be at least 8 characters long'))
+  if (!password || password.length < 4) {
+    return next(boom.create(400, 'Password must be at least 4 characters long'))
   }
 
   knex('users')
     .where('username', username)
     .first()
     .then((row) => {
-      if (!row) {
-        return next(boom.create(404, 'Coach not found'))
+      if (row) {
+        return next(boom.create(404, 'Coach already exist!'))
       }
+
       return bcrypt.hash(password, 10)
     }).then((hash) => {
+
+      console.log('\nTHE HASHED PASSWORD IS: ', hash)
+
       return knex('users')
         .insert({
           username,
           hashed_password: hash
         }, '*')
     }).then((newUser) => {
-      const userId = newUser.id
-
+      console.log("\nTHE NEW USER IS: ", newUser)
+      const userId = newUser[0].id
+      console.log("\nThe user ID is: ", userId)
+      console.log("\n the COACHES request body is : ", req.body)
       const {
         lastName,
         firstName,
@@ -117,7 +125,7 @@ router.post('/', (req, res, next) => {
         ssExpDate,
         usacMembership,
         isCertified,
-      } = req.body
+      } = camelizeKeys(req.body)
 
       if (!lastName || !lastName.trim()) {
         return next(boom.create(404, 'Please provide last name'))
@@ -129,7 +137,7 @@ router.post('/', (req, res, next) => {
         return next(boom.create(404, 'Please provide a team name'))
       }
 
-      let insertCaoch = {
+      let insertCoach = {
         lastName,
         firstName,
         teamName,
@@ -141,10 +149,14 @@ router.post('/', (req, res, next) => {
         userId
       }
 
-      return knex('coaches')
-        .insert(decamelizeKeys(insertCaoch))
+      console.log('\n INSERT COACH IS : ', decamelizeKeys(insertCoach))
 
-    }).catch((err) => {
+      return knex('coaches').insert(decamelizeKeys(insertCoach))
+
+    }).then(() => {
+      res.send(camelizeKeys(insertCoach))
+    })
+    .catch((err) => {
       next(err)
     })
 })
