@@ -5,15 +5,16 @@
 const express = require('express');
 const router = express.Router();
 const SECRET = process.env.SECRET
-// add middleware to check if admin is admin. router.use or call the function in each route...
+
+// add middleware to check if admin is admin
 const isAuth = (req, res, next) => {
   jwt.verify(req.cookies.token, SECRET, (err, payload) => {
     if (err) {
+      console.log('err, token incorrect: ', err);
       return next(boom.create(401, 'Unauthorized'))
     }
-    // console.log('PAYLOAD: ', payload)
-    // console.log('PAYOAD ID', payload.userId);
-
+    console.log('PAYLOAD: ', payload)
+    console.log('PAYOAD ID', payload.userId);
     // currentUser = payload
     req.currentUser = payload
 
@@ -27,16 +28,16 @@ const isAuth = (req, res, next) => {
 
 
 // view of all pending coaches
-router.get('/', (req, res, next) => {
+router.get('/', isAuth, (req, res, next) => {
   res.render('body/admin/pending', { title: 'Coaches Pending Certification', _layoutFile: 'layout-logout.ejs' })
 })
 
-router.get('/pending', (req, res, next) => {
+router.get('/pending', isAuth, (req, res, next) => {
   res.render('body/admin/pending', { title: 'Coaches Pending Certification', _layoutFile: 'layout-logout.ejs' })
 })
 
 // click on certified coaches and see a list of all
-router.get('/certified', (req, res, next) => {
+router.get('/certified', isAuth, (req, res, next) => {
   res.render('body/admin/certified', { title: 'Certified Coaches', _layoutFile: 'layout-logout.ejs' })
 })
 
