@@ -31,15 +31,15 @@ $(document).ready(function(){
       .done((res) => {
         console.log(res);
         if (!res.username) {
-          // window.location.href = '../error'
+          window.location.href = '../error'
         }
         if (res.username != undefined) {
-          // window.location.href = '/coach/home'
+          window.location.href = '/coach/home'
           console.log('good');
         }
       })
       .fail((err) => {
-        // window.location.href = '../error'
+        window.location.href = '../error'
         console.log('error');
       })
   })
