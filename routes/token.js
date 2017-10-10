@@ -5,12 +5,15 @@ const bcrypt = require('bcrypt');
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const knex = require('../knex');
-const { camelizeKeys } = require('humps');
+const {
+  camelizeKeys
+} = require('humps');
 const router = express.Router();
 const SECRET = process.env.SECRET
 const cookieParser = require('cookie-parser')
 
 router.use(cookieParser())
+
 
 // router.get('/', function(req, res, next) {
 //   let token = req.cookies.token
@@ -26,6 +29,7 @@ router.use(cookieParser())
 //   })
 // })
 
+
 router.post('/', (req, res, next) => {
   let user;
 
@@ -37,16 +41,21 @@ router.post('/', (req, res, next) => {
     .first()
     .then((row) => {
       if (!row) {
-        res.render('body/home', { title: '',  _layoutFile: 'error.ejs' })
+        res.render('body/home', {
+          title: '',
+          _layoutFile: 'error.ejs'
+        })
       }
 
       user = camelizeKeys(row);
 
       bcrypt.compare(req.body.password, user.hashedPassword, function(err, rep) {
         if (!rep) {
-          res.render('/error', { title: '',  _layoutFile: 'error.ejs' })
-        }
-        else {
+          res.render('/error', {
+            title: '',
+            _layoutFile: 'error.ejs'
+          })
+        } else {
           const token = jwt.sign({
             userId: user.id,
             isAdmin: user.is_admin
