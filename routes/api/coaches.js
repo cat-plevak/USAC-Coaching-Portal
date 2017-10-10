@@ -75,28 +75,33 @@ router.get('/:id', (req, res, next) => {
 
 // post a new user
 router.post('/', (req, res, next) => {
+  console.log('first req body from api: ', req.body);
 
   const {
-    username,
-    password
+    email,
+    password,
+    firstName,
+    first_name
   } = req.body
 
   console.log("\n the USERS request body is : ", req.body)
 
-  console.log("\nusername and password for users table: ", username, password)
+  console.log("\nusername and password for users table: ", email, password)
 
-  if (!username || !username.trim()) {
+  if (!email || !email.trim()) {
     return next(boom.create(400, 'Email must not be blank'))
   }
 
   if (!password || password.length < 4) {
     return next(boom.create(400, 'Password must be at least 4 characters long'))
   }
+  console.log('log from coaches api before knex query');
 
   knex('users')
-    .where('username', username)
+    .where('username', email)
     .first()
     .then((row) => {
+      console.log('row from knex from coach api: ', row);
       if (row) {
         return next(boom.create(404, 'Coach already exist!'))
       }
@@ -108,7 +113,7 @@ router.post('/', (req, res, next) => {
 
       return knex('users')
         .insert({
-          username,
+          username: email,
           hashed_password: hash
         }, '*')
     }).then((newUser) => {
@@ -126,16 +131,17 @@ router.post('/', (req, res, next) => {
         usacMembership,
         isCertified,
       } = camelizeKeys(req.body)
+      //
+      // if (!lastName || !lastName.trim()) {
+      //   return next(boom.create(404, 'Please provide last name'))
+      // }
+      // if (!firstName || !firstName.trim()) {
+      //   return next(boom.create(404, 'Please provide first name'))
+      // }
+      // if (!teamName || !teamName.trim()) {
+      //   return next(boom.create(404, 'Please provide a team name'))
+      // }
 
-      if (!lastName || !lastName.trim()) {
-        return next(boom.create(404, 'Please provide last name'))
-      }
-      if (!firstName || !firstName.trim()) {
-        return next(boom.create(404, 'Please provide first name'))
-      }
-      if (!teamName || !teamName.trim()) {
-        return next(boom.create(404, 'Please provide a team name'))
-      }
 
       let insertCoach = {
         lastName,
@@ -149,7 +155,7 @@ router.post('/', (req, res, next) => {
         userId
       }
 
-      console.log('\n INSERT COACH IS : ', decamelizeKeys(insertCoach))
+      console.log('INSERT COACH IS : ', insertCoach)
 
       return knex('coaches')
         .insert(decamelizeKeys(insertCoach), '*')

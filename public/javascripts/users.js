@@ -26,7 +26,7 @@ $(document).ready(() => {
     let teamName = $('#reg-team-name').val().trim()
     let usacMemberNum = $('#reg-memnub').val()
 
-    console.log(`email: ${email}, password: ${password}`);
+    console.log(`email: ${email}, password: ${password}, firstName: ${firstName}`);
 
     if (!email) {
       console.log('Email must not be blank');
