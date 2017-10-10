@@ -9,7 +9,7 @@ $(document).ready(() => {
     console.log("this is the newUser data: ", data)
     $.post("/api/coaches", data, null, 'json').then((data) => {
       console.log("POSTED data", data);
-      // document.location = 'RELOCATE TO SOMEHWERE';
+      document.location = '/coach';
     }).fail((err) => {
       console.error("THERE WAS AN ERROR WITH THE AJAX POST")
     })
