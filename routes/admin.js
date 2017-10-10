@@ -11,21 +11,21 @@ const router = express.Router();
 
 // view of all pending coaches
 router.get('/', (req, res, next) => {
-  res.render('body/admin/pending', { title: 'Coaches Pending Certification', _layoutFile: 'layout.ejs' })
+  res.render('body/admin/pending', { title: 'Coaches Pending Certification', _layoutFile: 'layout-logout.ejs' })
 })
 
 router.get('/pending', (req, res, next) => {
-  res.render('body/admin/pending', { title: 'Coaches Pending Certification', _layoutFile: 'layout.ejs' })
+  res.render('body/admin/pending', { title: 'Coaches Pending Certification', _layoutFile: 'layout-logout.ejs' })
 })
 
 // click on certified coaches and see a list of all
 router.get('/certified', (req, res, next) => {
-  res.render('body/admin/certified', { title: 'Certified Coaches', _layoutFile: 'layout.ejs' })
+  res.render('body/admin/certified', { title: 'Certified Coaches', _layoutFile: 'layout-logout.ejs' })
 })
 
 // send admin to home dashboard
 router.get('/:id', (req, res, next) => {
-  res.render('body/admin/home', { title: 'Admin Dash', _layoutFile: 'layout.ejs' })
+  res.render('body/admin/home', { title: 'Admin Dash', _layoutFile: 'layout-logout.ejs' })
 })
 
 // add new admin route

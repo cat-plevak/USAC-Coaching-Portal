@@ -28,6 +28,13 @@ a {
 #login-form {
   width: auto;
   float: right;
+  padding-top: 30px;
+}
+
+#logout-form {
+  width: auto;
+  float: right;
+  padding-top: 30px;
 }
 
 /*home.ejs styling*/
