@@ -152,9 +152,17 @@ router.post('/', (req, res, next) => {
 
       console.log('\n INSERT COACH IS : ', decamelizeKeys(insertCoach))
 
-      return knex('coaches').insert(decamelizeKeys(insertCoach))
+      return knex('coaches')
+        .insert(decamelizeKeys(insertCoach), '*')
 
+    }).then((row) => {
+      console.log('THIS IS THE ROW AFTER insertCoach: ', row)
+      res.send(camelizeKeys(rows[0]))
     })
+    .catch((err) => {
+      next(err)
+    })
+
 })
 
 
