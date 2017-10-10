@@ -90,6 +90,7 @@ router.post('/', (req, res, next) => {
         hashed_password: hash
       }, '*')
       .then((user) => {
+        user.id
         // console.log('user is:', user);
 
         // console.log('newUser with camel is:', humps.camelizeKeys(newUser));
