@@ -30,9 +30,9 @@ $(document).ready(function(){
     $.ajax(options)
       .done((res) => {
         console.log(res);
-        // if (!res.username) {
-        //   window.location.href = '../error'
-        // }
+        if (!res.username) {
+          window.location.href = '../error'
+        }
         if (res.username != undefined) {
           window.location.href = '/coach/home'
           console.log('good');
