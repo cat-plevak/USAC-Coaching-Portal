@@ -85,6 +85,125 @@ $(document).ready(() => {
     })
   }
 
+
+  // get one coach
+  // let checkId = document.location.href.match(/(\d+)$/) || document.location.href.match(/(\d+)\/edit$/)
+  //
+  // if (checkId) {
+  //   let id = checkId[1]
+  //   console.log("found student id", checkId);
+  //
+  //   // if it's the update form populated the fields
+  //   $.getJSON(`/api/coaches/${id}`).then(data => {
+  //     console.log("fetched a student", id, data);
+  //     if (document.location.href.match(/admin\/\d+$/)) {
+  //       updateShow(data)
+  //     } else if (document.location.href.match(/admin\/\d+\/edit$/)) {
+  //       updateEditForm(data)
+  //     }
+  //   })
+  //
+  //   function updateShow(data) {
+  //     $('.coachFirstName').html(data.first_name)
+  //     $('.name').html(data.name)
+  //   }
+
+  if (document.location.href.match(/(\d+)\/edit$/)) {
+
+    console.log('this is the coaches home page');
+    // grab the information from the token, saved during login
+    // look up json web token javascript library
+      // verify token and get payload...
+    $.getJSON('/token/token').then(data => {
+      let id = data.userId
+      console.log(data.userId);
+
+      // grab information from the api with the id from token
+      $.getJSON(`../../api/coaches/${id}`).then(data => {
+        console.log('data from api: ', data);
+        console.log('certified or not', data.isCertified);
+        // set the form values to match the database info
+        $('#admin-coach-dash-firstname').val(data.firstName)
+        $('#admin-coach-dash-lastname').val(data.lastName)
+        $('#admin-coach-dash-teamname').val(data.teamName)
+        $('#admin-coach-dash-usacmem').val(data.usacMembership)
+
+        // change certifed status from true/false to words
+        if (data.isCertified == true) {
+          $('#admin-coach-dash-is_certified').html('<h4 style="color:green;">USAC CERTIFIED</h4>')
+        }
+        else {
+          $('#admin-coach-dash-is_certified').html('<h4 style="color:red;">NOT CERTIFIED</h4>')
+        }
+
+        // date form fields, check to see if value is null
+        // CPR date check and set value
+        let cprDate = $('#admin-coach-dash-cprExpDate').val()
+        if (cprDate != 'X') {
+          $('#admin-coach-dash-cprExpDate').val(data.cprExpDate)
+        }
+        // first aid date check and set value
+        let faDate = $('#admin-coach-dash-faExpDate').val()
+        if (faDate != 'X') {
+          $('#admin-coach-dash-faExpDate').val(data.faExpDate)
+        }
+        // first aid date check and set value
+        let ssDate = $('#admin-coach-dash-ssExpDate').val()
+        if (ssDate != 'X') {
+          $('#admin-coach-dash-ssExpDate').val(data.ssExpDate)
+        }
+        // listen for click on update button
+        $('#admin-coach-updateUser').click((e) => {
+          e.preventDefault()
+          console.log('button clicked');
+          console.log($('#admin-coach-dash-firstname').val());
+
+          // grab new values from fields
+          let firstName = $('#admin-coach-dash-firstname').val()
+          let lastName = $('#admin-coach-dash-lastname').val()
+          let teamName = $('#admin-coach-dash-teamname').val()
+          let usacMembership = $('#admin-coach-dash-usacmem').val()
+          let cprExpDate = $('#admin-coach-dash-cprExpDate').val()
+          let faExpDate = $('#admin-coach-dash-faExpDate').val()
+          let ssExpDate = $('#admin-coach-dash-ssExpDate').val()
+
+          const options = {
+                contentType: 'application/json',
+                data: JSON.stringify({
+                  firstName,
+                  lastName,
+                  teamName,
+                  usacMembership,
+                  cprExpDate,
+                  faExpDate,
+                  ssExpDate
+                }),
+                dataType: 'json',
+                type: 'PATCH',
+                url: `../../api/coaches/${id}`
+              }
+
+          $.ajax(options)
+            .done(res => {
+              $('#hidden-pop').removeClass('hidden')
+              $('#hidden-pop').on('animationend', () => {
+
+                setTimeout(function () {
+                  $('#hidden-pop').addClass('hidden')
+                }, 1100);
+
+              })
+              console.log('res from ajax call ', res);
+            })
+            .fail((err, res) => {
+              window.location.href = '../../error'
+            })
+        })
+      })
+    })
+  }
+
+
   // populate current admin table in admin view
   if (document.location.href.match(/admins$/)) {
 
