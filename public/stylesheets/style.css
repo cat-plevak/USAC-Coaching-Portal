@@ -13,6 +13,10 @@ a {
   padding: 0px;
 }
 
+.red {
+  color: red;
+}
+
 #mainnav {
   height: 150px;
   padding-top: 10px;
