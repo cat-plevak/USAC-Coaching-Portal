@@ -15,73 +15,64 @@
 
 
 <!-- MAKE H1 DYNAMIC -->
-<h1 class="container">Coach Profile</h1>
+<!-- <h1 class="container">[Name of Coach]</h1> -->
 
 <div class="container">
 
   <div class="text-center">
-    <h1>Welcome to your Dashboard!</h1>
+    <h1 class="container">[Name of Coach]</h1>
     <p>Type in the field to change or update information. Click the 'Update' button at the bottom to make sure your changes are saved.</p>
-    <h3 class="">USA Climbing Coach Certification Status:</h3>
+    <h3 class="">USA Climbing Coach Certification Status:</h3> // DO I NEED TO CHANGE THIS ID???? //
     <div id="coach-dash-is_certified"></div>
     <h4></h4>
 
   </div>
 
-  <form class="container" id="coach-dash-form" novalidate>
+  <form class="container" id="admin-coach-dash-form" novalidate>
     <h3>General Information</h3>
     <div class="row">
       <div class="col-md-5 mb-3">
         <label for="validationCustom01">First name</label>
-        <input id="coach-dash-firstname" type="text" name="first_name" class="form-control" placeholder="First name" required>
+        <input id="admin-coach-dash-firstname" type="text" name="first_name" class="form-control" placeholder="First name" required>
       </div>
       <div class="col-md-5 mb-3">
         <label for="validationCustom02">Last name</label>
-        <input id="coach-dash-lastname" type="text" name="last_name" class="form-control" placeholder="Last name" required>
+        <input id="admin-coach-dash-lastname" type="text" name="last_name" class="form-control" placeholder="Last name" required>
       </div>
     </div>
     <br>
     <div class="row">
       <div class="col-md-5 mb-3">
         <label for="validationCustom03">Team name</label>
-        <input id="coach-dash-teamname" type="text" name="team_name" class="form-control" placeholder="Team Name" required>
+        <input id="admin-coach-dash-teamname" type="text" name="team_name" class="form-control" placeholder="Team Name" required>
       </div>
       <div class="col-md-5 mb-3">
         <label for="validationCustom03">USAC Membership Number</label>
-        <input id="coach-dash-usacmem" type="text" name="usac_membership" class="form-control" placeholder="USAC Membership Number" required>
+        <input id="admin-coach-dash-usacmem" type="text" name="usac_membership" class="form-control" placeholder="USAC Membership Number" required>
       </div>
     </div>
     <h3>Required Document Uploads</h3>
     <div class="row">
       <div class="col-md-5 mb-3, form-group">
-        <label for="exampleInputFile">CPR Certification and Expiration Date</label>
-
-        <input id="coach-dash-cprExpDate" type="text" name="cpr_exp_date" class="form-control" placeholder="mm/dd/yyyy">
+        <label for="exampleInputFile">CPR Expiration Date</label>
+        <input id="admin-coach-dash-cprExpDate" type="text" name="cpr_exp_date" class="form-control" placeholder="mm/dd/yyyy">
       </div>
     </div>
     <br>
     <div class="row">
       <div class="col-md-5 mb-3, form-group">
-        <label for="exampleInputFile">First Aid Certification and Expiration Date</label>
-        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-        <small id="fileHelp" class="form-text text-muted">Please upload the proper documentation and input the expiration date of your certification.</small>
-        <input id="coach-dash-faExpDate" type="text" name="fa_exp_date" class="form-control" placeholder="mm/dd/yyyy">
+        <label for="exampleInputFile">First Aid Expiration Date</label>
+        <input id="admin-coach-dash-faExpDate" type="text" name="fa_exp_date" class="form-control" placeholder="mm/dd/yyyy">
       </div>
     </div>
     <br>
     <div class="row">
       <div class="col-md-5 mb-3, form-group">
-        <label for="exampleInputFile">Safe Sport Certification and Expiration Date</label>
-        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-        <small id="fileHelp" class="form-text text-muted">Please upload the proper documentation and input the expiration date of your certification.</small>
-        <input id="coach-dash-ssExpDate" type="text" name="ss_exp_date" class="form-control" placeholder="mm/dd/yyyy">
+        <label for="exampleInputFile">Safe Sport Expiration Date</label>
+        <input id="admin-coach-dash-ssExpDate" type="text" name="ss_exp_date" class="form-control" placeholder="mm/dd/yyyy">
       </div>
     </div>
-    <button id="coach-dash-update-button" class="btn btn-primary" type="submit">Update</button>
+    <button id="admin-coach-updateUser" class="btn btn-primary" type="submit">Update</button>
+    <button id="admin-coach-deleteUser" class="btn btn-primary" type="submit">Delete this Coach</button>
   </form>
-
 </div>
-</div>
-<button id="updateUser" class="btn btn-primary" type="submit">Update</button>
-<button id="deleteUser" class="btn btn-primary" type="submit">Delete this Coach</button>
-</form>
