@@ -7,7 +7,7 @@ const router = express.Router();
 const SECRET = process.env.SECRET
 const jwt = require('jsonwebtoken')
 
-// add middleware to check if admin is admin
+
 const isAuth = (req, res, next) => {
   jwt.verify(req.cookies.token, SECRET, (err, payload) => {
     if (err) {
@@ -24,6 +24,11 @@ const isAuth = (req, res, next) => {
 
 // get coach by id, add edit buttons
 router.get('/:id', isAuth, (req, res, next) => {
+  res.render('body/coach/home', { title: 'Coach Dashboard', _layoutFile: 'layout-logout.ejs' })
+})
+
+router.get('/home/:id', isAuth, (req, res, next) => {
+  console.log('coach home dash board route....bri!!');
   res.render('body/coach/home', { title: 'Coach Dashboard', _layoutFile: 'layout-logout.ejs' })
 })
 

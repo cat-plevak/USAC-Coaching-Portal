@@ -17,6 +17,7 @@ const isAuth = (req, res, next) => {
         _layoutFile: 'layout.ejs'
       })
     }
+    console.log(payload);
     req.currentUser = payload
     next()
   })
@@ -40,6 +41,11 @@ router.get('/certified', isAuth, (req, res, next) => {
 // add new admin route
 router.get('/admins', isAuth, (req, res, next) => {
   res.render('body/admin/admins', { title: 'Add Admin', _layoutFile: 'layout-logout.ejs' })
+})
+
+router.get('/home/:id', isAuth, (req, res, next) => {
+  console.log('this is the admin home with id');
+  res.render('body/admin/home', { title: 'Admin Dash', _layoutFile: 'layout-logout.ejs' })
 })
 
 // send admin to home dashboard
