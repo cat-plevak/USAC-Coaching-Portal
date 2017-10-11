@@ -47,6 +47,11 @@ router.get('/:id', isAuth, (req, res, next) => {
   res.render('body/admin/home', { title: 'Admin Dash', _layoutFile: 'layout-logout.ejs' })
 })
 
+// send admin to specific coach edit view
+router.get('/:id/edit', isAuth, (req, res, next) => {
+  res.render('body/admin/coach', { title: 'Admin Dash', _layoutFile: 'layout-logout.ejs' })
+})
+
 
 
 // error handling
