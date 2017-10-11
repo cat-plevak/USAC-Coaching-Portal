@@ -110,7 +110,6 @@ $(document).ready(() => {
 
   if (document.location.href.match(/(\d+)\/edit$/)) {
 
-    console.log('this is the coaches home page');
     // grab the information from the token, saved during login
     // look up json web token javascript library
       // verify token and get payload...
@@ -127,6 +126,7 @@ $(document).ready(() => {
         $('#admin-coach-dash-lastname').val(data.lastName)
         $('#admin-coach-dash-teamname').val(data.teamName)
         $('#admin-coach-dash-usacmem').val(data.usacMembership)
+        $('#admin-coach-dash-bgExpDate').val(data.bgExpDate)
 
         // change certifed status from true/false to words
         if (data.isCertified == true) {
@@ -163,6 +163,7 @@ $(document).ready(() => {
           let lastName = $('#admin-coach-dash-lastname').val()
           let teamName = $('#admin-coach-dash-teamname').val()
           let usacMembership = $('#admin-coach-dash-usacmem').val()
+          let bgExpDate = $('#admin-coach-dash-bgExpDate').val()
           let cprExpDate = $('#admin-coach-dash-cprExpDate').val()
           let faExpDate = $('#admin-coach-dash-faExpDate').val()
           let ssExpDate = $('#admin-coach-dash-ssExpDate').val()
@@ -174,6 +175,7 @@ $(document).ready(() => {
                   lastName,
                   teamName,
                   usacMembership,
+                  bgExpDate,
                   cprExpDate,
                   faExpDate,
                   ssExpDate
