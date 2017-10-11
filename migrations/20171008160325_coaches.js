@@ -15,10 +15,13 @@ exports.up = function(knex, Promise) {
     table.string('ss_exp_date').defaultTo('X')
     table.integer('usac_membership').defaultTo(0)
     table.boolean('is_certified').defaultTo(false)
+    table.text('cpr_link').defaultTo('')
+    table.text('fa_link').defaultTo('')
+    table.text('ss_link').defaultTo('')
     table.timestamps(true, true)
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTableIfExists('coaches')
-};
+}
