@@ -1,7 +1,7 @@
 $(document).ready(() => {
   console.log('document ready!')
 
-  
+
 
   if (document.location.href.match(/certified$/)) {
 
