@@ -118,8 +118,21 @@ $(document).ready(() => {
         function(error, result) {
           if (error) console.log(error)
           // If NO error, log image data to console
-          var id = result[0].public_id
+          let id = result[0].public_id
           console.log(processImage(id))
+
+          let cprLink = processImage(id)
+          // MAKE THE AJAX PATCH CALL TO UDATE THE DB
+          const options = {
+            contentType: 'application/json',
+            data: JSON.stringify({
+              cprLink
+            }),
+            dataType: 'json',
+            type: 'PATCH',
+            url: `../../api/coaches/${userId}`
+          }
+
         })
     })
 

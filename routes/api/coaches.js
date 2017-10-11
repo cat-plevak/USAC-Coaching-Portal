@@ -194,7 +194,7 @@ router.patch('/:id', (req, res, next) => {
         ssExpDate,
         usacMembership,
         isCertified,
-        userId
+        cprLink,
       } = camelizeKeys(req.body)
 
       const updateCaoch = {}
