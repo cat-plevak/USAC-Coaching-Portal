@@ -85,4 +85,18 @@ $(document).ready(() => {
     })
   }
 
+  $('#newAdminForm').submit((e) => {
+    e.preventDefault()
+
+    let data = $('#newAdminForm').serialize()
+
+    console.log("this is the newAdmin data: ", data)
+    $.post("/api/admin", data, null, 'json').then((data) => {
+      console.log("POSTED data", data);
+      document.location = '/admins';
+    }).fail((err) => {
+      console.error("THERE WAS AN ERROR WITH THE AJAX POST")
+    })
+  })
+
 })
