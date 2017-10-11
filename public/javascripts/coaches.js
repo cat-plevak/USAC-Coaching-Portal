@@ -2,10 +2,10 @@ $(document).ready(() => {
   console.log('coaches SJ file loaded')
   if (document.location.href.match(/coach\/home/)) {
     let string = window.location.href
-    let id = string.substring(string.lastIndexOf('/') + 1, string.length)
+    let userId = string.substring(string.lastIndexOf('/') + 1, string.length)
 
     // grab information from the api with the id from token
-    $.getJSON(`../../api/coaches/${id}`).then(data => {
+    $.getJSON(`../../api/coaches/${userId}`).then(data => {
 
       // set the form values to match the database info
       $('#coach-dash-firstname').val(data.firstName)
@@ -65,7 +65,7 @@ $(document).ready(() => {
           }),
           dataType: 'json',
           type: 'PATCH',
-          url: `../../api/coaches/${id}`
+          url: `../../api/coaches/${userId}`
         }
 
         $.ajax(options)
