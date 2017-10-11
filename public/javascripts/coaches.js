@@ -55,10 +55,10 @@ $(document).ready(() => {
           let firstName = $('#coach-dash-firstname').val()
           let lastName = $('#coach-dash-lastname').val()
           let teamName = $('#coach-dash-teamname').val()
-          let usacMemNum = $('#coach-dash-usacmem').val()
-          let newCPR = $('#coach-dash-cprExpDate').val()
-          let newFA = $('#coach-dash-faExpDate').val()
-          let newSS = $('#coach-dash-ssExpDate').val()
+          let usacMembership = $('#coach-dash-usacmem').val()
+          let cprExpDate = $('#coach-dash-cprExpDate').val()
+          let faExpDate = $('#coach-dash-faExpDate').val()
+          let ssExpDate = $('#coach-dash-ssExpDate').val()
 
           const options = {
                 contentType: 'application/json',
@@ -66,10 +66,10 @@ $(document).ready(() => {
                   firstName,
                   lastName,
                   teamName,
-                  usacMemNum,
-                  newCPR,
-                  newFA,
-                  newSS
+                  usacMembership,
+                  cprExpDate,
+                  faExpDate,
+                  ssExpDate
                 }),
                 dataType: 'json',
                 type: 'PATCH',
@@ -81,8 +81,7 @@ $(document).ready(() => {
               console.log('res from ajax call ', res);
             })
             .fail((err, res) => {
-              console.log('error');
-              // window.location.href = '/error'
+              window.location.href = '../../error'
             })
 
 
