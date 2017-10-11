@@ -105,6 +105,13 @@ $(document).ready(() => {
     let FaFileButton = $('#FaFileButton')
     let SsFileButton = $('#SsFileButton')
 
+    function processImage(id) {
+      var options = {
+        client_hints: true,
+      }
+      return $.cloudinary.url(id, options)
+    }
+
     // CPR Upload button event
     CprFileButton.on('click', function(e) {
       e.stopPropagation()
@@ -123,12 +130,45 @@ $(document).ready(() => {
         })
     })
 
-    function processImage(id) {
-      var options = {
-        client_hints: true,
-      }
-      return $.cloudinary.url(id, options)
-    }
+
+    // First Aid Upload button event
+    FaFileButton.on('click', function(e) {
+      e.stopPropagation()
+      e.preventDefault()
+      // Initiate upload
+      cloudinary.openUploadWidget({
+          cloud_name: 'usa-climbing-coaching-portal',
+          upload_preset: 'USACcoach',
+          tags: ['cgal']
+        },
+        function(error, result) {
+          if (error) console.log(error)
+          // If NO error, log image data to console
+          var id = result[0].public_id
+          console.log('This is the image URL', processImage(id))
+        })
+    })
+
+
+    // Safe Sport Upload button event
+    SsFileButton.on('click', function(e) {
+      e.stopPropagation()
+      e.preventDefault()
+      // Initiate upload
+      cloudinary.openUploadWidget({
+          cloud_name: 'usa-climbing-coaching-portal',
+          upload_preset: 'USACcoach',
+          tags: ['cgal']
+        },
+        function(error, result) {
+          if (error) console.log(error)
+          // If NO error, log image data to console
+          var id = result[0].public_id
+          console.log('This is the image URL', processImage(id))
+        })
+    })
+
+
 
     // END WIDGET BUTTONS //
 
