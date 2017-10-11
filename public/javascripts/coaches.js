@@ -45,13 +45,60 @@ $(document).ready(() => {
           $('#coach-dash-ssExpDate').val(data.ssExpDate)
         }
 
-        
+        // listen for click on update button
+        $('#coach-dash-update-button').click((e) => {
+          e.preventDefault()
+          console.log('button clicked');
+          console.log($('#coach-dash-firstname').val());
+
+          // grab new values from fields
+          let firstName = $('#coach-dash-firstname').val()
+          let lastName = $('#coach-dash-lastname').val()
+          let teamName = $('#coach-dash-teamname').val()
+          let usacMembership = $('#coach-dash-usacmem').val()
+          let cprExpDate = $('#coach-dash-cprExpDate').val()
+          let faExpDate = $('#coach-dash-faExpDate').val()
+          let ssExpDate = $('#coach-dash-ssExpDate').val()
+
+          const options = {
+                contentType: 'application/json',
+                data: JSON.stringify({
+                  firstName,
+                  lastName,
+                  teamName,
+                  usacMembership,
+                  cprExpDate,
+                  faExpDate,
+                  ssExpDate
+                }),
+                dataType: 'json',
+                type: 'PATCH',
+                url: `../../api/coaches/${id}`
+              }
+
+          $.ajax(options)
+            .done(res => {
+              $('#hidden-pop').removeClass('hidden')
+              $('#hidden-pop').on('animationend', () => {
+
+                setTimeout(function () {
+                  $('#hidden-pop').addClass('hidden')
+                }, 1100);
+
+              })
+              console.log('res from ajax call ', res);
+            })
+            .fail((err, res) => {
+              window.location.href = '../../error'
+            })
+
+
+
+        })
 
 
       })
-// #coach-dash-update-button
     })
-
   }
 
 })
