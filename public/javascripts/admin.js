@@ -87,28 +87,11 @@ $(document).ready(() => {
 
 
   // get one coach
-  // let checkId = document.location.href.match(/(\d+)$/) || document.location.href.match(/(\d+)\/edit$/)
-  //
-  // if (checkId) {
-  //   let id = checkId[1]
-  //   console.log("found student id", checkId);
-  //
-  //   // if it's the update form populated the fields
-  //   $.getJSON(`/api/coaches/${id}`).then(data => {
-  //     console.log("fetched a student", id, data);
-  //     if (document.location.href.match(/admin\/\d+$/)) {
-  //       updateShow(data)
-  //     } else if (document.location.href.match(/admin\/\d+\/edit$/)) {
-  //       updateEditForm(data)
-  //     }
-  //   })
-  //
-  //   function updateShow(data) {
-  //     $('.coachFirstName').html(data.first_name)
-  //     $('.name').html(data.name)
-  //   }
+  let checkId = document.location.href.match(/(\d+)\/edit$/)
 
-  if (document.location.href.match(/(\d+)\/edit$/)) {
+    if (checkId) {
+      let id = checkId[1]
+      console.log("found coach id", id);
 
     // grab the information from the token, saved during login
     // look up json web token javascript library
