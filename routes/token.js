@@ -30,7 +30,23 @@ router.get('/', function(req, res, next) {
   })
 })
 
+// provides information from the token to coaches & admin javascripts
+router.get('/token', function(req, res, next) {
+  let token = req.cookies.token
 
+  jwt.verify(token, SECRET, function(err, decoded) {
+    if (decoded) {
+    res.clearCookie('token')
+    res.send(decoded)
+    }
+    else {
+    res.send({})
+    }
+  })
+})
+
+// create new token during login
+// set expiration time or cookie session...
 router.post('/', (req, res, next) => {
   let user;
 
