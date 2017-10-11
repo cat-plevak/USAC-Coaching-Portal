@@ -1,5 +1,5 @@
 /*MAIN STYLING*/
-body {
+html, body {
   padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   height: 100%;
@@ -7,6 +7,15 @@ body {
 
 a {
   color: #00B7FF;
+}
+
+/*sticky footer styling*/
+body {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1 0 auto;
 }
 
 .container-fluid{
