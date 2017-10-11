@@ -6,6 +6,25 @@ $(document).ready(() => {
     // grab the information from the token, saved during login
     // look up json web token javascript library
       // verify token and get payload...
+
+    // const jwt = require('jsonwebtoken')
+    //
+    // jwt.verify(req.cookies.token, SECRET, (err, payload) => {
+    //   if (err) {
+    //     console.log('err, token incorrect: ', err);
+    //     return res.render('body/badinfo', {
+    //       title: 'Error',
+    //       _layoutFile: 'layout.ejs'
+    //     })
+    //   }
+    //   req.currentUser = payload
+    //   next()
+    // })
+
+
+
+
+
     $.getJSON('/token/token').then(data => {
       let id = data.userId
       console.log(data.userId);
