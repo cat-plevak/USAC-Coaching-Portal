@@ -10,9 +10,15 @@ $(document).ready(() => {
 
     //
     //
-    console.log('this is the cookies: ', $(document.cookie));
+    // console.log('this is the cookies: ', $(document.cookie.token));
+    // //
     //
-    // console.log('heellooo bri????');
+    //
+    // jwt.verifyJWT(token, 'nosecret', 'HS256', function (err, isValid) {
+    //   console.log(isValid); // false
+    // });
+    //
+    // jwt.decodeJWT(token);
 
 
     $.getJSON('/token/token').then(data => {

@@ -27,6 +27,11 @@ router.get('/:id', isAuth, (req, res, next) => {
   res.render('body/coach/home', { title: 'Coach Dashboard', _layoutFile: 'layout-logout.ejs' })
 })
 
+router.get('/home/:id', isAuth, (req, res, next) => {
+  console.log('coach home dash board route....bri!!');
+  res.render('body/coach/home', { title: 'Coach Dashboard', _layoutFile: 'layout-logout.ejs' })
+})
+
 // error handling
 router.use(function(err, req, res, next) {
   console.error(err.stack)

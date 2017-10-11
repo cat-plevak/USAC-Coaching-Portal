@@ -75,6 +75,8 @@ router.post('/', (req, res, next) => {
               isAdmin: user.is_admin
             }, SECRET)
 
+            console.log('this is the token from token route:', token);
+            
             res.cookie('token', token, {
               httpOnly: true,
               expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
