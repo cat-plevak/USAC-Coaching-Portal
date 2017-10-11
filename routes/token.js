@@ -36,7 +36,6 @@ router.get('/token', function(req, res, next) {
 
   jwt.verify(token, SECRET, function(err, decoded) {
     if (decoded) {
-    res.clearCookie('token')
     res.send(decoded)
     }
     else {
@@ -89,5 +88,7 @@ router.post('/', (req, res, next) => {
       }
     })
 })
+
+
 
 module.exports = router;

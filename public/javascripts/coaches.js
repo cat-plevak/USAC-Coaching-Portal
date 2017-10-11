@@ -1,5 +1,6 @@
 $(document).ready(() => {
 
+
   if (document.location.href.match(/coach\/home/)) {
 
     console.log('this is the coaches home page');
@@ -7,22 +8,11 @@ $(document).ready(() => {
     // look up json web token javascript library
       // verify token and get payload...
 
-    // const jwt = require('jsonwebtoken')
     //
-    // jwt.verify(req.cookies.token, SECRET, (err, payload) => {
-    //   if (err) {
-    //     console.log('err, token incorrect: ', err);
-    //     return res.render('body/badinfo', {
-    //       title: 'Error',
-    //       _layoutFile: 'layout.ejs'
-    //     })
-    //   }
-    //   req.currentUser = payload
-    //   next()
-    // })
-
-
-
+    //
+    console.log('this is the cookies: ', $(document.cookie));
+    //
+    // console.log('heellooo bri????');
 
 
     $.getJSON('/token/token').then(data => {

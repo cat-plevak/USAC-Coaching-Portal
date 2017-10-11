@@ -7,7 +7,7 @@ const router = express.Router();
 const SECRET = process.env.SECRET
 const jwt = require('jsonwebtoken')
 
-// add middleware to check if admin is admin
+
 const isAuth = (req, res, next) => {
   jwt.verify(req.cookies.token, SECRET, (err, payload) => {
     if (err) {
