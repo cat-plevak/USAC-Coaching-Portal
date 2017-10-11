@@ -5,48 +5,45 @@
 const express = require('express');
 const router = express.Router();
 const SECRET = process.env.SECRET
-// add middleware to check if admin is admin. router.use or call the function in each route...
+const jwt = require('jsonwebtoken')
+
+// add middleware to check if admin is admin
 const isAuth = (req, res, next) => {
   jwt.verify(req.cookies.token, SECRET, (err, payload) => {
     if (err) {
-      return next(boom.create(401, 'Unauthorized'))
+      console.log('err, token incorrect: ', err);
+      return res.render('body/badinfo', {
+        title: 'Error',
+        _layoutFile: 'layout.ejs'
+      })
     }
-    // console.log('PAYLOAD: ', payload)
-    // console.log('PAYOAD ID', payload.userId);
-
-    // currentUser = payload
     req.currentUser = payload
-
-    // console.log('req.currentUser: ', req.currentUser);
-    // console.log('currentUser at isAuth: ', currentUser)
-    // console.log('req.claim==', req.claim);
     next()
   })
-
 }
 
 
 // view of all pending coaches
-router.get('/', (req, res, next) => {
+router.get('/', isAuth, (req, res, next) => {
   res.render('body/admin/pending', { title: 'Coaches Pending Certification', _layoutFile: 'layout-logout.ejs' })
 })
 
-router.get('/pending', (req, res, next) => {
+router.get('/pending', isAuth, (req, res, next) => {
   res.render('body/admin/pending', { title: 'Coaches Pending Certification', _layoutFile: 'layout-logout.ejs' })
 })
 
 // click on certified coaches and see a list of all
-router.get('/certified', (req, res, next) => {
+router.get('/certified', isAuth, (req, res, next) => {
   res.render('body/admin/certified', { title: 'Certified Coaches', _layoutFile: 'layout-logout.ejs' })
 })
 
 // add new admin route
-router.get('/admins', (req, res, next) => {
+router.get('/admins', isAuth, (req, res, next) => {
   res.render('body/admin/admins', { title: 'Add Admin', _layoutFile: 'layout-logout.ejs' })
 })
 
 // send admin to home dashboard
-router.get('/:id', (req, res, next) => {
+router.get('/:id', isAuth, (req, res, next) => {
   res.render('body/admin/home', { title: 'Admin Dash', _layoutFile: 'layout-logout.ejs' })
 })
 
