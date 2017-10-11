@@ -21,7 +21,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <!-- <a class="navbar-brand" href="/"><img id="logo-image" src="img/usac_logo_white.png" alt="USAC Coaching Portal"></a> -->
+        <a class="navbar-brand" href="/"><img id="logo-image" src="../img/usac_logo_white.png" alt="USAC Coaching Portal"></a>
         <a id="logo-words" class="navbar-brand" href="/"><h2>COACHES PORTAL</h2></a>
       </div>
       <div id="logout-form" class="collapse navbar-collapse">
@@ -34,9 +34,17 @@
     </div>
   </nav>
 
-  <div class="container-fluid">
+  <div class="container-fluid content">
 
     <%- body -%>
+
+    <!-- Hidden Div -->
+    <div class="row align-items-center">
+      <div id="hidden-pop" class="youdidit-pop hidden">
+        <h2>Thank You!</h2>
+        <h4>Your information has been updated.</h4>
+      </div>
+    </div>
 
   </div>
 
@@ -45,6 +53,9 @@
       <span class="text-muted">Place sticky footer content here.</span>
     </div>
   </footer>
+
+
+
 
   <!-- JavaScript -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
