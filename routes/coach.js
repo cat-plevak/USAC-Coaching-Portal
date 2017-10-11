@@ -23,7 +23,8 @@ const isAuth = (req, res, next) => {
 }
 
 // get coach by id, add edit buttons
-router.get('/:id', isAuth, (req, res, next) => {
+router.get('/home/:id', isAuth, (req, res, next) => {
+  console.log('hello from coach route', req.params.id);
   res.render('body/coach/home', { title: 'Coach Dashboard', _layoutFile: 'layout-logout.ejs' })
 })
 
