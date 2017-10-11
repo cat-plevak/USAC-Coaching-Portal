@@ -19,6 +19,11 @@ $(document).ready(() => {
           <td>${coach.bgExpDate}</td>
           <td>${coach.usacMembership}</td>
           <td>${coach.isCertified}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-secondary"><a href="/admin/${coach.id}/edit">Edit</a></button>
+            </div>
+          </td>
         </tr>`))
       })
     })
@@ -42,6 +47,11 @@ $(document).ready(() => {
           <td>${coach.bgExpDate}</td>
           <td>${coach.usacMembership}</td>
           <td>${coach.isCertified}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-secondary"><a href="/admin/${coach.id}/edit">Edit</a></button>
+            </div>
+          </td>
         </tr>`))
       })
     })
@@ -65,6 +75,11 @@ $(document).ready(() => {
           <td>${coach.bgExpDate}</td>
           <td>${coach.usacMembership}</td>
           <td>${coach.isCertified}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-secondary"><a href="/admin/${coach.id}/edit">Edit</a></button>
+            </div>
+          </td>
         </tr>`))
       })
     })
@@ -80,6 +95,11 @@ $(document).ready(() => {
       data.forEach((admin) => {
         tbody.append(`<tr>
           <td>${admin.username}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-secondary deleteBtn" data-id="${user.id}">Delete</button>
+            </div>
+          </td>
         </tr>`)
       })
     })
