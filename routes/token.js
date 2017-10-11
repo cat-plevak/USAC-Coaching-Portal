@@ -61,6 +61,7 @@ router.post('/', (req, res, next) => {
       // if email is good, check password
       else if (row != undefined) {
         user = camelizeKeys(row);
+        console.log('THIS IS THE USER ROW!!!', user);
 
         bcrypt.compare(req.body.password, user.hashedPassword, function(err, rep) {
           // if password doesn't match, send to bad info page
@@ -72,10 +73,18 @@ router.post('/', (req, res, next) => {
 
             const token = jwt.sign({
               userId: user.id,
-              isAdmin: user.is_admin
+              isAdmin: user.isAdmin
             }, SECRET)
 
-            console.log('this is the token from token route:', token);
+            // jwt.verify(token, SECRET, function(err, decoded) {
+            //   if (decoded) {
+            //     console.log('this is the token from token route:', decoded);
+            //   }
+            //   else {
+            //   console.log('something is not working!!');
+            //   }
+            // })
+
 
             res.cookie('token', token, {
               httpOnly: true,
