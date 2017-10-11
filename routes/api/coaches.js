@@ -12,6 +12,7 @@ const router = express.Router()
 
 // STANDARD CURL ROUTES
 
+// is this route being used? and where/what?
 router.get('/home/:id', (_req, res, next) => {
   console.log('req params from coaches api: ', req.params.id);
 
@@ -52,6 +53,7 @@ router.get('/pending', (req, res, next) => {
     })
 })
 
+// get single coach by user id
 router.get('/:id', (req, res, next) => {
   const id = Number(req.params.id)
 
