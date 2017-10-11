@@ -22,30 +22,31 @@ $(document).ready(() => {
 
         // change certifed status from true/false to words
         // console.log(data.isCertified);
+        // console.log($('#coach-dash-is_certified').html('<h4 style="color:green;">You are a USAC CERTIFIED COACH!</h4>'));
         // console.log(status);
-        // $('#coach-dash-is_certified').innerHTML('You are a USAC CERTIFIED COACH!')
-        // if (data.isCertified == true) {
-        //   return $('#coach-dash-is_certified').val('You are a USAC CERTIFIED COACH!')
-        // }
-        // else {
-        //   return $('#coach-dash-is_certified').val('You are a NOT certified')
-        // }
+        // $('#coach-dash-is_certified').val('You are a USAC CERTIFIED COACH!')
+        if (data.isCertified == true) {
+          $('#coach-dash-is_certified').html('<h4 style="color:green;">You are a USAC CERTIFIED COACH!</h4>')
+        }
+        else {
+          $('#coach-dash-is_certified').html('<h4 style="color:red;">You are NOT certified</h4>')
+        }
 
         // date form fields, check to see if value is null
         // CPR date check and set value
         let cprDate = $('#coach-dash-cprExpDate').val()
         if (cprDate != 'X') {
-          return $('#coach-dash-cprExpDate').val(data.cprExpDate)
+          $('#coach-dash-cprExpDate').val(data.cprExpDate)
         }
         // first aid date check and set value
         let faDate = $('#coach-dash-faExpDate').val()
         if (faDate != 'X') {
-          return $('#coach-dash-faExpDate').val(data.faExpDate)
+          $('#coach-dash-faExpDate').val(data.faExpDate)
         }
         // first aid date check and set value
         let ssDate = $('#coach-dash-ssExpDate').val()
         if (ssDate != 'X') {
-          return $('#coach-dash-ssExpDate').val(data.ssExpDate)
+          $('#coach-dash-ssExpDate').val(data.ssExpDate)
         }
 
 
