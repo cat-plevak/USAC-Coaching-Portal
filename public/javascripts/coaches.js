@@ -1,5 +1,5 @@
 $(document).ready(() => {
-
+  console.log("the coaches.js is loaded")
   if (document.location.href.match(/coach\/home/)) {
 
     console.log('this is the coaches home page');
@@ -96,14 +96,19 @@ $(document).ready(() => {
 
     // WIDGET BUTTONS //
 
-
+    $.cloudinary.config({
+      cloud_name: 'usa-climbing-coaching-portal',
+      api_key: '496724254771919',
+    })
 
     let CprFileButton = $('#CprFileButton')
     let FaFileButton = $('#FaFileButton')
     let SsFileButton = $('#SsFileButton')
 
-    // Upload button event
+    // CPR Upload button event
     CprFileButton.on('click', function(e) {
+      e.stopPropagation()
+      e.preventDefault()
       // Initiate upload
       cloudinary.openUploadWidget({
           cloud_name: 'usa-climbing-coaching-portal',
@@ -111,20 +116,18 @@ $(document).ready(() => {
           tags: ['cgal']
         },
         function(error, result) {
-          if (error) console.log(error);
+          if (error) console.log(error)
           // If NO error, log image data to console
-          var id = result[0].public_id;
-          console.log(processImage(id));
-        });
-    });
-
+          var id = result[0].public_id
+          console.log(processImage(id))
+        })
+    })
 
     function processImage(id) {
       var options = {
         client_hints: true,
-      };
+      }
       return $.cloudinary.url(id, options)
-      // return '<img src="' + $.cloudinary.url(id, options) + '" style="width: 100%; height: auto"/>';
     }
 
     // END WIDGET BUTTONS //
