@@ -1,8 +1,8 @@
 $(document).ready(() => {
-
+  console.log('coaches SJ file loaded')
   if (document.location.href.match(/coach\/home/)) {
     let string = window.location.href
-    let id = string.substring(string.lastIndexOf('/')+1, string.length)
+    let id = string.substring(string.lastIndexOf('/') + 1, string.length)
 
     // grab information from the api with the id from token
     $.getJSON(`../../api/coaches/${id}`).then(data => {
@@ -16,8 +16,7 @@ $(document).ready(() => {
       // change certifed status from true/false to words
       if (data.isCertified == true) {
         $('#coach-dash-is_certified').html('<h4 style="color:green;">You are a USAC CERTIFIED COACH!</h4>')
-      }
-      else {
+      } else {
         $('#coach-dash-is_certified').html('<h4 style="color:red;">You are NOT certified</h4>')
       }
 
@@ -54,27 +53,27 @@ $(document).ready(() => {
         let ssExpDate = $('#coach-dash-ssExpDate').val()
 
         const options = {
-              contentType: 'application/json',
-              data: JSON.stringify({
-                firstName,
-                lastName,
-                teamName,
-                usacMembership,
-                cprExpDate,
-                faExpDate,
-                ssExpDate
-              }),
-              dataType: 'json',
-              type: 'PATCH',
-              url: `../../api/coaches/${id}`
-            }
+          contentType: 'application/json',
+          data: JSON.stringify({
+            firstName,
+            lastName,
+            teamName,
+            usacMembership,
+            cprExpDate,
+            faExpDate,
+            ssExpDate
+          }),
+          dataType: 'json',
+          type: 'PATCH',
+          url: `../../api/coaches/${id}`
+        }
 
         $.ajax(options)
           .done(res => {
             $('#hidden-pop').removeClass('hidden')
             $('#hidden-pop').on('animationend', () => {
 
-              setTimeout(function () {
+              setTimeout(function() {
                 $('#hidden-pop').addClass('hidden')
               }, 1100);
             })
@@ -82,10 +81,10 @@ $(document).ready(() => {
           .fail((err, res) => {
             window.location.href = '../../error'
           })
-      // end of update button click function
+        // end of update button click function
       })
 
-    // end of api call for individual coach
+      // end of api call for individual coach
     })
 
     // WIDGET BUTTONS //
@@ -164,8 +163,8 @@ $(document).ready(() => {
 
     // END WIDGET BUTTONS //
 
-  //end of if window location matches coaches home
+    //end of if window location matches coaches home
   }
 
-// end of document ready call
+  // end of document ready call
 })
