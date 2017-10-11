@@ -21,10 +21,6 @@ $(document).ready(() => {
         $('#coach-dash-usacmem').val(data.usacMembership)
 
         // change certifed status from true/false to words
-        // console.log(data.isCertified);
-        // console.log($('#coach-dash-is_certified').html('<h4 style="color:green;">You are a USAC CERTIFIED COACH!</h4>'));
-        // console.log(status);
-        // $('#coach-dash-is_certified').val('You are a USAC CERTIFIED COACH!')
         if (data.isCertified == true) {
           $('#coach-dash-is_certified').html('<h4 style="color:green;">You are a USAC CERTIFIED COACH!</h4>')
         }
@@ -49,18 +45,13 @@ $(document).ready(() => {
           $('#coach-dash-ssExpDate').val(data.ssExpDate)
         }
 
-
+        
 
 
       })
-
-
-
+// #coach-dash-update-button
     })
 
-
   }
-
-
 
 })
