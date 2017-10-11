@@ -11,14 +11,18 @@ a {
 
 /*sticky footer styling*/
 body {
+  flex: 1
   display: flex;
   flex-direction: column;
 }
 .content {
-  flex: 1 0 auto;
+  flex-basis: 1 0 auto;
+  height: 100%;
 }
 
+
 .container-fluid{
+  margin: 0px;
   padding: 0px;
 }
 
