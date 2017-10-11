@@ -26,6 +26,7 @@ router.get('/admins', (_req, res, next) => {
 
 // post a new admin to users table
 router.post('/admins', (_req, res, next) => {
+<<<<<<< HEAD
 
   const {
     username,
@@ -34,4 +35,8 @@ router.post('/admins', (_req, res, next) => {
 
   console.log("\n the USERS request body is : ", req.body)
 
+=======
+>>>>>>> ddbe8227862809d3eebfe21d68820b9f29d91789
 })
+
+module.exports = router

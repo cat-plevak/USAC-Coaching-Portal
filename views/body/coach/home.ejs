@@ -22,33 +22,33 @@
   <div class="row">
     <div class="col-md-5 mb-3">
       <label for="validationCustom02">Email</label>
-      <input type="text" name="username" class="form-control" id="email" placeholder="email" required>
+      <input id="coach-dash-email" type="text" name="username" class="form-control" placeholder="email" required>
     </div>
     <div class="col-md-5 mb-3">
       <label for="validationCustom02">Password</label>
-      <input type="password" name="password" class="form-control" id="password" placeholder="password" required>
+      <input id="coach-dash-password" type="password" name="password" class="form-control" placeholder="password" required>
     </div>
   </div>
   <h3>General Information</h3>
   <div class="row">
     <div class="col-md-5 mb-3">
       <label for="validationCustom01">First name</label>
-      <input type="text" name="first_name" class="form-control" id="firstName" placeholder="First name" required>
+      <input id="coach-dash-firstname" type="text" name="first_name" class="form-control" placeholder="First name" required>
     </div>
     <div class="col-md-5 mb-3">
       <label for="validationCustom02">Last name</label>
-      <input type="text" name="last_name" class="form-control" id="lastName" placeholder="Last name" required>
+      <input id="coach-dash-lastname" type="text" name="last_name" class="form-control" placeholder="Last name" required>
     </div>
   </div>
   <br>
   <div class="row">
     <div class="col-md-5 mb-3">
       <label for="validationCustom03">Team name</label>
-      <input type="text" name="team_name" class="form-control" id="teamName" placeholder="Team Name" required>
+      <input id="coach-dash-teamname" type="text" name="team_name" class="form-control" placeholder="Team Name" required>
     </div>
     <div class="col-md-5 mb-3">
       <label for="validationCustom03">USAC Membership Number</label>
-      <input type="text" name="usac_membership" class="form-control" id="usacMembership" placeholder="USAC Membership Number" required>
+      <input id="coach-dash-usacmem" type="text" name="usac_membership" class="form-control" placeholder="USAC Membership Number" required>
     </div>
   </div>
   <h3>Required Document Uploads</h3>
@@ -57,7 +57,7 @@
       <label for="exampleInputFile">CPR Certification and Expiration Date</label>
       <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
       <small id="fileHelp" class="form-text text-muted">Please upload the proper documentation and input the expiration date of your certification.</small>
-      <input type="text" name="cpr_exp_date" class="form-control" id="cprExpDate" placeholder="mm/dd/yyyy">
+      <input type="text" name="cpr_exp_date" class="form-control" id="coach-dash-cprExpDate" placeholder="mm/dd/yyyy">
     </div>
   </div>
   <br>
@@ -66,7 +66,7 @@
       <label for="exampleInputFile">First Aid Certification and Expiration Date</label>
       <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
       <small id="fileHelp" class="form-text text-muted">Please upload the proper documentation and input the expiration date of your certification.</small>
-      <input type="text" name="fa_exp_date" class="form-control" id="faExpDate" placeholder="mm/dd/yyyy">
+      <input type="text" name="fa_exp_date" class="form-control" id="coach-dash-faExpDate" placeholder="mm/dd/yyyy">
     </div>
   </div>
   <br>
@@ -78,13 +78,13 @@
       <input type="text" name="ss_exp_date" class="form-control" id="ssExpDate" placeholder="mm/dd/yyyy">
     </div>
   </div>
-  <button id="updateUser" class="btn btn-primary" type="submit">Update</button>
+  <button id="coach-dash-update-button" class="btn btn-primary" type="submit">Update</button>
 </form>
 
 
 <div class="card text-center container" style="width: 20rem;">
   <div class="card-block">
     <h4 class="card-title">Current Status</h4>
-    <p class="card-text" id="is_certified"></p>
+    <p class="card-text" id="coach-dash-is_certified"></p>
   </div>
 </div>
