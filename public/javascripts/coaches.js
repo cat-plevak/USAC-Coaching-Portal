@@ -78,6 +78,14 @@ $(document).ready(() => {
 
           $.ajax(options)
             .done(res => {
+              $('#hidden-pop').removeClass('hidden')
+              $('#hidden-pop').on('animationend', () => {
+
+                setTimeout(function () {
+                  $('#hidden-pop').addClass('hidden')
+                }, 1100);
+
+              })
               console.log('res from ajax call ', res);
             })
             .fail((err, res) => {
