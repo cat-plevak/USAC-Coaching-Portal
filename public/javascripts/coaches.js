@@ -122,8 +122,9 @@ $(document).ready(() => {
           console.log(processImage(id))
 
           let cprLink = processImage(id)
+
           // MAKE THE AJAX PATCH CALL TO UDATE THE DB
-          const options = {
+          const cprOptions = {
             contentType: 'application/json',
             data: JSON.stringify({
               cprLink
@@ -132,6 +133,14 @@ $(document).ready(() => {
             type: 'PATCH',
             url: `../../api/coaches/${userId}`
           }
+          $.ajax(cprOptions)
+            .done((res) => {
+              console.log('DONE WITH FILE LINK THE PATCH TO DB')
+            }).fail((err, res) => {
+              window.location.href = '../../error'
+            })
+
+          //next ajax call
 
         })
     })

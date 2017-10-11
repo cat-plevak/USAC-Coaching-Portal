@@ -195,6 +195,8 @@ router.patch('/:id', (req, res, next) => {
         usacMembership,
         isCertified,
         cprLink,
+        faLink,
+        ssLink,
       } = camelizeKeys(req.body)
 
       const updateCaoch = {}
@@ -226,6 +228,15 @@ router.patch('/:id', (req, res, next) => {
       }
       if (isCertified) {
         updateCaoch.isCertified = isCertified
+      }
+      if (cprLink) {
+        updateCaoch.cprLink = cprLink
+      }
+      if (faLink) {
+        updateCaoch.cprLink = cprLink
+      }
+      if (ssLink) {
+        updateCaoch.cprLink = cprLink
       }
 
       return knex('coaches')
