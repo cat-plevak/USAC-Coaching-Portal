@@ -5,7 +5,7 @@ $(document).ready(() => {
     console.log('this is the coaches home page');
     // grab the information from the token, saved during login
     // look up json web token javascript library
-      // verify token and get payload...
+    // verify token and get payload...
     $.getJSON('/token/token').then(data => {
       let id = data.userId
       console.log(data.userId);
@@ -23,8 +23,7 @@ $(document).ready(() => {
         // change certifed status from true/false to words
         if (data.isCertified == true) {
           $('#coach-dash-is_certified').html('<h4 style="color:green;">You are a USAC CERTIFIED COACH!</h4>')
-        }
-        else {
+        } else {
           $('#coach-dash-is_certified').html('<h4 style="color:red;">You are NOT certified</h4>')
         }
 
@@ -61,27 +60,27 @@ $(document).ready(() => {
           let ssExpDate = $('#coach-dash-ssExpDate').val()
 
           const options = {
-                contentType: 'application/json',
-                data: JSON.stringify({
-                  firstName,
-                  lastName,
-                  teamName,
-                  usacMembership,
-                  cprExpDate,
-                  faExpDate,
-                  ssExpDate
-                }),
-                dataType: 'json',
-                type: 'PATCH',
-                url: `../../api/coaches/${id}`
-              }
+            contentType: 'application/json',
+            data: JSON.stringify({
+              firstName,
+              lastName,
+              teamName,
+              usacMembership,
+              cprExpDate,
+              faExpDate,
+              ssExpDate
+            }),
+            dataType: 'json',
+            type: 'PATCH',
+            url: `../../api/coaches/${id}`
+          }
 
           $.ajax(options)
             .done(res => {
               $('#hidden-pop').removeClass('hidden')
               $('#hidden-pop').on('animationend', () => {
 
-                setTimeout(function () {
+                setTimeout(function() {
                   $('#hidden-pop').addClass('hidden')
                 }, 1100);
 
@@ -91,14 +90,45 @@ $(document).ready(() => {
             .fail((err, res) => {
               window.location.href = '../../error'
             })
-
-
-
         })
-
-
       })
     })
-  }
 
-})
+    // WIDGET BUTTONS //
+
+
+
+    let CprFileButton = $('#CprFileButton')
+    let FaFileButton = $('#FaFileButton')
+    let SsFileButton = $('#SsFileButton')
+
+    // Upload button event
+    CprFileButton.on('click', function(e) {
+      // Initiate upload
+      cloudinary.openUploadWidget({
+          cloud_name: 'usa-climbing-coaching-portal',
+          upload_preset: 'USACcoach',
+          tags: ['cgal']
+        },
+        function(error, result) {
+          if (error) console.log(error);
+          // If NO error, log image data to console
+          var id = result[0].public_id;
+          console.log(processImage(id));
+        });
+    });
+
+
+    function processImage(id) {
+      var options = {
+        client_hints: true,
+      };
+      return $.cloudinary.url(id, options)
+      // return '<img src="' + $.cloudinary.url(id, options) + '" style="width: 100%; height: auto"/>';
+    }
+
+    // END WIDGET BUTTONS //
+
+  } // end of IF statement for window location
+
+}) // document ready function
