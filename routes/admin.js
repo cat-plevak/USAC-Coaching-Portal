@@ -43,7 +43,8 @@ router.get('/admins', isAuth, (req, res, next) => {
 })
 
 // send admin to home dashboard
-router.get('/:id', isAuth, (req, res, next) => {
+router.get('/home/:id', isAuth, (req, res, next) => {
+  console.log('hello from coach route', req.params.id);
   res.render('body/admin/home', { title: 'Admin Dash', _layoutFile: 'layout-logout.ejs' })
 })
 

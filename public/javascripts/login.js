@@ -40,10 +40,14 @@ $(document).ready(function(){
           // check to see if user is admin
           if (res.isAdmin == false) {
             console.log('res from login: ', res.id);
+            console.log('res: ', res);
             window.location.href = `/coach/home/${res.id}`
           }
           else if (res.isAdmin == true) {
-            window.location.href = '/admin/home'
+            console.log('res from login: ', res.id);
+            console.log('res: ', res);
+            window.location.href = `/admin/home/${res.id}`
+            // window.location.href = '/admin/home'
           }
         }
       })
