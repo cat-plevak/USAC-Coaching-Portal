@@ -12,6 +12,7 @@ const isAuth = (req, res, next) => {
   jwt.verify(req.cookies.token, SECRET, (err, payload) => {
     if (err) {
       console.log('err, token incorrect: ', err);
+      // check payload for admin status
       return res.render('body/badinfo', {
         title: 'Error',
         _layoutFile: 'layout.ejs'

@@ -46,6 +46,7 @@ router.get('/token', function(req, res, next) {
 })
 
 // create new token during login
+// set expiration time or cookie session...
 router.post('/', (req, res, next) => {
   let user;
 

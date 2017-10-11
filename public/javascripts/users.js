@@ -6,6 +6,8 @@ $(document).ready(() => {
 
     let data = $('#newUserForm').serialize()
 
+    // token post to create a token 
+
     console.log("this is the newUser data: ", data)
     $.post("/api/coaches", data, null, 'json').then((data) => {
       console.log("POSTED data", data);
