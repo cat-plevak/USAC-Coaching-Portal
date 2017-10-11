@@ -39,7 +39,8 @@ $(document).ready(function(){
         if (res.username != undefined) {
           // check to see if user is admin
           if (res.isAdmin == false) {
-            window.location.href = '/coach/home'
+            console.log('res from login: ', res.id);
+            window.location.href = `/coach/home/${res.id}`
           }
           else if (res.isAdmin == true) {
             window.location.href = '/admin/home'

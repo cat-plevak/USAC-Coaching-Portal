@@ -12,8 +12,9 @@ const router = express.Router()
 
 // STANDARD CURL ROUTES
 
-// admin homepage view pending coaches
-router.get('/home', (_req, res, next) => {
+router.get('/home/:id', (_req, res, next) => {
+  console.log('req params from coaches api: ', req.params.id);
+
   knex('coaches')
     .orderBy('last_name', 'ASC')
     .where('is_certified', false)
