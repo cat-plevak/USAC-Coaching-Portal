@@ -97,7 +97,7 @@ $(document).ready(() => {
           <td>${admin.username}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary deleteBtn" data-id="${user.id}">Delete</button>
+              <button type="button" class="btn btn-secondary deleteBtn" data-id="${admin.id}">Delete</button>
             </div>
           </td>
         </tr>`)
