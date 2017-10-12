@@ -116,8 +116,10 @@ $(document).ready(() => {
       // change certifed status from true/false to words
       if (data.isCertified == true) {
         $('#admin-coach-dash-is_certified').html('<h4 style="color:green;">USAC CERTIFIED</h4>')
+        $('#certification_status').html('<button type="button" class="btn" style="float:right">Uncertify</button>')
       } else {
         $('#admin-coach-dash-is_certified').html('<h4 style="color:red;">NOT CERTIFIED</h4>')
+        $('#certification_status').html('<button type="button" class="btn" style="float:right">Certify</button>')
       }
 
       // date form fields, check to see if value is null
@@ -136,6 +138,9 @@ $(document).ready(() => {
       if (ssDate != 'X') {
         $('#admin-coach-dash-ssExpDate').val(data.ssExpDate)
       }
+
+      //listen for click on certify/uncertify button
+
       // listen for click on update button
       $('#admin-coach-updateUser').click((e) => {
         e.preventDefault()
@@ -209,7 +214,7 @@ $(document).ready(() => {
     })
   }
 
-  // listen to delete buttons
+  // listen to delete button in admin table
   $('#currentAdmin tbody').on('click', '.deleteBtn', (e) => {
     console.log("you want to delete...", $(e.target).data('id'));
     let id = $(e.target).data('id')
@@ -225,6 +230,7 @@ $(document).ready(() => {
     }
   })
 
+  //listen to add admin button
   $('#newAdminForm').submit((e) => {
     e.preventDefault()
 
