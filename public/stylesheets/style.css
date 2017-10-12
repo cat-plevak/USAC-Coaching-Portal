@@ -117,6 +117,36 @@ button:hover {
   color: white;
 }
 
+#hero-overlay-div {
+  width: 600px;
+  max-width: 600px;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  margin-right: 150px;
+  margin-top: 30px;
+  padding: 25px;
+}
+
+#hero-title {
+  margin-bottom: 30px;
+  color: #E40F31;
+  font-size: 30px;
+}
+
+.date-div {
+  width: 40%;
+  padding-right: 20px;
+}
+
+.description-div {
+  width: 60%;
+}
+
+.event-div {
+  margin-top: 15px;
+}
+
 #registration-button {
   background-color: #E40F31;
   color: white;
