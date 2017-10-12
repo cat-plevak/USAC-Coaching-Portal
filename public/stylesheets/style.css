@@ -15,6 +15,10 @@ html, body {
   color: white;
 }
 
+.btn:hover {
+  background-color: #adadad;
+}
+
 /*form-button-text {
   text-decoration: none !important;
   color: white !important;
@@ -194,6 +198,19 @@ form-button-text:hover {
   color: white;
 }
 
+#coach-dash-update-button {
+  background-color: #E40F31;
+  color: white;
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+}
+
+#coach-dash-update-button:hover {
+  background-color: #9D0720;
+  color: white;
+}
+
 #hero-overlay-div {
   width: 600px;
   max-width: 600px;
@@ -209,6 +226,10 @@ form-button-text:hover {
   margin-bottom: 30px;
   color: #E40F31;
   font-size: 30px;
+}
+
+#coach-dash-form {
+  padding-left: 100px;
 }
 
 .date-div {

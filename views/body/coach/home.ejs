@@ -29,41 +29,52 @@
       </div>
     </div>
     <h3 class="add-top-margin bottom-pad-20">Required Document Uploads</h3>
-    <div class="row">
+
+    <div class="row bottom-pad-20">
       <div class="col-md-5 mb-3, form-group">
         <div>
           <label for="CprFileButton">CPR Certification and Expiration Date</label>
         </div>
 
         <!-- <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"> -->
-        <button id="CprFileButton">CPR File</button>
+        <button id="CprFileButton" class="btn">CPR File</button>
 
         <small id="fileHelp" class="form-text text-muted bottom-pad-10">Please upload the proper documentation and input the expiration date of your certification.</small>
         <input id="coach-dash-cprExpDate" type="text" name="cpr_exp_date" class="form-control" placeholder="mm/dd/yyyy">
       </div>
     </div>
-    <br>
-    <div class="row">
+
+
+
+    <div class="row bottom-pad-20">
       <div class="col-md-5 mb-3, form-group">
-        <label for="FaFileButton">First Aid Certification and Expiration Date</label>
-        <!-- <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"> -->
-        <button id="FaFileButton">First Aid File</button>
-        <br>
-        <small id="fileHelp" class="form-text text-muted">Please upload the proper documentation and input the expiration date of your certification.</small>
+        <div class="">
+          <label for="FaFileButton">First Aid Certification and Expiration Date</label>
+        </div>
+
+        <button id="FaFileButton" class="btn">First Aid File</button>
+
+        <small id="fileHelp" class="form-text text-muted bottom-pad-10">Please upload the proper documentation and input the expiration date of your certification.</small>
         <input id="coach-dash-faExpDate" type="text" name="fa_exp_date" class="form-control" placeholder="mm/dd/yyyy">
       </div>
     </div>
-    <br>
-    <div class="row">
+
+
+    <div class="row bottom-pad-20">
       <div class="col-md-5 mb-3, form-group">
-        <label for="SsFileButton">Safe Sport Certification and Expiration Date</label>
-        <!-- <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"> -->
-        <button id="SsFileButton">Safe Sport File</button>
-        <br>
+        <div class="">
+          <label for="SsFileButton">Safe Sport Certification and Expiration Date</label>
+        </div>
+
+
+        <button id="SsFileButton" class="btn">Safe Sport File</button>
+
         <small id="fileHelp" class="form-text text-muted">Please upload the proper documentation and input the expiration date of your certification.</small>
         <input id="coach-dash-ssExpDate" type="text" name="ss_exp_date" class="form-control" placeholder="mm/dd/yyyy">
       </div>
     </div>
+
+    
     <button id="coach-dash-update-button" class="btn" type="submit">UPDATE</button>
   </form>
 
