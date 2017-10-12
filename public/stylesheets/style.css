@@ -2,12 +2,13 @@
 html, body {
   padding: 0px;
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0px;
   /*height: 100%;*/
 }
 
-a {
+/*a {
   color: #00B7FF;
-}
+}*/
 
 /*sticky footer styling*/
 /*body {
@@ -28,10 +29,13 @@ button:hover {
   color: white;
 }*/
 
-.content {
+.bottom-pad-20 {
+  margin-bottom: 30px;
+}
+/*.content {
   flex-basis: 1 0 auto;
   height: 100%;
-}
+}*/
 
 
 .container-fluid{
@@ -217,13 +221,14 @@ button:hover {
 
 /*home.ejs styling*/
 .business-header {
-    /*height: 75vh;*/
-    min-height: 500px;
-    background: url("../img/margo-hero.jpg") center center no-repeat scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+  /*height: 75vh;*/
+  min-height: 500px;
+  background: url("../img/margo-hero.jpg") center center no-repeat scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  margin-bottom: 50px;
 }
 
 .footer-overwrite {
