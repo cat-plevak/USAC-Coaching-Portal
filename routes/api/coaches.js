@@ -164,6 +164,7 @@ router.post('/', (req, res, next) => {
       res.send(camelizeKeys(row[0]))
     })
     .catch((err) => {
+      console.log('THERE WAS AN ERROR WITH API', err);
       next(err)
     })
 

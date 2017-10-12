@@ -30,20 +30,6 @@ router.get('/', function(req, res, next) {
   })
 })
 
-// provides information from the token to coaches & admin javascripts
-// router.get('/token', function(req, res, next) {
-//   let token = req.cookies.token
-//
-//   jwt.verify(token, SECRET, function(err, decoded) {
-//     if (decoded) {
-//     res.send(decoded)
-//     }
-//     else {
-//     res.send({})
-//     }
-//   })
-// })
-
 // create new token during login
 // set expiration time or cookie session...
 router.post('/', (req, res, next) => {
@@ -61,7 +47,6 @@ router.post('/', (req, res, next) => {
       // if email is good, check password
       else if (row != undefined) {
         user = camelizeKeys(row);
-        console.log('THIS IS THE USER ROW!!!', user);
 
         bcrypt.compare(req.body.password, user.hashedPassword, function(err, rep) {
           // if password doesn't match, send to bad info page
@@ -75,16 +60,6 @@ router.post('/', (req, res, next) => {
               userId: user.id,
               isAdmin: user.isAdmin
             }, SECRET)
-
-            // jwt.verify(token, SECRET, function(err, decoded) {
-            //   if (decoded) {
-            //     console.log('this is the token from token route:', decoded);
-            //   }
-            //   else {
-            //   console.log('something is not working!!');
-            //   }
-            // })
-
 
             res.cookie('token', token, {
               httpOnly: true,
@@ -100,6 +75,56 @@ router.post('/', (req, res, next) => {
     })
 })
 
+// create a new token on sign up
+router.post('/register', (req, res, next) => {
+  let user;
 
+  // encrypt password from request
+
+  // create a new token with user id and is admin
+
+
+
+
+
+  // check to see if email/user exists in database
+  knex('users')
+    .where('username', req.body.email)
+    .first()
+    .then((row) => {
+      // if email doesn't exist, reroute to error page
+      if (!row) {
+        res.send({})
+      }
+      // if email is good, check password
+      else if (row != undefined) {
+        user = camelizeKeys(row);
+
+        bcrypt.compare(req.body.password, user.hashedPassword, function(err, rep) {
+          // if password doesn't match, send to bad info page
+          if (!rep) {
+            res.send({})
+
+          // if password matches email, create cookie token
+          } else {
+
+            const token = jwt.sign({
+              userId: user.id,
+              isAdmin: user.isAdmin
+            }, SECRET)
+
+            res.cookie('token', token, {
+              httpOnly: true,
+              expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
+              secure: router.get('env') === 'production'
+            })
+            // remove password from response
+            delete user.hashedPassword;
+            res.send(user);
+          }
+        })
+      }
+    })
+})
 
 module.exports = router;
