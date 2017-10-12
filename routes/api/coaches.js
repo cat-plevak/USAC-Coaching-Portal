@@ -59,7 +59,7 @@ router.get('/:id', (req, res, next) => {
   }
 
   knex('coaches')
-    .where('id', id)
+    .where('user_id', id)
     .first()
     .then((row) => {
       if (!row) {
@@ -67,7 +67,7 @@ router.get('/:id', (req, res, next) => {
       }
 
       return knex('coaches')
-        .where('id', id)
+        .where('user_id', id)
         .first()
         .then((coach) => {
           res.send(camelizeKeys(coach))
@@ -178,7 +178,7 @@ router.patch('/:id', (req, res, next) => {
   }
 
   knex('coaches')
-    .where('id', id)
+    .where('user_id', id)
     .first()
     .then((coach) => {
       if (!coach) {
@@ -242,7 +242,7 @@ router.patch('/:id', (req, res, next) => {
 
       return knex('coaches')
         .update(decamelizeKeys(updateCaoch), '*')
-        .where('id', id)
+        .where('user_id', id)
     })
     .then((rows) => {
       const coach = camelizeKeys(rows[0])
@@ -264,7 +264,7 @@ router.delete('/:id', (req, res, next) => {
   let coach
 
   knex('coaches')
-    .where('id', id)
+    .where('user_id', id)
     .first()
     .then((row) => {
       if (!row) {
@@ -275,7 +275,7 @@ router.delete('/:id', (req, res, next) => {
 
       return knex('coaches')
         .del()
-        .where('id', id)
+        .where('user_id', id)
     })
     .then(() => {
       res.send(coach)
