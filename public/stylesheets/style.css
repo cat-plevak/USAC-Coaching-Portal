@@ -28,6 +28,11 @@ form-button-text:hover {
   max-height: 350px;
 }
 
+.modal {
+  width: 800px;
+  min-width: 600px;
+}
+
 .bottom-pad-20 {
   margin-bottom: 30px;
 }
