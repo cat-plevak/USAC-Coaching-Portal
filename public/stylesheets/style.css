@@ -2,12 +2,8 @@ html, body {
   padding: 0px;
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0px;
-  min-height: 600px;
+  min-height: 900px;
 }
-
-/*a {
-  text-decoration: underline;
-}*/
 
 .btn {
   border-radius: 0px;
@@ -18,16 +14,6 @@ html, body {
 .btn:hover {
   background-color: #adadad;
 }
-
-/*form-button-text {
-  text-decoration: none !important;
-  color: white !important;
-}
-
-form-button-text:hover {
-  text-decoration: none !important;
-  color: white !important;
-}*/
 
 .card {
   max-height: 250px;
@@ -69,10 +55,6 @@ form-button-text:hover {
   padding-top: 10px;
   background-color: rgb(0, 0, 0);
   border-bottom: 3px white solid;
-}
-
-#logo-div {
-  /*padding-top: 20px;*/
 }
 
 #logo-image {
@@ -207,6 +189,19 @@ form-button-text:hover {
 }
 
 #coach-dash-update-button:hover {
+  background-color: #9D0720;
+  color: white;
+}
+
+#reg-newcoach-button {
+  background-color: #E40F31;
+  color: white;
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+}
+
+#reg-newcoach-button:hover {
   background-color: #9D0720;
   color: white;
 }
@@ -366,4 +361,5 @@ form-button-text:hover {
 
 #newUserForm {
   margin-top: 50px;
+  padding-left: 100px;
 }
