@@ -185,6 +185,7 @@ router.patch('/:id', (req, res, next) => {
         return next(boom.create(404, 'Coach Not Found'))
       }
 
+      console.log("this is the patch request body, " + req.body)
       const {
         lastName,
         firstName,

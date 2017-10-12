@@ -101,7 +101,6 @@ $(document).ready(() => {
     // grab information from the api with the id from token
     $.getJSON(`../../api/coaches/${id}`).then(data => {
       console.log('data from api: ', data);
-      console.log('certified or not', data.isCertified);
       // set the form values to match the database info
       $('.admin-coach-header-first_name').html(data.firstName + "'s Coaching Profile")
       $('#admin-coach-dash-firstname').val(data.firstName)
@@ -116,8 +115,10 @@ $(document).ready(() => {
       // change certifed status from true/false to words
       if (data.isCertified == true) {
         $('#admin-coach-dash-is_certified').html('<h4 style="color:green;">USAC CERTIFIED</h4>')
+        $('#certification_status').html('<button type="button" class="btn" style="float:right">Uncertify</button>')
       } else {
         $('#admin-coach-dash-is_certified').html('<h4 style="color:red;">NOT CERTIFIED</h4>')
+        $('#certification_status').html('<button type="button" class="btn" style="float:right">Certify</button>')
       }
 
       // date form fields, check to see if value is null
@@ -136,6 +137,43 @@ $(document).ready(() => {
       if (ssDate != 'X') {
         $('#admin-coach-dash-ssExpDate').val(data.ssExpDate)
       }
+
+      //listen for click on certify/uncertify button
+      $('#certification_status').click((e) => {
+        e.preventDefault()
+
+        //change cert status
+        let status
+        if(data.isCertified == true) {
+          status = 'false'
+        } else if(data.isCertified == false){
+          status = 'true'
+        }
+
+        console.log(status)
+
+
+        const newCertStatus = {
+          contentType: 'application/json',
+          data: JSON.stringify({
+            isCertified: status
+          }),
+          dataType: 'json',
+          type: 'PATCH',
+          url: `../../api/coaches/${id}`
+        }
+
+        $.ajax(newCertStatus)
+          .done(res => {
+            window.location.href = `/admin/${id}/edit`
+          })
+
+        //   .fail((err) => {
+        //   window.location.href = '../../error'
+        // })
+      })
+
+
       // listen for click on update button
       $('#admin-coach-updateUser').click((e) => {
         e.preventDefault()
@@ -209,7 +247,7 @@ $(document).ready(() => {
     })
   }
 
-  // listen to delete buttons
+  // listen to delete button in admin table
   $('#currentAdmin tbody').on('click', '.deleteBtn', (e) => {
     console.log("you want to delete...", $(e.target).data('id'));
     let id = $(e.target).data('id')
@@ -220,13 +258,12 @@ $(document).ready(() => {
           dataType: 'json'
         })
         .done(data => {
-          $(e.target).closest('tr').hide()
           console.log("deleted", data)
-          window.location.href = '/admin/admins'
-        })
+        }).fail(window.location.href= '/admin/admins')
     }
   })
 
+  //listen to add admin button
   $('#newAdminForm').submit((e) => {
     e.preventDefault()
 
