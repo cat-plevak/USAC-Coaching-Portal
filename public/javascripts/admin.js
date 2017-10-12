@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  console.log('document ready!')
+  console.log('admin document ready!')
 
   // populate certified coaches table in certified view
   if (document.location.href.match(/certified$/)) {
