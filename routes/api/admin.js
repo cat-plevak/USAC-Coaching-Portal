@@ -24,6 +24,39 @@ router.get('/admins', (req, res, next) => {
     })
 })
 
+router.delete('/:id', (req, res, next) => {
+  const id = Number.parseInt(req.params.id)
+
+  if (Number.isNaN(id)) {
+    return next()
+  }
+
+  let admin
+
+  knex('users')
+    .where('id', id)
+    .first()
+    .then((row) => {
+      if (!row) {
+        throw boom.create(404, 'Not Found')
+      }
+
+      student = row
+
+      return knex('users')
+        .del()
+        .where('id', id)
+    })
+    .then(() => {
+      delete admin.id
+
+      res.send(admin)
+    })
+    .catch((err) => {
+      next(err)
+    })
+})
+
 
 // post a new admin to users table and refresh current admin table
 router.post('/', (req, res, next) => {
@@ -68,5 +101,7 @@ router.post('/', (req, res, next) => {
     })
     .catch((err) => next(err))
 })
+
+
 
 module.exports = router
