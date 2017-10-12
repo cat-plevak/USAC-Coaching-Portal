@@ -21,7 +21,7 @@ $(document).ready(() => {
           <td>${coach.isCertified}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary"><a href="/admin/${coach.id}/edit">Edit</a></button>
+              <button type="button" class="btn btn-secondary"><a href="/admin/${coach.userId}/edit">Edit</a></button>
             </div>
           </td>
         </tr>`))
@@ -49,7 +49,7 @@ $(document).ready(() => {
           <td>${coach.isCertified}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary"><a href="/admin/${coach.id}/edit">Edit</a></button>
+              <button type="button" class="btn btn-secondary"><a href="/admin/${coach.userId}/edit">Edit</a></button>
             </div>
           </td>
         </tr>`))
@@ -77,7 +77,7 @@ $(document).ready(() => {
           <td>${coach.isCertified}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary"><a href="/admin/${coach.id}/edit">Edit</a></button>
+              <button type="button" class="btn btn-secondary"><a href="/admin/${coach.userId}/edit">Edit</a></button>
             </div>
           </td>
         </tr>`))
