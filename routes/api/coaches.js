@@ -51,6 +51,9 @@ router.get('/pending', (req, res, next) => {
     })
 })
 
+
+
+// get specific coach
 router.get('/:id', (req, res, next) => {
   const id = Number(req.params.id)
 
@@ -58,8 +61,9 @@ router.get('/:id', (req, res, next) => {
     return next(boom.create(400, 'id must be a number'))
   }
 
+
   knex('coaches')
-    .where('id', id)
+    .where('user_id', id)
     .first()
     .then((row) => {
       if (!row) {
@@ -67,7 +71,7 @@ router.get('/:id', (req, res, next) => {
       }
 
       return knex('coaches')
-        .where('id', id)
+        .where('user_id', id)
         .first()
         .then((coach) => {
           res.send(camelizeKeys(coach))
