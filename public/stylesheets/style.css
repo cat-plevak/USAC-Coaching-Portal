@@ -100,16 +100,11 @@ body {
   color: #474747;
 }
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+#login-email::placeholder {
   color: #474747;
 }
-::-moz-placeholder { /* Firefox 19+ */
-  color: #474747;
-}
-:-ms-input-placeholder { /* IE 10+ */
-  color: #474747;
-}
-:-moz-placeholder { /* Firefox 18- */
+
+#login-pass::placeholder {
   color: #474747;
 }
 
