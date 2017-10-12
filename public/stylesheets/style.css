@@ -280,15 +280,18 @@ html, body {
   width: 500px;
   padding: 15px;
   position: absolute;
-  background-color: #dedede;
-  z-index: 10;
+  /*background-color: white;*/
+  z-index: 50;
   text-align: center;
   top: 0;
   bottom: -100%;
-  left: 0;
-  right: 0;
+  /*left: 100;*/
+  right: 200;
   margin: auto;
-  border: 2px black solid;
+  border: none;
+  -webkit-box-shadow: 7px 6px 29px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 6px 29px 1px rgba(0,0,0,0.75);
+  box-shadow: 7px 6px 29px 1px rgba(0,0,0,0.75);
   animation-duration: 1s;
   animation-name: pop;
 }
@@ -302,6 +305,10 @@ html, body {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+#youdidit-image {
+  max-width: 300px;
 }
 
 /*#hero-container {
