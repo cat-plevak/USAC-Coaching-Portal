@@ -1,12 +1,14 @@
-<div class="container">
+<div class="container add-top-margin">
   <h1 class="text-center bottom-pad-20">Welcome <span>to your Dashboard</span></h1>
   <h5 class="text-center">USA CLIMBING COACH CERTIFICATION STATUS:</h5>
-  <div id="coach-dash-is_certified" class="bottom-pad-20 text-center"></div>
-  <h4></h4>
+  <div class="row bottom-pad-20">
+    <div id="coach-dash-is_certified" class="col align-self-center text-center"></div>
+  </div>
+
 
   <form id="coach-dash-form" novalidate>
     <h3>General Information</h3>
-    <div class="row bottom-pad-20">
+    <div class="row">
       <div class="col-md-5 mb-3">
         <label for="validationCustom01">First name</label>
         <input id="coach-dash-firstname" type="text" name="first_name" class="form-control" placeholder="First name" required>
@@ -26,14 +28,17 @@
         <input id="coach-dash-usacmem" type="text" name="usac_membership" class="form-control" placeholder="USAC Membership Number" required>
       </div>
     </div>
-    <h3>Required Document Uploads</h3>
+    <h3 class="add-top-margin bottom-pad-20">Required Document Uploads</h3>
     <div class="row">
       <div class="col-md-5 mb-3, form-group">
-        <label for="CprFileButton">CPR Certification and Expiration Date</label>
+        <div>
+          <label for="CprFileButton">CPR Certification and Expiration Date</label>
+        </div>
+
         <!-- <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"> -->
         <button id="CprFileButton">CPR File</button>
-        <br>
-        <small id="fileHelp" class="form-text text-muted">Please upload the proper documentation and input the expiration date of your certification.</small>
+
+        <small id="fileHelp" class="form-text text-muted bottom-pad-10">Please upload the proper documentation and input the expiration date of your certification.</small>
         <input id="coach-dash-cprExpDate" type="text" name="cpr_exp_date" class="form-control" placeholder="mm/dd/yyyy">
       </div>
     </div>

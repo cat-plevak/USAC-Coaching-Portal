@@ -2,6 +2,7 @@ html, body {
   padding: 0px;
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0px;
+  min-height: 600px;
 }
 
 /*a {
@@ -44,6 +45,14 @@ form-button-text:hover {
 
 .bottom-pad-20 {
   margin-bottom: 30px;
+}
+
+.bottom-pad-10 {
+  margin-bottom: 10px;
+}
+
+.add-top-margin {
+  margin-top: 50px;
 }
 
 .container-fluid{
