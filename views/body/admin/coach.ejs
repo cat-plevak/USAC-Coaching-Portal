@@ -94,7 +94,19 @@
 
   <!-- this is where the cards go -->
   <div class="row">
+
+    <!-- // CARD ONE // -->
     <div class="col-sm-6 col-md-4">
+      <div class="card" style="width: 20rem;">
+        <img id="cprImage" class="card-img-top" src="" alt="CPR Image">
+        <div class="card-body">
+          <h4 class="card-title">CPR Certification</h4>
+          <button id='modalViewBtnCpr' class="btn btn-secondary" data-target="#cprModal" data-toggle="modal">View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
         <img id="cprImage" src="" alt="CPR Image">
         <div class="caption">
@@ -102,8 +114,21 @@
           <p><a href="#" class="btn btn-primary" role="button">View</a></p>
         </div>
       </div>
-    </div>
+    </div> -->
+
+    <!-- // CARD TWO // -->
     <div class="col-sm-6 col-md-4">
+      <div class="card" style="width: 20rem;">
+        <img id="firstAidImage" class="card-img-top" src="" alt="First Aid Image">
+        <div class="card-body">
+          <h4 class="card-title">First Aid Certification</h4>
+          <button id='modalViewBtnFirstAid' class="btn btn-secondary" data-target="#faModal" data-toggle="modal">View</button>
+          <!-- <a href="#" class="btn btn-primary">View</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
         <img id="firstAidImage" src="" alt="First Aid Image">
         <div class="caption">
@@ -111,8 +136,22 @@
           <p><a href="#" class="btn btn-primary" role="button">View</a></p>
         </div>
       </div>
-    </div>
+    </div> -->
+
+    <!-- // CARD THREE // -->
+
     <div class="col-sm-6 col-md-4">
+      <div class="card" style="width: 20rem;">
+        <img id="safeSportImage" class="card-img-top" src="" alt="Safe Sport Image">
+        <div class="card-body">
+          <h4 class="card-title">Safe Sport Certification</h4>
+          <button id='modalViewBtnSafeSort' class="btn btn-secondary" data-target="#ssModal" data-toggle="modal">View</button>
+          <!-- <a href="#" class="btn btn-primary">View</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
         <img id="safeSportImage" src="" alt="Safe Sport Image">
         <div class="caption">
@@ -120,5 +159,69 @@
           <p><a href="#" class="btn btn-primary" role="button">View</a></p>
         </div>
       </div>
+    </div> -->
+
+    <!-- end of row -->
+  </div>
+</div>
+
+
+<!-- MODALS FOR THE CARDS -->
+
+<!-- THIS IS THE CPR MODAL -->
+
+<div class="modal fade" id="cprModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="modal-title">Modal title</h5> -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+        <img id="modal-cprImage" src="" alt="CPR Image">
+      </div>
     </div>
   </div>
+</div>
+
+<!-- THIS IS THE FIRST AID MODAL -->
+
+<div class="modal fade" id="faModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="modal-title">Modal title</h5> -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+        <img id="modal-firstAidImage" src="" alt="First Aid Image">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THIS IS THE SAFE SPORT MODAL -->
+
+<div class="modal fade" id="ssModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="modal-title">Modal title</h5> -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+        <img id="modal-safeSportImage" src="" alt="Safe Sport Image">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- MODALS FOR THE CARDS -->

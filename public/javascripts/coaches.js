@@ -135,7 +135,7 @@ $(document).ready(() => {
           }
           $.ajax(cprOptions)
             .done((res) => {
-              console.log('DONE WITH FILE  CPR LINK THE PATCH TO DB')
+              console.log('DONE WITH FILE CPR LINK THE PATCH TO DB')
             }).fail((err, res) => {
               window.location.href = '../../error'
             })

@@ -116,6 +116,16 @@ $(document).ready(() => {
       $('#firstAidImage').attr('src', `${data.faLink}`);
       $('#safeSportImage').attr('src', `${data.ssLink}`);
 
+      $('#modalViewBtnCpr').click((e) => {
+        $('#modal-cprImage').attr('src', `${data.cprLink}`);
+      })
+      $('#modalViewBtnFirstAid').click((e) => {
+        $('#modal-firstAidImage').attr('src', `${data.faLink}`);
+      })
+      $('#modalViewBtnSafeSort').click((e) => {
+        $('#modal-safeSportImage').attr('src', `${data.ssLink}`);
+      })
+
       // change certifed status from true/false to words
       if (data.isCertified == true) {
         $('#admin-coach-dash-is_certified').html('<h4 style="color:green;">USAC CERTIFIED</h4>')
@@ -148,9 +158,9 @@ $(document).ready(() => {
 
         //change cert status
         let status
-        if(data.isCertified == true) {
+        if (data.isCertified == true) {
           status = 'false'
-        } else if(data.isCertified == false){
+        } else if (data.isCertified == false) {
           status = 'true'
         }
 
@@ -232,7 +242,11 @@ $(document).ready(() => {
       $('#admin-coach-deleteUser').click((e) => {
         e.preventDefault()
         console.log("you want to delete...", data);
-        $.ajax({url: `/api/coaches/${id}`, method: "DELETE", dataType: 'json'}).done(data => {
+        $.ajax({
+          url: `/api/coaches/${id}`,
+          method: "DELETE",
+          dataType: 'json'
+        }).done(data => {
           console.log("deleted", data)
           window.location.href = '/admin/home'
         })
@@ -274,7 +288,7 @@ $(document).ready(() => {
         })
         .done(data => {
           console.log("deleted", data)
-        }).fail(window.location.href= '/admin/admins')
+        }).fail(window.location.href = '/admin/admins')
     }
   })
 
