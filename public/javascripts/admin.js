@@ -25,7 +25,7 @@ $(document).ready(() => {
           <td>${coach.isCertified}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary form-button"><a class="form-button-text" href="/admin/${coach.userId}/edit">Edit</a></button>
+              <button type="button" class="btn"><a class="form-button-text" href="/admin/${coach.userId}/edit">Edit</a></button>
             </div>
           </td>
         </tr>`))
@@ -53,7 +53,7 @@ $(document).ready(() => {
           <td>${coach.isCertified}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary form-button"><a class="form-button-text" href="/admin/${coach.userId}/edit">Edit</a></button>
+              <button type="button" class="btn"><a class="form-button-text" href="/admin/${coach.userId}/edit">Edit</a></button>
             </div>
           </td>
         </tr>`))
@@ -81,7 +81,7 @@ $(document).ready(() => {
           <td>${coach.isCertified}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary form-button"><a class="form-button-text" href="/admin/${coach.userId}/edit">Edit</a></button>
+              <button type="button" class="btn"><a class="form-button-text" href="/admin/${coach.userId}/edit">Edit</a></button>
             </div>
           </td>
         </tr>`))
@@ -138,10 +138,10 @@ $(document).ready(() => {
       // change certifed status from true/false to words
       if (data.isCertified == true) {
         $('#admin-coach-dash-is_certified').html('<h4 style="color:green;">USAC CERTIFIED</h4>')
-        $('#certification_status').html('<button type="button" class="btn" style="float:right">Uncertify</button>')
+        $('#certification_status').html('<button type="button" class="btn">Uncertify</button>')
       } else {
         $('#admin-coach-dash-is_certified').html('<h4 style="color:red;">NOT CERTIFIED</h4>')
-        $('#certification_status').html('<button type="button" class="btn" style="float:right">Certify</button>')
+        $('#certification_status').html('<button type="button" class="btn">Certify</button>')
       }
 
       // date form fields, check to see if value is null
@@ -149,7 +149,7 @@ $(document).ready(() => {
       let cprDate = $('#admin-coach-dash-cprExpDate').val()
       if (cprDate != 'X') {
         $('#admin-coach-dash-cprExpDate').val(data.cprExpDate)
-      } 
+      }
       // first aid date check and set value
       let faDate = $('#admin-coach-dash-faExpDate').val()
       if (faDate != 'X') {
@@ -277,7 +277,7 @@ $(document).ready(() => {
           <td>${admin.username}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary deleteBtn form-button" data-id="${admin.id}">Delete</button>
+              <button type="button" class="btn" data-id="${admin.id}">Delete</button>
             </div>
           </td>
         </tr>`)
