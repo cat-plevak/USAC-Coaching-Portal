@@ -1,4 +1,9 @@
 $(document).ready(function() {
+  // link for register button
+  $('#registration-button').click((e) => {
+    e.preventDefault()
+    window.location.href = '/register'
+  })
 
   // listener on login button
   $('#login-button').click((e) => {

@@ -1,8 +1,8 @@
 /*MAIN STYLING*/
 html, body {
   padding: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  height: 100%;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*height: 100%;*/
 }
 
 a {
@@ -10,11 +10,24 @@ a {
 }
 
 /*sticky footer styling*/
-body {
+/*body {
   flex: 1
   display: flex;
   flex-direction: column;
+}*/
+
+/*button {
+  background-color: #E40F31;
+  color: white;
+  border-radius: 0px;
+  padding: 0px;
 }
+
+button:hover {
+  background-color: #9D0720;
+  color: white;
+}*/
+
 .content {
   flex-basis: 1 0 auto;
   height: 100%;
@@ -27,17 +40,19 @@ body {
 }
 
 #mainnav {
-  height: 150px;
+  height: 135px;
   padding-top: 10px;
   background-color: rgb(0, 0, 0);
+  border-bottom: 3px white solid;
 }
 
 #logo-div {
-  padding-top: 20px;
+  /*padding-top: 20px;*/
 }
 
 #logo-image {
-  max-height: 60px;
+  max-height: 250px;
+  padding-left: 20px;
 }
 
 #logo-words {
@@ -55,13 +70,111 @@ body {
 #login-form {
   width: auto;
   float: right;
-  padding-top: 50px;
+  padding-right: 20px;
+  padding-top: 20px;
 }
 
 #logout-form {
   width: auto;
   float: right;
-  padding-top: 50px;
+  padding-top: 20px;
+  padding-right: 20px;
+}
+
+#login-email {
+  background-color: black;
+  color: white;
+  border-radius: 0px;
+  width: 250px;
+  height: 35px;
+  border: white solid 1px;
+  margin: 5px;
+}
+
+#login-pass {
+  background-color: black;
+  color: white;
+  border-radius: 0px;
+  width: 250px;
+  height: 35px;
+  border: white solid 1px;
+}
+
+#login-button {
+  background-color: #E40F31;
+  color: white;
+  width: 150px;
+  height: 35px;
+  border-radius: 0px;
+  border: none;
+  margin: 5px;
+  font-size: 20px;
+  padding: 0px;
+}
+
+#login-button:hover {
+  background-color: #9D0720;
+  color: white;
+}
+
+#hero-overlay-div {
+  width: 600px;
+  max-width: 600px;
+  height: 420px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  margin-right: 150px;
+  margin-top: 30px;
+  padding: 25px;
+}
+
+#hero-title {
+  margin-bottom: 30px;
+  color: #E40F31;
+  font-size: 30px;
+}
+
+.date-div {
+  width: 40%;
+  padding-right: 20px;
+}
+
+.description-div {
+  width: 60%;
+}
+
+.event-div {
+  margin-top: 15px;
+}
+
+#registration-button {
+  background-color: #E40F31;
+  color: white;
+  width: 200px;
+  height: 60px;
+  border-radius: 0px;
+  margin: 5px;
+  font-size: 30px;
+  padding: 0px;
+  margin: 15px;
+  border: none;
+}
+
+#registration-button:hover {
+  background-color: #9D0720;
+  color: white;
+}
+
+#head-text {
+  color: #474747;
+}
+
+#login-email::placeholder {
+  color: #474747;
+}
+
+#login-pass::placeholder {
+  color: #474747;
 }
 
 .hidden {
@@ -97,11 +210,16 @@ body {
   }
 }
 
+/*#hero-container {
+  background: url("../img/margo-hero.jpg") center center no-repeat scroll;
+  min-height: 400px;
+}*/
+
 /*home.ejs styling*/
 .business-header {
-    height:50vh;
-    min-height: 300px;
-    background: url("../img/homepage.jpg") center center no-repeat scroll;
+    /*height: 75vh;*/
+    min-height: 500px;
+    background: url("../img/margo-hero.jpg") center center no-repeat scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
