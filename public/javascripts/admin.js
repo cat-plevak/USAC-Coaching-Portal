@@ -88,7 +88,7 @@ $(document).ready(() => {
 
   // get one coach
   let checkId = document.location.href.match(/(\d+)\/edit$/)
-  console.log('CHECK ID FOR THE COACH', checkId)
+
   if (checkId) {
     let id = checkId[1]
     console.log("found coach id", id);
@@ -109,6 +109,9 @@ $(document).ready(() => {
       $('#admin-coach-dash-teamname').val(data.teamName)
       $('#admin-coach-dash-usacmem').val(data.usacMembership)
       $('#admin-coach-dash-bgExpDate').val(data.bgExpDate)
+      $('#cprImage').attr('src', `${data.cprLink}`);
+      $('#firstAidImage').attr('src', `${data.faLink}`);
+      $('#safeSportImage').attr('src', `${data.ssLink}`);
 
       // change certifed status from true/false to words
       if (data.isCertified == true) {
@@ -183,6 +186,17 @@ $(document).ready(() => {
           })
       })
     })
+
+    // GET THE IMAGE URLs FOR THE COACH //
+
+    $.getJSON(`/api/admin/${id}/files`).then((urlData) => {
+      console.log("URL DATA FOR THE GIVEN COACH IS: ", urlData)
+    }).fail((err, res) => {
+      window.location.href = '../../error'
+    })
+
+
+
 
   }
 
