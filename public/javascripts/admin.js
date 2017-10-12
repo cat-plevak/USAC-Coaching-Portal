@@ -140,6 +140,38 @@ $(document).ready(() => {
       }
 
       //listen for click on certify/uncertify button
+      $('#certification_status').click((e) => {
+        e.preventDefault()
+
+        //grab certification_status
+        let status
+        if(data.isCertified == true) {
+          status = false
+        } else if(data.isCertified == false){
+          status = true
+        }
+
+        console.log(status)
+
+
+        const newCertStatus = {
+          contentType: 'application/json',
+          data: JSON.stringify({
+            isCertified: status
+          }),
+          dataType: 'json',
+          type: 'PATCH',
+          url: `../../api/coaches/${id}`
+        }
+
+        $.ajax(newCertStatus)
+        .done(res => {
+            window.location.href = `/admin/${id}/edit`
+          })
+        //   .fail((err) => {
+        //   window.location.href = '../../error'
+        // })
+      })
 
       // listen for click on update button
       $('#admin-coach-updateUser').click((e) => {
