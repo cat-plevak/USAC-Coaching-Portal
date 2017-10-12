@@ -2,7 +2,7 @@ html, body {
   padding: 0px;
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0px;
-  min-height: 900px;
+  min-height: 500px;
 }
 
 .btn {
@@ -207,6 +207,32 @@ html, body {
   color: white;
 }
 
+#admin-coach-updateUser {
+  background-color: #E40F31;
+  color: white;
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+}
+
+#admin-coach-updateUser:hover {
+  background-color: #9D0720;
+  color: white;
+}
+
+#admin-coach-deleteUser {
+  background-color: #E40F31;
+  color: white;
+  /*width: 150px;*/
+  height: 50px;
+  font-size: 20px;
+}
+
+#admin-coach-deleteUser:hover {
+  background-color: #9D0720;
+  color: white;
+}
+
 #hero-overlay-div {
   width: 600px;
   max-width: 600px;
@@ -225,6 +251,10 @@ html, body {
 }
 
 #coach-dash-form {
+  padding-left: 100px;
+}
+
+#admin-coach-dash-form {
   padding-left: 100px;
 }
 
