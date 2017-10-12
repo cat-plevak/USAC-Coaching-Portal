@@ -29,8 +29,9 @@ html, body {
 }
 
 .modal {
-  width: 800px;
-  min-width: 600px;
+  width: auto;
+  height: auto;
+  max-height: 100%;
 }
 
 .bottom-pad-20 {
@@ -45,7 +46,7 @@ html, body {
   margin-top: 50px;
 }
 
-.container-fluid{
+.container-fluid {
   margin: 0px;
   padding: 0px;
 }
@@ -289,9 +290,9 @@ html, body {
   right: 200;
   margin: auto;
   border: none;
-  -webkit-box-shadow: 7px 6px 29px 1px rgba(0,0,0,0.75);
-  -moz-box-shadow: 7px 6px 29px 1px rgba(0,0,0,0.75);
-  box-shadow: 7px 6px 29px 1px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 7px 6px 29px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 7px 6px 29px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 7px 6px 29px 1px rgba(0, 0, 0, 0.75);
   animation-duration: 1s;
   animation-name: pop;
 }
@@ -310,6 +311,7 @@ html, body {
 #youdidit-image {
   max-width: 300px;
 }
+
 
 /*#hero-container {
   background: url("../img/margo-hero.jpg") center center no-repeat scroll;
