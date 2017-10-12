@@ -303,3 +303,9 @@ button:hover {
   float: right;
   margin-right: 10px;
 }
+
+#error-container {
+  height: 600px;
+  padding-top: 50px;
+  padding-left: 30px;
+}
