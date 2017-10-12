@@ -1,5 +1,4 @@
 $(document).ready(() => {
-  console.log('admin document ready!')
 
   $('#myModal').on('shown.bs.modal', function() {
     $('#myInput').focus()
@@ -9,7 +8,7 @@ $(document).ready(() => {
   if (document.location.href.match(/certified$/)) {
 
     $.getJSON("/api/coaches/certified").then(data => {
-      console.log("List of coaches", data)
+
       let tbody = $('#certifiedList tbody')
 
       data.forEach((coach) => {
@@ -37,7 +36,7 @@ $(document).ready(() => {
   if (document.location.href.match(/pending$/)) {
 
     $.getJSON("/api/coaches/pending").then(data => {
-      console.log("List of coaches", data)
+
       let tbody = $('#pendingList tbody')
 
       data.forEach((coach) => {
@@ -65,7 +64,7 @@ $(document).ready(() => {
   if (document.location.href.match(/home$/)) {
 
     $.getJSON("/api/coaches/home").then(data => {
-      console.log("List of pending coaches", data)
+
       let tbody = $('#pendingList tbody')
 
       data.forEach((coach) => {
@@ -95,7 +94,6 @@ $(document).ready(() => {
 
   if (checkId) {
     let id = checkId[1]
-    console.log("found coach id", id);
 
     // grab the information from the token, saved during login
     // look up json web token javascript library
@@ -104,7 +102,7 @@ $(document).ready(() => {
 
     // grab information from the api with the id from token
     $.getJSON(`../../api/coaches/${id}`).then(data => {
-      console.log('data from api: ', data);
+
       // set the form values to match the database info
       $('.admin-coach-header-first_name').html(data.firstName + "'s Coaching Profile")
       $('#admin-coach-dash-firstname').val(data.firstName)
@@ -167,14 +165,12 @@ $(document).ready(() => {
 
         //change cert status
         let status
+
         if (data.isCertified == true) {
           status = 'false'
         } else if (data.isCertified == false) {
           status = 'true'
         }
-
-        console.log(status)
-
 
         const newCertStatus = {
           contentType: 'application/json',
@@ -190,18 +186,12 @@ $(document).ready(() => {
           .done(res => {
             window.location.href = `/admin/${id}/edit`
           })
-
-        //   .fail((err) => {
-        //   window.location.href = '../../error'
-        // })
       })
 
 
       // listen for click on update button
       $('#admin-coach-updateUser').click((e) => {
         e.preventDefault()
-        console.log('button clicked');
-        console.log($('#admin-coach-dash-firstname').val());
 
         // grab new values from fields
         let firstName = $('#admin-coach-dash-firstname').val()
@@ -234,13 +224,10 @@ $(document).ready(() => {
           .done(res => {
             $('#hidden-pop').removeClass('hidden')
             $('#hidden-pop').on('animationend', () => {
-
               setTimeout(function() {
                 $('#hidden-pop').addClass('hidden')
               }, 1100);
-
             })
-            console.log('res from ajax call ', res);
           })
           .fail((err, res) => {
             window.location.href = '../../error'
@@ -250,26 +237,22 @@ $(document).ready(() => {
       // listen for click on delete coach button
       $('#admin-coach-deleteUser').click((e) => {
         e.preventDefault()
-        console.log("you want to delete...", data);
         $.ajax({
           url: `/api/coaches/${id}`,
           method: "DELETE",
           dataType: 'json'
         }).done(data => {
-          console.log("deleted", data)
           window.location.href = '/admin/home'
         })
       })
     })
   }
 
-
-
   // populate current admin table in admin view
   if (document.location.href.match(/admins$/)) {
 
     $.getJSON("/api/admin/admins").then(data => {
-      console.log("List of admins", data)
+
       let tbody = $('#currentAdmin tbody')
 
       data.forEach((admin) => {
@@ -287,7 +270,6 @@ $(document).ready(() => {
 
   // listen to delete button in admin table
   $('#currentAdmin tbody').on('click', '.deleteBtn', (e) => {
-    console.log("you want to delete...", $(e.target).data('id'));
     let id = $(e.target).data('id')
     if (id) {
       $.ajax({
@@ -295,9 +277,7 @@ $(document).ready(() => {
           type: "DELETE",
           dataType: 'json'
         })
-        .done(data => {
-          console.log("deleted", data)
-        }).fail(window.location.href = '/admin/admins')
+        .done(data => {}).fail(window.location.href = '/admin/admins')
     }
   })
 
@@ -307,13 +287,9 @@ $(document).ready(() => {
 
     let data = $('#newAdminForm').serialize()
 
-    console.log("this is the newAdmin data: ", data)
     $.post("/api/admin/", data, null, 'json').then((data) => {
-      console.log("POSTED data", data);
       window.location.href = '/admin/admins'
-    }).fail((err) => {
-      console.error("THERE WAS AN ERROR WITH THE AJAX POST")
-    })
+    }).fail((err) => {})
   })
 
 })

@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  console.log('coaches SJ file loaded')
+
   if (document.location.href.match(/coach\/home/)) {
     let string = window.location.href
     let userId = string.substring(string.lastIndexOf('/') + 1, string.length)
@@ -40,8 +40,6 @@ $(document).ready(() => {
       // listen for click on update button
       $('#coach-dash-update-button').click((e) => {
         e.preventDefault()
-        console.log('button clicked');
-        console.log($('#coach-dash-firstname').val());
 
         // grab new values from fields
         let firstName = $('#coach-dash-firstname').val()
@@ -116,10 +114,8 @@ $(document).ready(() => {
           tags: ['cgal']
         },
         function(error, result) {
-          if (error) console.log(error)
           // If NO error, log image data to console
           let id = result[0].public_id
-          console.log(processImage(id))
 
           let cprLink = processImage(id)
 
@@ -134,9 +130,7 @@ $(document).ready(() => {
             url: `../../api/coaches/${userId}`
           }
           $.ajax(cprOptions)
-            .done((res) => {
-              console.log('DONE WITH FILE CPR LINK THE PATCH TO DB')
-            }).fail((err, res) => {
+            .done((res) => {}).fail((err, res) => {
               window.location.href = '../../error'
             })
         })
@@ -154,10 +148,8 @@ $(document).ready(() => {
           tags: ['cgal']
         },
         function(error, result) {
-          if (error) console.log(error)
           // If NO error, log image data to console
           var id = result[0].public_id
-          console.log('This is the image URL', processImage(id))
 
           let faLink = processImage(id)
 
@@ -172,13 +164,9 @@ $(document).ready(() => {
             url: `../../api/coaches/${userId}`
           }
           $.ajax(faOptions)
-            .done((res) => {
-              console.log('DONE WITH FILE First Aid LINK THE PATCH TO DB')
-            }).fail((err, res) => {
+            .done((res) => {}).fail((err, res) => {
               window.location.href = '../../error'
             })
-
-
         })
     })
 
@@ -194,10 +182,8 @@ $(document).ready(() => {
           tags: ['cgal']
         },
         function(error, result) {
-          if (error) console.log(error)
           // If NO error, log image data to console
           var id = result[0].public_id
-          console.log('This is the image URL', processImage(id))
 
           let ssLink = processImage(id)
 
@@ -212,9 +198,7 @@ $(document).ready(() => {
             url: `../../api/coaches/${userId}`
           }
           $.ajax(ssOptions)
-            .done((res) => {
-              console.log('DONE WITH FILE Safe Sport LINK THE PATCH TO DB')
-            }).fail((err, res) => {
+            .done((res) => {}).fail((err, res) => {
               window.location.href = '../../error'
             })
         })
