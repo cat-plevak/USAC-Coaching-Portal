@@ -223,7 +223,6 @@ html, body {
 #admin-coach-deleteUser {
   background-color: #E40F31;
   color: white;
-  /*width: 150px;*/
   height: 50px;
   font-size: 20px;
 }
@@ -295,7 +294,7 @@ html, body {
 }
 
 #head-text {
-  color: #474747;
+  color: #666;
   text-align: right;
 }
 
@@ -316,12 +315,10 @@ html, body {
   width: 500px;
   padding: 15px;
   position: absolute;
-  /*background-color: white;*/
   z-index: 50;
   text-align: center;
   top: 0;
   bottom: -100%;
-  /*left: 100;*/
   right: 200;
   margin: auto;
   border: none;
@@ -346,12 +343,6 @@ html, body {
 #youdidit-image {
   max-width: 300px;
 }
-
-
-/*#hero-container {
-  background: url("../img/margo-hero.jpg") center center no-repeat scroll;
-  min-height: 400px;
-}*/
 
 .business-header {
   min-height: 500px;
