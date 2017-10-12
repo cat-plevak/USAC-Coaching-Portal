@@ -96,15 +96,14 @@ $(document).ready(() => {
     // grab the information from the token, saved during login
     // look up json web token javascript library
       // verify token and get payload...
-    $.getJSON('/token/token').then(data => {
-      let id = data.userId
-      console.log(data.userId);
+
 
       // grab information from the api with the id from token
       $.getJSON(`../../api/coaches/${id}`).then(data => {
         console.log('data from api: ', data);
         console.log('certified or not', data.isCertified);
         // set the form values to match the database info
+        $('.admin-coach-header-first_name').html(data.firstName + "'s Coaching Profile")
         $('#admin-coach-dash-firstname').val(data.firstName)
         $('#admin-coach-dash-lastname').val(data.lastName)
         $('#admin-coach-dash-teamname').val(data.teamName)
@@ -185,7 +184,7 @@ $(document).ready(() => {
             })
         })
       })
-    })
+
   }
 
 
@@ -208,6 +207,20 @@ $(document).ready(() => {
       })
     })
   }
+
+  // listen to delete buttons
+  $('#currentAdmin tbody').on('click', '.deleteBtn', (e) => {
+    console.log("you want to delete...", $(e.target).data('id'));
+    let id = $(e.target).data('id')
+    if (id) {
+      $.ajax({url: `/api/admin/${id}`, type: "DELETE", dataType: 'json'})
+        .done(data => {
+          $(e.target).closest('tr').hide()
+          console.log("deleted", data)
+          window.location.href = '/admin/admins'
+        })
+      }
+    })
 
   $('#newAdminForm').submit((e) => {
     e.preventDefault()
