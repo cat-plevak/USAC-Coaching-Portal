@@ -71,13 +71,13 @@ button:hover {
   width: auto;
   float: right;
   padding-right: 20px;
-  /*padding-top: 45px;*/
+  padding-top: 20px;
 }
 
 #logout-form {
   width: auto;
   float: right;
-  /*padding-top: 30px;*/
+  padding-top: 20px;
   padding-right: 20px;
 }
 
@@ -87,6 +87,8 @@ button:hover {
   border-radius: 0px;
   width: 250px;
   height: 35px;
+  border: white solid 1px;
+  margin: 5px;
 }
 
 #login-pass {
@@ -95,6 +97,7 @@ button:hover {
   border-radius: 0px;
   width: 250px;
   height: 35px;
+  border: white solid 1px;
 }
 
 #login-button {
@@ -103,6 +106,7 @@ button:hover {
   width: 150px;
   height: 35px;
   border-radius: 0px;
+  border: none;
   margin: 5px;
   font-size: 20px;
   padding: 0px;
@@ -123,6 +127,7 @@ button:hover {
   font-size: 30px;
   padding: 0px;
   margin: 15px;
+  border: none;
 }
 
 #registration-button:hover {
