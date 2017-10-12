@@ -1,6 +1,10 @@
 $(document).ready(() => {
   console.log('admin document ready!')
 
+  $('#myModal').on('shown.bs.modal', function() {
+    $('#myInput').focus()
+  })
+
   // populate certified coaches table in certified view
   if (document.location.href.match(/certified$/)) {
 
@@ -223,15 +227,20 @@ $(document).ready(() => {
             window.location.href = '../../error'
           })
       })
+
+      // listen for click on delete coach button
+      $('#admin-coach-deleteUser').click((e) => {
+        e.preventDefault()
+        console.log("you want to delete...", data);
+        $.ajax({url: `/api/coaches/${id}`, method: "DELETE", dataType: 'json'}).done(data => {
+          console.log("deleted", data)
+          window.location.href = '/admin/home'
+        })
+      })
     })
   }
 
-  // listen for click on delete coach button
-  $('#admin-coach-deleteUser').click((e) => {
-    e.preventDefault()
 
-    $.ajax()
-  })
 
   // populate current admin table in admin view
   if (document.location.href.match(/admins$/)) {
