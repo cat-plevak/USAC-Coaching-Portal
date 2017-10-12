@@ -95,6 +95,16 @@ button:hover {
   margin: 5px;
 }
 
+#logout-email {
+  background-color: black;
+  color: black;
+  border-radius: 0px;
+  width: 250px;
+  height: 35px;
+  border: black solid 1px;
+  margin: 5px;
+}
+
 #login-pass {
   background-color: black;
   color: white;
@@ -102,6 +112,15 @@ button:hover {
   width: 250px;
   height: 35px;
   border: white solid 1px;
+}
+
+#logout-pass {
+  background-color: black;
+  color: black;
+  border-radius: 0px;
+  width: 250px;
+  height: 35px;
+  border: black solid 1px;
 }
 
 #login-button {
@@ -117,6 +136,24 @@ button:hover {
 }
 
 #login-button:hover {
+  background-color: #9D0720;
+  color: white;
+}
+
+#logout-button {
+  background-color: #E40F31;
+  color: white;
+  width: 150px;
+  height: 35px;
+  border-radius: 0px;
+  border: none;
+  margin: 5px;
+  font-size: 20px;
+  padding: 0px;
+  float: right;
+}
+
+#logout-button:hover {
   background-color: #9D0720;
   color: white;
 }
@@ -171,6 +208,8 @@ button:hover {
 
 #head-text {
   color: #474747;
+  /*float: right;*/
+  text-align: right;
 }
 
 #login-email::placeholder {
