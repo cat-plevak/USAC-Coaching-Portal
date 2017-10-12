@@ -1,8 +1,8 @@
 /*MAIN STYLING*/
 html, body {
   padding: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  height: 100%;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*height: 100%;*/
 }
 
 a {
@@ -10,11 +10,11 @@ a {
 }
 
 /*sticky footer styling*/
-body {
+/*body {
   flex: 1
   display: flex;
   flex-direction: column;
-}
+}*/
 
 /*button {
   background-color: #E40F31;
