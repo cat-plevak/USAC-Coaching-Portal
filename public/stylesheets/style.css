@@ -27,9 +27,10 @@ body {
 }
 
 #mainnav {
-  height: 150px;
+  height: 175px;
   padding-top: 10px;
   background-color: rgb(0, 0, 0);
+  border-bottom: 3px white solid;
 }
 
 #logo-div {
@@ -37,7 +38,7 @@ body {
 }
 
 #logo-image {
-  max-height: 60px;
+  max-height: 100px;
 }
 
 #logo-words {
@@ -55,13 +56,61 @@ body {
 #login-form {
   width: auto;
   float: right;
-  padding-top: 50px;
+  padding-top: 45px;
 }
 
 #logout-form {
   width: auto;
   float: right;
-  padding-top: 50px;
+  /*padding-top: 30px;*/
+}
+
+#login-email {
+  background-color: black;
+  color: white;
+  border-radius: 0px;
+  width: 250px;
+  height: 35px;
+}
+
+#login-pass {
+  background-color: black;
+  color: white;
+  border-radius: 0px;
+  width: 250px;
+  height: 35px;
+}
+
+#login-button {
+  background-color: #E40F31;
+  color: white;
+  width: 150px;
+  height: 35px;
+  border-radius: 0px;
+  margin: 5px;
+  font-size: 20px;
+  padding: 0px;
+}
+
+#login-button:hover {
+  background-color: #9D0720;
+}
+
+#head-text {
+  color: #474747;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #474747;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #474747;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #474747;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #474747;
 }
 
 .hidden {
