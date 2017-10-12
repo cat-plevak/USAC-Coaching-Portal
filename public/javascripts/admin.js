@@ -116,6 +116,16 @@ $(document).ready(() => {
       $('#firstAidImage').attr('src', `${data.faLink}`);
       $('#safeSportImage').attr('src', `${data.ssLink}`);
 
+      $('#modalViewBtnCpr').click((e) => {
+        $('#modal-cprImage').attr('src', `${data.cprLink}`);
+      })
+      $('#modalViewBtnFirstAid').click((e) => {
+        $('#modal-firstAidImage').attr('src', `${data.faLink}`);
+      })
+      $('#modalViewBtnSafeSort').click((e) => {
+        $('#modal-safeSportImage').attr('src', `${data.ssLink}`);
+      })
+
       // change certifed status from true/false to words
       if (data.isCertified == true) {
         $('#admin-coach-dash-is_certified').html('<h4 style="color:green;">USAC CERTIFIED</h4>')
