@@ -1,11 +1,11 @@
 $(document).ready(() => {
-
+  console.log('coaches SJ file loaded')
   if (document.location.href.match(/coach\/home/)) {
     let string = window.location.href
-    let id = string.substring(string.lastIndexOf('/')+1, string.length)
+    let userId = string.substring(string.lastIndexOf('/') + 1, string.length)
 
     // grab information from the api with the id from token
-    $.getJSON(`../../api/coaches/${id}`).then(data => {
+    $.getJSON(`../../api/coaches/${userId}`).then(data => {
 
       // set the form values to match the database info
       $('#coach-dash-firstname').val(data.firstName)
@@ -16,8 +16,7 @@ $(document).ready(() => {
       // change certifed status from true/false to words
       if (data.isCertified == true) {
         $('#coach-dash-is_certified').html('<h4 style="color:green;">You are a USAC CERTIFIED COACH!</h4>')
-      }
-      else {
+      } else {
         $('#coach-dash-is_certified').html('<h4 style="color:red;">You are NOT certified</h4>')
       }
 
@@ -54,27 +53,27 @@ $(document).ready(() => {
         let ssExpDate = $('#coach-dash-ssExpDate').val()
 
         const options = {
-              contentType: 'application/json',
-              data: JSON.stringify({
-                firstName,
-                lastName,
-                teamName,
-                usacMembership,
-                cprExpDate,
-                faExpDate,
-                ssExpDate
-              }),
-              dataType: 'json',
-              type: 'PATCH',
-              url: `../../api/coaches/${id}`
-            }
+          contentType: 'application/json',
+          data: JSON.stringify({
+            firstName,
+            lastName,
+            teamName,
+            usacMembership,
+            cprExpDate,
+            faExpDate,
+            ssExpDate
+          }),
+          dataType: 'json',
+          type: 'PATCH',
+          url: `../../api/coaches/${userId}`
+        }
 
         $.ajax(options)
           .done(res => {
             $('#hidden-pop').removeClass('hidden')
             $('#hidden-pop').on('animationend', () => {
 
-              setTimeout(function () {
+              setTimeout(function() {
                 $('#hidden-pop').addClass('hidden')
               }, 1100);
             })
@@ -82,10 +81,10 @@ $(document).ready(() => {
           .fail((err, res) => {
             window.location.href = '../../error'
           })
-      // end of update button click function
+        // end of update button click function
       })
 
-    // end of api call for individual coach
+      // end of api call for individual coach
     })
 
     // WIDGET BUTTONS //
@@ -119,8 +118,27 @@ $(document).ready(() => {
         function(error, result) {
           if (error) console.log(error)
           // If NO error, log image data to console
-          var id = result[0].public_id
+          let id = result[0].public_id
           console.log(processImage(id))
+
+          let cprLink = processImage(id)
+
+          // MAKE THE AJAX PATCH CALL TO UDATE THE DB
+          const cprOptions = {
+            contentType: 'application/json',
+            data: JSON.stringify({
+              cprLink
+            }),
+            dataType: 'json',
+            type: 'PATCH',
+            url: `../../api/coaches/${userId}`
+          }
+          $.ajax(cprOptions)
+            .done((res) => {
+              console.log('DONE WITH FILE  CPR LINK THE PATCH TO DB')
+            }).fail((err, res) => {
+              window.location.href = '../../error'
+            })
         })
     })
 
@@ -140,6 +158,27 @@ $(document).ready(() => {
           // If NO error, log image data to console
           var id = result[0].public_id
           console.log('This is the image URL', processImage(id))
+
+          let faLink = processImage(id)
+
+          // MAKE THE AJAX PATCH CALL TO UDATE THE DB
+          const faOptions = {
+            contentType: 'application/json',
+            data: JSON.stringify({
+              faLink
+            }),
+            dataType: 'json',
+            type: 'PATCH',
+            url: `../../api/coaches/${userId}`
+          }
+          $.ajax(faOptions)
+            .done((res) => {
+              console.log('DONE WITH FILE First Aid LINK THE PATCH TO DB')
+            }).fail((err, res) => {
+              window.location.href = '../../error'
+            })
+
+
         })
     })
 
@@ -159,13 +198,32 @@ $(document).ready(() => {
           // If NO error, log image data to console
           var id = result[0].public_id
           console.log('This is the image URL', processImage(id))
+
+          let ssLink = processImage(id)
+
+          // MAKE THE AJAX PATCH CALL TO UDATE THE DB
+          const ssOptions = {
+            contentType: 'application/json',
+            data: JSON.stringify({
+              ssLink
+            }),
+            dataType: 'json',
+            type: 'PATCH',
+            url: `../../api/coaches/${userId}`
+          }
+          $.ajax(ssOptions)
+            .done((res) => {
+              console.log('DONE WITH FILE Safe Sport LINK THE PATCH TO DB')
+            }).fail((err, res) => {
+              window.location.href = '../../error'
+            })
         })
     })
 
     // END WIDGET BUTTONS //
 
-  //end of if window location matches coaches home
+    //end of if window location matches coaches home
   }
 
-// end of document ready call
+  // end of document ready call
 })
