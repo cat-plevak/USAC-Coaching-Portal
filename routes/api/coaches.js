@@ -15,9 +15,9 @@ const router = express.Router()
 // admin homepage view pending coaches
 router.get('/home', (_req, res, next) => {
   knex('coaches')
-    .orderBy('last_name', 'ASC')
-    // .where('is_certified', false)
+    .orderBy('last_name', 'asc')
     .then((coaches) => {
+      console.log("Coaches get all: ", coaches)
       res.send(camelizeKeys(coaches))
     })
     .catch((err) => {
@@ -28,8 +28,8 @@ router.get('/home', (_req, res, next) => {
 // admin view of certified coaches
 router.get('/certified', (req, res, next) => {
   knex('coaches')
-    .orderBy('last_name', 'ASC')
     .where('is_certified', true)
+    .orderBy('last_name', 'asc')
     .then((coaches) => {
       res.send(camelizeKeys(coaches))
     })
@@ -41,7 +41,7 @@ router.get('/certified', (req, res, next) => {
 // admin view of pending coaches
 router.get('/pending', (req, res, next) => {
   knex('coaches')
-    .orderBy('last_name', 'ASC')
+    .orderBy('last_name', 'asc')
     .where('is_certified', false)
     .then((coaches) => {
       res.send(camelizeKeys(coaches))
@@ -60,7 +60,6 @@ router.get('/:id', (req, res, next) => {
   if (Number.isNaN(id)) {
     return next(boom.create(400, 'id must be a number'))
   }
-
 
   knex('coaches')
     .where('user_id', id)
@@ -90,10 +89,6 @@ router.post('/', (req, res, next) => {
     password
   } = req.body
 
-  console.log("\n the USERS request body is : ", req.body)
-
-  console.log("\nusername and password for users table: ", username, password)
-
   if (!username || !username.trim()) {
     return next(boom.create(400, 'Email must not be blank'))
   }
@@ -113,18 +108,15 @@ router.post('/', (req, res, next) => {
       return bcrypt.hash(password, 10)
     }).then((hash) => {
 
-      console.log('\nTHE HASHED PASSWORD IS: ', hash)
-
       return knex('users')
         .insert({
           username,
           hashed_password: hash
         }, '*')
     }).then((newUser) => {
-      console.log("\nTHE NEW USER IS: ", newUser)
+
       const userId = newUser[0].id
-      console.log("\nThe user ID is: ", userId)
-      console.log("\n the COACHES request body is : ", req.body)
+
       const {
         lastName,
         firstName,
@@ -158,19 +150,14 @@ router.post('/', (req, res, next) => {
         userId
       }
 
-      console.log('\n INSERT COACH IS : ', decamelizeKeys(insertCoach))
-
       return knex('coaches')
         .insert(decamelizeKeys(insertCoach), '*')
-
     }).then((row) => {
-      console.log('THIS IS THE ROW AFTER insertCoach: ', row)
       res.send(camelizeKeys(row[0]))
     })
     .catch((err) => {
       next(err)
     })
-
 })
 
 
@@ -189,7 +176,6 @@ router.patch('/:id', (req, res, next) => {
         return next(boom.create(404, 'Coach Not Found'))
       }
 
-      console.log("this is the patch request body, " + req.body)
       const {
         lastName,
         firstName,
@@ -250,7 +236,6 @@ router.patch('/:id', (req, res, next) => {
     })
     .then((rows) => {
       const coach = camelizeKeys(rows[0])
-
       res.send(coach)
     })
     .catch((err) => {
