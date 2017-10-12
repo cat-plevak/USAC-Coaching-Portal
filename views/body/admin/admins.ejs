@@ -1,43 +1,38 @@
-<div id="subnav-container" class="container-fluid">
-  <nav id="subnav" class="navbar-inverse">
+<div id="subnav" class="container-fluid row align-items-center">
     <div class="container">
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="/admin/home">Home</a></li>
-          <li><a href="/admin/pending">Pending</a></li>
-          <li><a href="/admin/certified">Certified</a></li>
-          <li class="active"><a href="/admin/admins">Administrators</a></li>
-        </ul>
-      </div>
+      <nav class="nav">
+        <a class="nav-link" href="/admin/home">HOME</a>
+        <a class="nav-link" href="/admin/pending">PENDING</a>
+        <a class="nav-link" href="/admin/certified">CERTIFIED</a>
+        <a class="nav-link active" href="/admin/admins">ADMINISTRATORS</a>
+      </nav>
     </div>
-  </nav>
 </div>
 
-<h1 class="container">Current Admin</h1>
 <div class="container">
-  <table id="currentAdmin" class="table table-inverse">
+  <h1 class="text-center">Administrator Accounts Management</h1>
+  <h5 class="text-center bottom-pad-20">CURRENT ADMINISTRATORS</h5>
+  <table id="currentAdmin" class="table bottom-pad-20">
     <thead>
       <th>Email</th>
     </thead>
-    <tbody>
-      <!-- list view with edit/delete buttons or modal on click-->
-    </tbody>
+    <tbody></tbody>
   </table>
-</div>
+  <h2 class="">Add New Administrator</h2>
+  <h5 class="bottom-pad-20">LOGIN INFORMATION</h5>
 
-<h1 class="container">Add New Admin</h1>
-<form class="container" id="newAdminForm" novalidate>
-  <h3>Login Information</h3>
-  <div class="row">
-    <div class="col-md-5 mb-3">
-      <label>Email</label>
-      <input id="admin-email" type="text" name="username" class="form-control" placeholder="email" required>
+  <form id="newAdminForm" novalidate>
+    <div class="row">
+      <div class="col-md-5 mb-3">
+        <label>Email</label>
+        <input id="admin-email" type="text" name="username" class="form-control" placeholder="email" required>
+      </div>
+      <div class="col-md-5 mb-3">
+        <label>Password</label>
+        <input id="admin-password" type="password" name="password" class="form-control" placeholder="password" required>
+      </div>
     </div>
-    <div class="col-md-5 mb-3">
-      <label>Password</label>
-      <input id="admin-password" type="password" name="password" class="form-control" placeholder="password" required>
-    </div>
-  </div>
-  <br>
-  <button id="submitNewAdmin" class="btn btn-primary" type="submit">Add Admin</button>
-</form>
+    <br>
+    <button id="submitNewAdmin" class="btn" type="submit">ADD ADMINISTRATOR</button>
+  </form>
+</div>

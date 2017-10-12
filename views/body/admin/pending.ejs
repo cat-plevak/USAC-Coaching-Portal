@@ -1,21 +1,18 @@
-<div id="subnav-container" class="container-fluid">
-  <nav id="subnav" class="navbar-inverse">
+<div id="subnav" class="container-fluid row align-items-center">
     <div class="container">
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="/admin/home">Home</a></li>
-          <li class='active'><a href="/admin/pending">Pending</a></li>
-          <li><a href="/admin/certified">Certified</a></li>
-          <li><a href="/admin/admins">Administrators</a></li>
-        </ul>
-      </div>
+      <nav class="nav">
+        <a class="nav-link" href="/admin/home">HOME</a>
+        <a class="nav-link active" href="/admin/pending">PENDING</a>
+        <a class="nav-link" href="/admin/certified">CERTIFIED</a>
+        <a class="nav-link" href="/admin/admins">ADMINISTRATORS</a>
+      </nav>
     </div>
-  </nav>
 </div>
 
-<h1 class="container">Coaches Pending Certification</h1>
 <div class="container">
-  <table id="pendingList" class="table table-inverse">
+  <h1 class="text-center">Pending Certifications</h1>
+  <h5 class="text-center bottom-pad-20">ALL COACHES PENDING CERTIFICATION</h5>
+  <table id="pendingList" class="table">
     <thead>
       <th>Last Name</th>
       <th>First Name</th>

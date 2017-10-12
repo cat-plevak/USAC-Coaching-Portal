@@ -15,13 +15,13 @@ html, body {
 }
 
 form-button-text {
-  text-decoration: none;
-  color: white;
+  text-decoration: none !important;
+  color: white !important;
 }
 
 form-button-text:hover {
-  text-decoration: none;
-  color: white;
+  text-decoration: none !important;
+  color: white !important;
 }
 
 .card {
@@ -157,6 +157,16 @@ form-button-text:hover {
 }
 
 #logout-button:hover {
+  background-color: #9D0720;
+  color: white;
+}
+
+#submitNewAdmin {
+  background-color: #E40F31;
+  color: white;
+}
+
+#submitNewAdmin:hover {
   background-color: #9D0720;
   color: white;
 }
