@@ -17,9 +17,17 @@ const isAuth = (req, res, next) => {
         _layoutFile: 'layout.ejs'
       })
     }
-    console.log(payload);
-    req.currentUser = payload
-    next()
+    console.log('This is the payload from the admin token: ', payload);
+    if (payload.isAdmin == false) {
+      return res.render('body/badinfo', {
+        title: 'Error',
+        _layoutFile: 'layout.ejs'
+      })
+    }
+    else {
+      req.currentUser = payload
+      next()
+    }
   })
 }
 
