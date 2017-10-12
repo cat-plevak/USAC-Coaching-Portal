@@ -101,7 +101,6 @@ $(document).ready(() => {
     // grab information from the api with the id from token
     $.getJSON(`../../api/coaches/${id}`).then(data => {
       console.log('data from api: ', data);
-      console.log('certified or not', data.isCertified);
       // set the form values to match the database info
       $('.admin-coach-header-first_name').html(data.firstName + "'s Coaching Profile")
       $('#admin-coach-dash-firstname').val(data.firstName)
@@ -143,12 +142,12 @@ $(document).ready(() => {
       $('#certification_status').click((e) => {
         e.preventDefault()
 
-        //grab certification_status
+        //change cert status
         let status
         if(data.isCertified == true) {
-          status = false
+          status = 'false'
         } else if(data.isCertified == false){
-          status = true
+          status = 'true'
         }
 
         console.log(status)
@@ -165,13 +164,15 @@ $(document).ready(() => {
         }
 
         $.ajax(newCertStatus)
-        .done(res => {
+          .done(res => {
             window.location.href = `/admin/${id}/edit`
           })
+
         //   .fail((err) => {
         //   window.location.href = '../../error'
         // })
       })
+
 
       // listen for click on update button
       $('#admin-coach-updateUser').click((e) => {
