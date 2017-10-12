@@ -220,10 +220,8 @@ $(document).ready(() => {
           dataType: 'json'
         })
         .done(data => {
-          $(e.target).closest('tr').hide()
           console.log("deleted", data)
-          window.location.href = '/admin/admins'
-        })
+        }).fail(window.location.href= '/admin/admins')
     }
   })
 
