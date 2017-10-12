@@ -14,6 +14,11 @@ html, body {
   color: white;
 }
 
+.form-button {
+  text-decoration: none;
+  color: white;
+}
+
 .card {
   max-height: 350px;
 }
