@@ -186,18 +186,6 @@ $(document).ready(() => {
           })
       })
     })
-
-    // GET THE IMAGE URLs FOR THE COACH //
-
-    $.getJSON(`/api/admin/${id}/files`).then((urlData) => {
-      console.log("URL DATA FOR THE GIVEN COACH IS: ", urlData)
-    }).fail((err, res) => {
-      window.location.href = '../../error'
-    })
-
-
-
-
   }
 
 

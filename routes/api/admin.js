@@ -24,33 +24,6 @@ router.get('/admins', (req, res, next) => {
     })
 })
 
-router.get('/:id/files', (req, res, next) => {
-  const id = Number(req.params.id)
-
-  if (Number.isNaN(id)) {
-    return next(boom.create(400, 'id must be a number'))
-  }
-
-  knex('coaches')
-    .where('id', id)
-    .first()
-    .then((coach) => {
-      if (!coach) {
-        return next(boom.create(404, 'Coach Not Found'))
-      }
-
-      let fileLinks = {
-        cprLink: coach.cpr_link,
-        faLink: coach.fa_link,
-        ssLink: coach.ss_link,
-      }
-
-      res.send(fileLinks)
-
-
-    })
-})
-
 router.delete('/:id', (req, res, next) => {
   const id = Number.parseInt(req.params.id)
 
