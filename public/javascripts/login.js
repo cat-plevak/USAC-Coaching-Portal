@@ -1,6 +1,6 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
-// listener on login button
+  // listener on login button
   $('#login-button').click((e) => {
     e.preventDefault()
 
@@ -11,9 +11,9 @@ $(document).ready(function(){
 
     if (!email) {
       console.log('Email must not be blank');
-        window.location.href = '/badinfo'
-        return res.status(404).send('Email must not be blank')
-      }
+      window.location.href = '/badinfo'
+      return res.status(404).send('Email must not be blank')
+    }
 
     if (!password) {
       console.log('Password must not be blank');
@@ -22,12 +22,15 @@ $(document).ready(function(){
     }
 
     const options = {
-          contentType: 'application/json',
-          data: JSON.stringify({ email, password }),
-          dataType: 'json',
-          type: 'POST',
-          url: '/token'
-        }
+      contentType: 'application/json',
+      data: JSON.stringify({
+        email,
+        password
+      }),
+      dataType: 'json',
+      type: 'POST',
+      url: '/token'
+    }
 
     $.ajax(options)
       .done((res) => {
@@ -42,9 +45,8 @@ $(document).ready(function(){
             console.log(res.id);
             window.location.href = `/coach/home/${res.id}`
 
-          }
-          else if (res.isAdmin == true) {
-            window.location.href = `/admin/home/${res.id}`
+          } else if (res.isAdmin == true) {
+            window.location.href = `/admin/home`
           }
         }
       })
