@@ -25,7 +25,7 @@ $(document).ready(() => {
           <td>${coach.isCertified}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn"><a class="form-button-text" href="/admin/${coach.userId}/edit">Edit</a></button>
+              <button type="button" class="btn"><a id="button-link-text" class="form-button-text" href="/admin/${coach.userId}/edit">EDIT</a></button>
             </div>
           </td>
         </tr>`))
@@ -53,7 +53,7 @@ $(document).ready(() => {
           <td>${coach.isCertified}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn"><a class="form-button-text" href="/admin/${coach.userId}/edit">Edit</a></button>
+              <button type="button" class="btn"><a id="button-link-text" class="form-button-text" href="/admin/${coach.userId}/edit">EDIT</a></button>
             </div>
           </td>
         </tr>`))
@@ -81,7 +81,7 @@ $(document).ready(() => {
           <td>${coach.isCertified}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn"><a class="form-button-text" href="/admin/${coach.userId}/edit">Edit</a></button>
+              <button type="button" class="btn"><a id="button-link-text" class="form-button-text" href="/admin/${coach.userId}/edit">EDIT</a></button>
             </div>
           </td>
         </tr>`))

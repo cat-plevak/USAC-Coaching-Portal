@@ -233,6 +233,11 @@ html, body {
   color: white;
 }
 
+#button-link-text {
+  text-decoration: none;
+  color: white;
+}
+
 #hero-overlay-div {
   width: 600px;
   max-width: 600px;
