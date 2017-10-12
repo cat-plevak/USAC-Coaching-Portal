@@ -14,7 +14,7 @@ html, body {
   color: white;
 }
 
-form-button-text {
+/*form-button-text {
   text-decoration: none !important;
   color: white !important;
 }
@@ -22,10 +22,19 @@ form-button-text {
 form-button-text:hover {
   text-decoration: none !important;
   color: white !important;
-}
+}*/
 
 .card {
-  max-height: 350px;
+  max-height: 250px;
+}
+
+.card-img-top {
+  max-height: 250px;
+}
+
+.adminCoachCards {
+  height: 500px;
+  max-height: 500px;
 }
 
 .modal {

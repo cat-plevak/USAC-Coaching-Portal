@@ -112,9 +112,18 @@ $(document).ready(() => {
       $('#admin-coach-dash-teamname').val(data.teamName)
       $('#admin-coach-dash-usacmem').val(data.usacMembership)
       $('#admin-coach-dash-bgExpDate').val(data.bgExpDate)
-      $('#cprImage').attr('src', `${data.cprLink}`);
-      $('#firstAidImage').attr('src', `${data.faLink}`);
-      $('#safeSportImage').attr('src', `${data.ssLink}`);
+
+      if (data.cprLink) {
+        $('#cprImage').attr('src', `${data.cprLink}`);
+      }
+
+      if (data.faLink) {
+        $('#firstAidImage').attr('src', `${data.faLink}`);
+      }
+
+      if (data.ssLink) {
+        $('#safeSportImage').attr('src', `${data.ssLink}`);
+      }
 
       $('#modalViewBtnCpr').click((e) => {
         $('#modal-cprImage').attr('src', `${data.cprLink}`);
