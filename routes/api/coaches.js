@@ -16,7 +16,7 @@ const router = express.Router()
 router.get('/home', (_req, res, next) => {
   knex('coaches')
     .orderBy('last_name', 'ASC')
-    .where('is_certified', false)
+    // .where('is_certified', false)
     .then((coaches) => {
       res.send(camelizeKeys(coaches))
     })
