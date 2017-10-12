@@ -1,6 +1,10 @@
 $(document).ready(() => {
   console.log('admin document ready!')
 
+  $('#myModal').on('shown.bs.modal', function() {
+    $('#myInput').focus()
+  })
+
   // populate certified coaches table in certified view
   if (document.location.href.match(/certified$/)) {
 
@@ -21,7 +25,7 @@ $(document).ready(() => {
           <td>${coach.isCertified}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary"><a href="/admin/${coach.userId}/edit">Edit</a></button>
+              <button type="button" class="btn btn-secondary form-button"><a class="form-button-text" href="/admin/${coach.userId}/edit">Edit</a></button>
             </div>
           </td>
         </tr>`))
@@ -49,7 +53,7 @@ $(document).ready(() => {
           <td>${coach.isCertified}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary"><a href="/admin/${coach.userId}/edit">Edit</a></button>
+              <button type="button" class="btn btn-secondary form-button"><a class="form-button-text" href="/admin/${coach.userId}/edit">Edit</a></button>
             </div>
           </td>
         </tr>`))
@@ -77,7 +81,7 @@ $(document).ready(() => {
           <td>${coach.isCertified}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary"><a href="/admin/${coach.userId}/edit">Edit</a></button>
+              <button type="button" class="btn btn-secondary form-button"><a class="form-button-text" href="/admin/${coach.userId}/edit">Edit</a></button>
             </div>
           </td>
         </tr>`))
@@ -223,8 +227,23 @@ $(document).ready(() => {
             window.location.href = '../../error'
           })
       })
+
+      // listen for click on delete coach button
+      $('#admin-coach-deleteUser').click((e) => {
+        e.preventDefault()
+        console.log("you want to delete...", data);
+        $.ajax({
+          url: `/api/coaches/${id}`,
+          method: "DELETE",
+          dataType: 'json'
+        }).done(data => {
+          console.log("deleted", data)
+          window.location.href = '/admin/home'
+        })
+      })
     })
   }
+
 
 
   // populate current admin table in admin view
@@ -239,7 +258,7 @@ $(document).ready(() => {
           <td>${admin.username}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary deleteBtn" data-id="${admin.id}">Delete</button>
+              <button type="button" class="btn btn-secondary deleteBtn form-button" data-id="${admin.id}">Delete</button>
             </div>
           </td>
         </tr>`)
