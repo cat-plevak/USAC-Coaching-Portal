@@ -2,11 +2,12 @@
 html, body {
   padding: 0px;
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0px;
   /*height: 100%;*/
 }
 
 a {
-  color: #00B7FF;
+  text-decoration: underline;
 }
 
 /*sticky footer styling*/
@@ -28,10 +29,13 @@ button:hover {
   color: white;
 }*/
 
-.content {
+.bottom-pad-20 {
+  margin-bottom: 30px;
+}
+/*.content {
   flex-basis: 1 0 auto;
   height: 100%;
-}
+}*/
 
 
 .container-fluid{
@@ -91,6 +95,16 @@ button:hover {
   margin: 5px;
 }
 
+#logout-email {
+  background-color: black;
+  color: black;
+  border-radius: 0px;
+  width: 250px;
+  height: 35px;
+  border: black solid 1px;
+  margin: 5px;
+}
+
 #login-pass {
   background-color: black;
   color: white;
@@ -98,6 +112,15 @@ button:hover {
   width: 250px;
   height: 35px;
   border: white solid 1px;
+}
+
+#logout-pass {
+  background-color: black;
+  color: black;
+  border-radius: 0px;
+  width: 250px;
+  height: 35px;
+  border: black solid 1px;
 }
 
 #login-button {
@@ -113,6 +136,24 @@ button:hover {
 }
 
 #login-button:hover {
+  background-color: #9D0720;
+  color: white;
+}
+
+#logout-button {
+  background-color: #E40F31;
+  color: white;
+  width: 150px;
+  height: 35px;
+  border-radius: 0px;
+  border: none;
+  margin: 5px;
+  font-size: 20px;
+  padding: 0px;
+  float: right;
+}
+
+#logout-button:hover {
   background-color: #9D0720;
   color: white;
 }
@@ -167,6 +208,8 @@ button:hover {
 
 #head-text {
   color: #474747;
+  /*float: right;*/
+  text-align: right;
 }
 
 #login-email::placeholder {
@@ -217,18 +260,52 @@ button:hover {
 
 /*home.ejs styling*/
 .business-header {
-    /*height: 75vh;*/
-    min-height: 500px;
-    background: url("../img/margo-hero.jpg") center center no-repeat scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+  /*height: 75vh;*/
+  min-height: 500px;
+  background: url("../img/margo-hero.jpg") center center no-repeat scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  margin-bottom: 50px;
 }
 
 .footer-overwrite {
-  height: 50px;
-  background-color: #dedede;
+  height: 250px;
+  background-color: #333333;
+  color: white;
   margin-top: 75px;
-  padding-top: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#footer-logo {
+  width: 200px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.footer-img {
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+#footer-right {
+  width: 71.5%;
+}
+
+#tnf-logo {
+  height: 150px;
+  float: right;
+}
+
+.social-logo {
+  float: right;
+  margin-right: 10px;
+}
+
+#error-container {
+  height: 600px;
+  padding-top: 50px;
+  padding-left: 30px;
 }

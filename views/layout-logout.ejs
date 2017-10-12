@@ -4,34 +4,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <!-- bootstrap4 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <!-- bootstrap3 -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+  <!-- personal style -->
   <link rel="stylesheet" href="/stylesheets/style.css">
 
   <title>USAC Coaching Portal</title>
 </head>
 
 <body>
-
   <nav id="mainnav" class="navbar-inverse">
-    <div class="container">
       <div id="logo-div" class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/"><img id="logo-image" src="../img/usac_logo_white.png" alt="USAC Coaching Portal"></a>
-        <a id="logo-words" class="navbar-brand" href="/"><h2>COACHES PORTAL</h2></a>
+        <a class="navbar-brand" href="/"><img id="logo-image" src="/img/usac_sec_c.png" alt="USAC Coaching Portal"></a>
+        <div id="logout-form">
+          <h2 id="head-text">USA CLIMBING COACHES PORTAL</h2>
+          <form class="form-inline mt-2 mt-md-0">
+            <input id="logout-email" class="form-control" type="text" aria-label="Email" required>
+            <input id="logout-pass" class="form-control mr-sm-2" type="password" aria-label="Password" required>
+            <button id="logout-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">LOGOUT</button>
+          </form>
+        </div>
       </div>
-      <div id="logout-form" class="collapse navbar-collapse">
-        <form class="form-inline mt-2 mt-md-0">
-          <!-- <input id="login-email" class="form-control mr-sm-2" type="text" placeholder="Email" aria-label="Email">
-          <input id="login-pass" class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Password"> -->
-          <button id="logout-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-        </form>
-      </div>
-    </div>
   </nav>
 
   <div class="container-fluid content">
@@ -49,13 +44,36 @@
   </div>
 
   <footer class="footer-overwrite">
-    <div class="container">
-      <span class="text-muted">Place sticky footer content here.</span>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <img id="footer-logo" src="/img/usac_logo_white.png" alt="USA Climbing">
+          <p>4665 Nautilus Ct S #502A</br>
+          Boulder, CO 80301</br>
+          303-499-0715</br>
+          <a href="#">info@usaclimbing.org</a></p>
+        </div>
+        <div id="footer-right" class="col-m-9 align-self-center">
+          <img id="tnf-logo" src="/img/tnf_square.jpg" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <img class="footer-img" src="/img/adaptive.png" alt="">
+          <img class="footer-img" src="/img/bouldering.png" alt="">
+          <img class="footer-img" src="/img/collegiate.png" alt="">
+          <img class="footer-img" src="/img/speed.png" alt="">
+          <img class="footer-img" src="/img/sport.png" alt="">
+        </div>
+        <div class="col-md-4">
+          <img class="social-logo" src="/img/fb-wh.png" alt="">
+          <img class="social-logo" src="/img/tw-wh.png" alt="">
+          <img class="social-logo" src="/img/in-wh.png" alt="">
+          <img class="social-logo" src="/img/yt-wh.png" alt="">
+        </div>
+      </div>
     </div>
   </footer>
-
-
-
 
   <!-- JavaScript -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
