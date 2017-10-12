@@ -40,6 +40,7 @@ $(document).ready(function() {
     $.ajax(options)
       .done((res) => {
         // if email and password are bad, send to bad info page
+        console.log('respons on login js: ', res);
         if (!res.username) {
           window.location.href = '/error'
         }
