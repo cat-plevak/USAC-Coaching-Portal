@@ -6,9 +6,9 @@ html, body {
   /*height: 100%;*/
 }
 
-/*a {
-  color: #00B7FF;
-}*/
+a {
+  text-decoration: underline;
+}
 
 /*sticky footer styling*/
 /*body {
@@ -232,8 +232,26 @@ button:hover {
 }
 
 .footer-overwrite {
-  height: 50px;
-  background-color: #dedede;
+  height: 250px;
+  background-color: #333333;
+  color: white;
   margin-top: 75px;
-  padding-top: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#footer-logo {
+  width: 200px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.footer-img {
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+#tnf-logo {
+  height: 150px;
+  float: right;
 }
