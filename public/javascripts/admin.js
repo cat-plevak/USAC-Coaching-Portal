@@ -21,7 +21,7 @@ $(document).ready(() => {
           <td>${coach.isCertified}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary"><a href="/admin/${coach.userId}/edit">Edit</a></button>
+              <button type="button" class="btn btn-secondary form-button"><a href="/admin/${coach.userId}/edit">Edit</a></button>
             </div>
           </td>
         </tr>`))
@@ -49,7 +49,7 @@ $(document).ready(() => {
           <td>${coach.isCertified}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary"><a href="/admin/${coach.userId}/edit">Edit</a></button>
+              <button type="button" class="btn btn-secondary form-button"><a href="/admin/${coach.userId}/edit">Edit</a></button>
             </div>
           </td>
         </tr>`))
@@ -77,7 +77,7 @@ $(document).ready(() => {
           <td>${coach.isCertified}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary"><a href="/admin/${coach.userId}/edit">Edit</a></button>
+              <button type="button" class="btn btn-secondary form-button"><a href="/admin/${coach.userId}/edit">Edit</a></button>
             </div>
           </td>
         </tr>`))
@@ -226,6 +226,12 @@ $(document).ready(() => {
     })
   }
 
+  // listen for click on delete coach button
+  $('#admin-coach-deleteUser').click((e) => {
+    e.preventDefault()
+
+    $.ajax()
+  })
 
   // populate current admin table in admin view
   if (document.location.href.match(/admins$/)) {
@@ -239,7 +245,7 @@ $(document).ready(() => {
           <td>${admin.username}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary deleteBtn" data-id="${admin.id}">Delete</button>
+              <button type="button" class="btn btn-secondary deleteBtn form-button" data-id="${admin.id}">Delete</button>
             </div>
           </td>
         </tr>`)

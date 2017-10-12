@@ -282,6 +282,7 @@ router.delete('/:id', (req, res, next) => {
         .where('user_id', id)
     })
     .then(() => {
+      delete coach.id
       res.send(coach)
     })
     .catch((err) => {
