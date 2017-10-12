@@ -14,7 +14,12 @@ html, body {
   color: white;
 }
 
-.form-button {
+form-button-text {
+  text-decoration: none;
+  color: white;
+}
+
+form-button-text:hover {
   text-decoration: none;
   color: white;
 }
