@@ -251,7 +251,16 @@ button:hover {
   margin-top: 15px;
 }
 
+#footer-right {
+  width: 71.5%;
+}
+
 #tnf-logo {
   height: 150px;
   float: right;
+}
+
+.social-logo {
+  float: right;
+  margin-right: 10px;
 }
