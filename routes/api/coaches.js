@@ -233,10 +233,10 @@ router.patch('/:id', (req, res, next) => {
         updateCaoch.cprLink = cprLink
       }
       if (faLink) {
-        updateCaoch.cprLink = cprLink
+        updateCaoch.faLink = faLink
       }
       if (ssLink) {
-        updateCaoch.cprLink = cprLink
+        updateCaoch.ssLink = ssLink
       }
 
       return knex('coaches')

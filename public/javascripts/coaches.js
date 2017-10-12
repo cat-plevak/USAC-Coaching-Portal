@@ -135,13 +135,10 @@ $(document).ready(() => {
           }
           $.ajax(cprOptions)
             .done((res) => {
-              console.log('DONE WITH FILE LINK THE PATCH TO DB')
+              console.log('DONE WITH FILE  CPR LINK THE PATCH TO DB')
             }).fail((err, res) => {
               window.location.href = '../../error'
             })
-
-          //next ajax call
-
         })
     })
 
@@ -161,6 +158,27 @@ $(document).ready(() => {
           // If NO error, log image data to console
           var id = result[0].public_id
           console.log('This is the image URL', processImage(id))
+
+          let faLink = processImage(id)
+
+          // MAKE THE AJAX PATCH CALL TO UDATE THE DB
+          const faOptions = {
+            contentType: 'application/json',
+            data: JSON.stringify({
+              faLink
+            }),
+            dataType: 'json',
+            type: 'PATCH',
+            url: `../../api/coaches/${userId}`
+          }
+          $.ajax(faOptions)
+            .done((res) => {
+              console.log('DONE WITH FILE First Aid LINK THE PATCH TO DB')
+            }).fail((err, res) => {
+              window.location.href = '../../error'
+            })
+
+
         })
     })
 
@@ -180,6 +198,25 @@ $(document).ready(() => {
           // If NO error, log image data to console
           var id = result[0].public_id
           console.log('This is the image URL', processImage(id))
+
+          let ssLink = processImage(id)
+
+          // MAKE THE AJAX PATCH CALL TO UDATE THE DB
+          const ssOptions = {
+            contentType: 'application/json',
+            data: JSON.stringify({
+              ssLink
+            }),
+            dataType: 'json',
+            type: 'PATCH',
+            url: `../../api/coaches/${userId}`
+          }
+          $.ajax(ssOptions)
+            .done((res) => {
+              console.log('DONE WITH FILE Safe Sport LINK THE PATCH TO DB')
+            }).fail((err, res) => {
+              window.location.href = '../../error'
+            })
         })
     })
 
