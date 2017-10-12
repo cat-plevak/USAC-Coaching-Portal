@@ -149,7 +149,7 @@ $(document).ready(() => {
       let cprDate = $('#admin-coach-dash-cprExpDate').val()
       if (cprDate != 'X') {
         $('#admin-coach-dash-cprExpDate').val(data.cprExpDate)
-      }
+      } 
       // first aid date check and set value
       let faDate = $('#admin-coach-dash-faExpDate').val()
       if (faDate != 'X') {
