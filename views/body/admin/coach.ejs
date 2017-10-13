@@ -1,12 +1,12 @@
 <div id="subnav" class="container-fluid row align-items-center">
-    <div class="container">
-      <nav class="nav">
-        <a class="nav-link" href="/admin/home">HOME</a>
-        <a class="nav-link" href="/admin/pending">PENDING</a>
-        <a class="nav-link" href="/admin/certified">CERTIFIED</a>
-        <a class="nav-link" href="/admin/admins">ADMINISTRATORS</a>
-      </nav>
-    </div>
+  <div class="container">
+    <nav class="nav">
+      <a class="nav-link" href="/admin/home">HOME</a>
+      <a class="nav-link" href="/admin/pending">PENDING</a>
+      <a class="nav-link" href="/admin/certified">CERTIFIED</a>
+      <a class="nav-link" href="/admin/admins">ADMINISTRATORS</a>
+    </nav>
+  </div>
 </div>
 
 <div class="container">
@@ -19,7 +19,7 @@
     <p>Type in the field to change or update information. </br>Click the 'Update' button at the bottom to make sure your changes are saved.</p>
   </div>
 
-  <form id="admin-coach-dash-form" class="bottom-pad-20" novalidate>
+  <form id="admin-coach-dash-form" class="bottom-pad-20">
     <h3>General Information</h3>
     <div class="row">
       <div class="col-md-5 mb-3">
@@ -38,13 +38,13 @@
       </div>
       <div class="col-md-5 mb-3">
         <label for="validationCustom03">USAC Membership Number</label>
-        <input id="admin-coach-dash-usacmem" type="text" name="usac_membership" class="form-control" placeholder="USAC Membership Number" required>
+        <input id="admin-coach-dash-usacmem" type="number" name="usac_membership" class="form-control" placeholder="USAC Membership Number" required>
       </div>
     </div>
     <div class="row">
       <div class="col-md-5 mb-3">
         <label for="validationCustom03">Background Check Expiration Date</label>
-        <input id="admin-coach-dash-bgExpDate" type="text" name="bg_exp_date" class="form-control" placeholder="mm/dd/yyyy" required>
+        <input id="admin-coach-dash-bgExpDate" type="date" name="bg_exp_date" class="form-control" placeholder="mm/dd/yyyy" required>
       </div>
     </div>
 
@@ -53,19 +53,19 @@
     <div class="row">
       <div class="col-md-5 mb-3, form-group">
         <label for="exampleInputFile">CPR Expiration Date</label>
-        <input id="admin-coach-dash-cprExpDate" type="text" name="cpr_exp_date" class="form-control" placeholder="mm/dd/yyyy">
+        <input id="admin-coach-dash-cprExpDate" type="date" name="cpr_exp_date" class="form-control" placeholder="mm/dd/yyyy">
       </div>
     </div>
     <div class="row">
       <div class="col-md-5 mb-3, form-group">
         <label for="exampleInputFile">First Aid Expiration Date</label>
-        <input id="admin-coach-dash-faExpDate" type="text" name="fa_exp_date" class="form-control" placeholder="mm/dd/yyyy">
+        <input id="admin-coach-dash-faExpDate" type="date" name="fa_exp_date" class="form-control" placeholder="mm/dd/yyyy">
       </div>
     </div>
     <div class="row">
       <div class="col-md-5 mb-3, form-group">
         <label for="exampleInputFile">Safe Sport Expiration Date</label>
-        <input id="admin-coach-dash-ssExpDate" type="text" name="ss_exp_date" class="form-control" placeholder="mm/dd/yyyy">
+        <input id="admin-coach-dash-ssExpDate" type="date" name="ss_exp_date" class="form-control" placeholder="mm/dd/yyyy">
       </div>
     </div>
     <button id="admin-coach-updateUser" class="btn" type="submit">UPDATE</button>

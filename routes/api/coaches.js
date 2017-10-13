@@ -93,7 +93,7 @@ router.post('/', (req, res, next) => {
     return next(boom.create(400, 'Email must not be blank'))
   }
 
-  if (!password || password.length < 4) {
+  if (!password || password.length < 6) {
     return next(boom.create(400, 'Password must be at least 4 characters long'))
   }
 
