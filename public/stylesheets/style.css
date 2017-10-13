@@ -5,6 +5,14 @@ html, body {
   min-height: 500px;
 }
 
+input:invalid {
+  box-shadow: 0 0 5px 1px rgba(133, 29, 29, 0.68);
+}
+
+input:focus:invalid {
+  outline: none;
+}
+
 .btn {
   border-radius: 0px;
   border: none;
