@@ -17,7 +17,6 @@ router.get('/home', (_req, res, next) => {
   knex('coaches')
     .orderBy('last_name', 'asc')
     .then((coaches) => {
-      console.log("Coaches get all: ", coaches)
       res.send(camelizeKeys(coaches))
     })
     .catch((err) => {
