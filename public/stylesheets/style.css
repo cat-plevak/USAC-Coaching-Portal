@@ -51,6 +51,11 @@ html, body {
   padding: 0px;
 }
 
+#bad-info-div {
+  height: 100%;
+  margin-top: 100px;
+}
+
 #mainnav {
   height: 135px;
   padding-top: 10px;
@@ -294,7 +299,7 @@ html, body {
 }
 
 #head-text {
-  color: #666;
+  color: #cdcdcd;
   text-align: right;
 }
 
