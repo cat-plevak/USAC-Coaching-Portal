@@ -182,6 +182,7 @@ router.patch('/:id', (req, res, next) => {
         cprExpDate,
         faExpDate,
         ssExpDate,
+        bgExpDate,
         usacMembership,
         isCertified,
         cprLink,
@@ -212,6 +213,9 @@ router.patch('/:id', (req, res, next) => {
       }
       if (ssExpDate) {
         updateCaoch.ssExpDate = ssExpDate
+      }
+      if (bgExpDate) {
+        updateCaoch.bgExpDate = bgExpDate
       }
       if (usacMembership) {
         updateCaoch.usacMembership = usacMembership
