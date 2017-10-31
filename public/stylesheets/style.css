@@ -43,6 +43,7 @@ input:focus:invalid {
   max-height: 100%;
 }
 
+/*extra spacing classes*/
 .bottom-pad-20 {
   margin-bottom: 30px;
 }
@@ -65,6 +66,7 @@ input:focus:invalid {
   margin-top: 100px;
 }
 
+/*main nav and logo*/
 #mainnav {
   height: 135px;
   padding-top: 10px;
@@ -185,6 +187,7 @@ input:focus:invalid {
   color: white;
 }
 
+/*page styling*/
 #submitNewAdmin {
   background-color: #E40F31;
   color: white;
@@ -251,6 +254,7 @@ input:focus:invalid {
   color: white;
 }
 
+/*main page hero image*/
 #hero-overlay-div {
   width: 600px;
   max-width: 600px;
@@ -268,6 +272,7 @@ input:focus:invalid {
   font-size: 30px;
 }
 
+/*page styling*/
 #coach-dash-form {
   padding-left: 100px;
 }
@@ -312,6 +317,7 @@ input:focus:invalid {
   text-align: right;
 }
 
+/*main nav place holder text*/
 #login-email::placeholder {
   color: #474747;
 }
@@ -324,6 +330,7 @@ input:focus:invalid {
   display: none;
 }
 
+/*animated pop up div*/
 .youdidit-pop {
   height: 400px;
   width: 500px;
@@ -368,6 +375,7 @@ input:focus:invalid {
   margin-bottom: 50px;
 }
 
+/*footer*/
 .footer-overwrite {
   height: 250px;
   background-color: #333333;
